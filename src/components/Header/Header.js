@@ -2,7 +2,6 @@ import React from "react";
 import logodraft1 from "E:/Freelance/sazgt/sazgt-front-end/src/images/logodraft1.png";
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
-import { MdEmail } from "react-icons/md";
 import { CiSearch } from "react-icons/ci";
 import "./Header.css";
 function Header() {
