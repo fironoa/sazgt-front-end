@@ -1,0 +1,80 @@
+.home-container{
+    margin-left:13vw;
+   margin-right:13vw;
+   border: solid 1 black;
+}
+.banner{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;   
+}
+.parts{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: left;
+    width: 35vw;
+    margin-bottom: 50px;
+}
+
+.banner-image-wrapper{
+    padding-top: 3vw;
+    object-fit: fit;
+    overflow: hidden;
+}
+.banner-heading{
+    display: flex;
+    flex-direction: column;
+    align-items:left ;
+}
+
+.description{
+    margin-bottom: 15px;
+}
+.count-box{
+    display: flex;
+}
+.count{
+    margin-right: 50px;
+}
+.number{
+    font-family: 'Nunito', sans-serif;
+    
+}
+.number h1{
+    margin:0px;
+}
+.number-label{
+
+}
+.number-label p{
+    margin:0px;
+}
+.categories{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.categories-heading{
+    font-family: 'Nunito', sans-serif;
+}
+.product-tiles{
+    display: flex;
+    flex-wrap: wrap;
+    flex:3;
+    justify-content: center;
+    align-items: center;
+    width:90%;
+
+}
+.tile{
+    display: flex;
+    flex-direction: column;
+    margin:15px;
+    width:23%;
+}
+.product-name{
+    text-align: center;
+}
