@@ -1,0 +1,90 @@
+.Home{
+    margin-left:10vw;
+   margin-right:10vw;
+   border: solid 1 black;
+}
+.banner{
+    display: flex;
+    width: 100%;     
+}
+.parts{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: left;
+    margin-bottom: 50px;
+}
+.parts:nth-child(2){
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    margin-right:200px;
+    margin-top: 100px;
+}
+.parts:nth-child(1){
+    margin-top: 100px;
+    margin-left:200px; 
+    margin-right: 100px; 
+  
+} 
+
+.banner-heading{
+    display: flex;
+    flex-direction: column;
+    align-items:left ;
+}
+.banner-heading h1{
+    margin: 0px;
+    font-family: 'Nunito', sans-serif;
+}
+.description{
+    margin-bottom: 15px;
+}
+.count-box{
+    display: flex;
+}
+.count{
+    margin-right: 50px;
+}
+.number{
+    font-family: 'Nunito', sans-serif;
+    
+}
+.number h1{
+    margin:0px;
+}
+.number-label{
+
+}
+.number-label p{
+    margin:0px;
+}
+.categories{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.categories-heading{
+    font-family: 'Nunito', sans-serif;
+}
+.product-tiles{
+    display: flex;
+    flex-wrap: wrap;
+    flex:3;
+    justify-content: center;
+    align-items: center;
+    width:90%;
+
+}
+.tile{
+    display: flex;
+    flex-direction: column;
+    margin:15px;
+    width:23%;
+}
+.product-name{
+    text-align: center;
+}

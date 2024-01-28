@@ -1,5 +1,5 @@
 import React from "react";
-import logodraft1 from "E:/Freelance/sazgt/sazgt-front-end/src/images/logodraft1.png";
+import logodraft1 from "../../images/logodraft1.png";
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
@@ -9,7 +9,9 @@ function Header() {
     <div className="container">
       <div className="header">
         <div className="box">
-          <img src={logodraft1} alt="Logo" width="270px" height="65px" />
+          <div className="logo">
+            <img src={logodraft1} alt="Logo" width="270px" />
+          </div>
         </div>
         <div className="box">
           <div className="search">
