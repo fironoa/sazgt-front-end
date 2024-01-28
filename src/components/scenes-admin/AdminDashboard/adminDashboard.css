@@ -1,0 +1,132 @@
+
+
+.container-admin-page{
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-top:7vh;
+}
+
+.sidebar {
+    margin: 0;
+    padding: 0;
+    width: 200px;
+    background-color: #fff;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+    border: solid 1px #E7E7E7;
+    display: flex;
+    flex-direction: column;
+
+  }
+  .sidebar p{
+      font-weight:600;
+      padding-left: 16px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+  }
+  .sidebar div {
+    font-weight:400;
+    display: flex;
+    align-items: center;
+    color: black;
+    padding: 16px;
+    margin:0;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    border-bottom:solid 1px #E7E7E7;
+
+    cursor: pointer;
+  }
+
+  .sidebar div a{
+    margin:0;
+    color: black;
+    text-decoration: none;
+  }
+  .icon-alignment {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .icon-properties{
+    font-size: 20px;
+  }
+
+  .sidebar div.active a{
+    color: white;
+  }
+
+  .sidebar div.active{
+    background-color: #285789;
+    color: white;
+  }
+  
+  .sidebar div:hover:not(.active) {
+    background-color: #eaeaec;
+  }
+  
+  div.content {
+    margin-left: 200px;
+    padding-left:3vw;
+    height: 1000px;
+  }
+  
+
+  .product-form-layout{
+    display: flex;
+    flex-direction: column;
+    row-gap:20px;
+  }
+
+  .product-form-layout input[type="text"], input[type="submit"]{
+    padding: 10px;
+    border: none;
+    border: 1px solid #cccccc;
+    border-radius: 3px;
+  }
+
+  input[type="submit"]{
+    border: none;
+    background-color: #285789;
+    color: white;
+    font-weight:500;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+
+  input[type="submit"]:hover{
+    background-color: #163d68;
+    cursor: pointer;
+  }
+
+  .file-controls{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .file-inputs-wrapper{
+    display: flex;
+    flex-direction: column;
+    row-gap: 2vh;
+  }
+
+  @media screen and (max-width: 700px) {
+    .sidebar {
+      width: 100%;
+      height: auto;
+      position: relative;
+    }
+    .sidebar a {float: left;}
+    div.content {margin-left: 0; padding-left:0;}
+    .file-controls{flex-direction: column;}
+  }
+  
+  @media screen and (max-width: 400px) {
+    .sidebar a {
+      text-align: center;
+      float: none;
+    }
+  }

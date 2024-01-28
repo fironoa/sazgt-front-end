@@ -9,9 +9,7 @@ function Header() {
     <div className="container">
       <div className="header">
         <div className="box">
-          <div className="logo">
-            <img src={logodraft1} alt="Logo" width="270px" />
-          </div>
+          <img src={logodraft1} alt="Logo" width="270px" />
         </div>
         <div className="box">
           <div className="search">
