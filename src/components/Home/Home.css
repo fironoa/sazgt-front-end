@@ -37,19 +37,6 @@
 .count{
     margin-right: 50px;
 }
-.number{
-    font-family: 'Nunito', sans-serif;
-    
-}
-.number h1{
-    margin:0px;
-}
-.number-label{
-
-}
-.number-label p{
-    margin:0px;
-}
 .categories{
     display: flex;
     flex-direction: column;
@@ -57,24 +44,66 @@
     align-items: center;
 
 }
-.categories-heading{
-    font-family: 'Nunito', sans-serif;
+
+.heading-boarder{
+    height: 6px;
+    background-color:#01AEEF;
+    width:84px;
+    border-radius: 2rem;
 }
-.product-tiles{
+.tiles-wrapper{
     display: flex;
     flex-wrap: wrap;
-    flex:3;
     justify-content: center;
     align-items: center;
-    width:90%;
-
+    width:100%;
+    gap:3vw;
 }
 .tile{
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     margin:15px;
     width:23%;
+    min-width: 200px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+.tile img{
+    object-fit: fit;
 }
 .product-name{
     text-align: center;
+    padding: 15px;
+}
+.view-more-button{
+    display: flex;
+    align-items: center;
+    margin:50px;
+}
+.view-more-button button{
+    border: none;
+    color: aliceblue;
+    background-color: #285789;
+    padding: 12px 25px;
+    border-radius: 2px;
+}
+.latest-arrivals-wrapper{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.arrivals-image-wrapper{
+
+}
+.read-more-button{
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+.read-more-button button{
+    border: none;
+    color: aliceblue;
+    background-color: #285789;
+    padding: 12px 25px;
+    border-radius: 2px;
 }

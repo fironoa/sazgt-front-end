@@ -24,10 +24,29 @@ h2{
   margin: 0px;
   font-weight:700;
   font-size: 2.5rem;
+  text-align: center;
+  line-height: 1;
 }
-
+h3{
+  margin:0px;
+  font-size:1.9rem;
+  font-weight: 700;
+}
+a{
+  font-size: 1rem;
+}
+ul{
+  padding: 0px;
+  list-style: none;
+}
+li{
+  line-height: 1.5;
+  margin: 0px;
+  font-size: 1.3rem;
+}
 p{
-  line-height: 1.5
+  line-height: 1.5;
+  margin: 0px;
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
