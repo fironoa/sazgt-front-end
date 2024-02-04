@@ -6,6 +6,8 @@ import campFurniture from "../../images/campFurniture.png";
 import houseHold from "../../images/houseHold.png";
 import coporateGifts from "../../images/coporateGifts.png";
 import cleaningProducts from "../../images/cleaningProducts.png";
+import Rectangle68 from "../../images/Rectangle68.png";
+import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import "./Home.css";
 
 export const Home = () => {
@@ -15,6 +17,18 @@ export const Home = () => {
 
   const styleText = {
     color: "#01AEEF",
+  };
+
+  const headingContentCenter = {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "1vh",
+    marginTop: "50px",
+    marginBottom: "50px",
+  };
+  const arrowIcon = {
+    display: "flex",
   };
 
   return (
@@ -66,39 +80,97 @@ export const Home = () => {
       <section style={divStyle}>
         <div className="home-container">
           <div className="categories">
-            <div className="categories-heading">
+            <div style={headingContentCenter}>
               <h2>Discover more categories</h2>
+              <div className="heading-boarder"></div>
             </div>
-            <div className="product-tiles">
+            <div className="tiles-wrapper">
               <div className="tile">
-                <img src={washingmachine} />
-                <div className="product-name">Washing Machine</div>
+                <img src={washingmachine} width="100%" />
+                <div className="product-name">
+                  <p>Washing Machine</p>
+                </div>
               </div>
               <div className="tile">
                 <img src={lockerCabinet} />
-                <div className="product-name">Locker Cabinet</div>
+                <div className="product-name">
+                  <p>Locker Cabinet</p>
+                </div>
               </div>
               <div className="tile">
                 <img src={campFurniture} />
-                <div className="product-name">Camp Furniture</div>
+                <div className="product-name">
+                  <p>Camp Furniture</p>
+                </div>
               </div>
               <div className="tile">
                 <img src={houseHold} />
-                <div className="product-name">House hold Appliances</div>
+                <div className="product-name">
+                  <p>House hold Appliances</p>
+                </div>
               </div>
               <div className="tile">
                 <img src={coporateGifts} />
-                <div className="product-name">Corpoarate Gifts</div>
+                <div className="product-name">
+                  <p>Corpoarate Gifts</p>
+                </div>
               </div>
               <div className="tile">
                 <img src={cleaningProducts} />
-                <div className="product-name">Cleaning Products</div>
+                <div className="product-name">
+                  <p>Cleaning Products</p>
+                </div>
               </div>
             </div>
-            <div className="view-more-button"></div>
+            <div className="view-more-button">
+              <button>
+                <a>View more</a>
+              </button>
+            </div>
           </div>
         </div>
       </section>
+      <div className="home-container">
+        <div className="latest-arrivals">
+          <div style={headingContentCenter}>
+            <h2>Latest Arrivals</h2>
+            <div className="heading-boarder"></div>
+          </div>
+          <div className="latest-arrivals-wrapper">
+            <div className="parts">
+              <h3>
+                Introducing Hassle-Free Laundry: Our New Coin-Operated Washing
+                Machines
+              </h3>
+              <ul>
+                <li style={arrowIcon}>
+                  <div>
+                    <MdKeyboardDoubleArrowRight />
+                  </div>
+                  Experience the convenience of our latest coin-operated washing
+                  machines,
+                </li>
+                <li style={arrowIcon}>
+                  <div>
+                    <MdKeyboardDoubleArrowRight />
+                  </div>
+                  designed to make your laundry tasks easier and more efficient.
+                </li>
+              </ul>
+              <div className="read-more-button">
+                <button>
+                  <a>Read more</a>
+                </button>
+              </div>
+            </div>
+            <div className="parts">
+              <div className="arrivals-image-wrapper">
+                <img src={Rectangle68} width="100%" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
