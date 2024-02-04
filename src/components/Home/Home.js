@@ -8,6 +8,7 @@ import coporateGifts from "../../images/coporateGifts.png";
 import cleaningProducts from "../../images/cleaningProducts.png";
 import Rectangle68 from "../../images/Rectangle68.png";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
+import Footer from "../Footer/Footer";
 import "./Home.css";
 
 export const Home = () => {
@@ -23,7 +24,7 @@ export const Home = () => {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    gap: "1vh",
+    gap: "2vh",
     marginTop: "50px",
     marginBottom: "50px",
   };
@@ -171,6 +172,8 @@ export const Home = () => {
           </div>
         </div>
       </div>
+
+      <Footer />
     </>
   );
 };

@@ -1,0 +1,12 @@
+.google-map{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35vw;
+    margin-bottom: 50px;
+}
+@media (max-width:900px){
+    .google-map{
+        width:100%;
+    }
+}

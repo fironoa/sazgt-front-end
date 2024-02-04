@@ -46,7 +46,7 @@
 }
 
 .heading-boarder{
-    height: 6px;
+    height: 5px;
     background-color:#01AEEF;
     width:84px;
     border-radius: 2rem;
@@ -106,4 +106,24 @@
     background-color: #285789;
     padding: 12px 25px;
     border-radius: 2px;
+}
+@media(max-width:900px){
+    .banner{
+       flex-direction: column;
+       margin-top: 30px;
+    }
+    .parts{
+        flex-grow: 1;
+        align-items: stretch;
+        width:100%;
+    }
+    .banner h1{
+        font-size:2.5rem;
+    
+    }
+    .latest-arrivals-wrapper{
+        flex-direction: column;
+        margin-top: 30px;
+    }
+
 }
