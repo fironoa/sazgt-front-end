@@ -64,13 +64,13 @@ function ProductDetails() {
     console.log(data);
 
     // Example: Post formData to a server
-    fetch('http://localhost:8000/api/products', {
+    fetch('http://localhost:8000/api/sazgt/products', {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
         'Accept': 'application/json',
         'Content-Type' : 'application/json',
-        'Authorization': 'Bearer 1|ARI0Y5U64cy4iCSMJpRSoouX1Bbu8DbNXJUrCl0n'
+        'Authorization': 'Bearer 1|oU86VPdXpGkXu3Mj9T5EkjOwikl1InNjPEa4ltkbf3c8da66'
         // Other headers can be added here if needed
       }
       // Don't set Content-Type header when using FormData
@@ -109,9 +109,7 @@ function ProductDetails() {
 
         <input type="text" value={specifications} onChange={handleChange} placeholder='specifications' id='specifications' name='specifications'></input>
 
-        <input type="text" value={images} onChange={handleChange} placeholder='images' id='images' name='images'></input>
-
-
+       
         <input type="submit" value="Add Product"></input>
       </form>
       <div className='file-controls'>
