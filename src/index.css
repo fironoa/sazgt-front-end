@@ -7,7 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-p,a,ul,li,input,label{
+p,a,ul,li,input,label,textarea{
   font-family: 'Barlow', sans-serif;
 }
 
@@ -32,8 +32,12 @@ h3{
   font-size:1.9rem;
   font-weight: 700;
 }
+h4{
+  margin:0px;
+}
 a{
   font-size: 1rem;
+  font-weight: 400;
 }
 ul{
   padding: 0px;
