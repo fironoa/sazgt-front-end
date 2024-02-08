@@ -72,24 +72,25 @@
     
 }
 .navbar{
-    margin-top:8px;
-    margin-bottom:8px;
+    margin-top:13px;
+    margin-bottom:13px;
     display: flex;
     justify-content:center;
+    align-items: center;
 }
 .nav-list{
     list-style:none;
     margin:0;
     padding:0;
-    display:flex;
-    
+    display:flex; 
 }
 .nav-list li{
     margin-right:40px;
+    display:flex;
+    align-items: center;
   }
 .nav-list a{
-    text-decoration: none;
-    color:black;
-    font-size:13px;
-    font-family: 'Inter', sans-serif;
+    color:#525252;
+    font-size:15px;
+    font-weight: 500;
 }

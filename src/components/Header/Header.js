@@ -33,20 +33,26 @@ function Header() {
         </div>
       </div>
       <div className="line"></div>
-      <div className="navbar">
+      <div className="navbar-wrapper">
         <nav className="navbar">
           <ul className="nav-list">
-            <li>
-              <a href="#">Locker Cabinets</a>
-            </li>
             <li>
               <a href="#">Camp Furniture</a>
             </li>
             <li>
-              <a href="#">Electronics</a>
+              <a href="#">Office Furniture</a>
             </li>
             <li>
-              <a href="#">House Hold Appliances Us</a>
+              <a href="#">School Furniture</a>
+            </li>
+            <li>
+              <a href="#">Restaurant & pantry furniture</a>
+            </li>
+            <li>
+              <a href="#">Electronic appliances</a>
+            </li>
+            <li>
+              <a href="#">Safety products</a>
             </li>
           </ul>
         </nav>

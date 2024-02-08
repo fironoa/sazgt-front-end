@@ -1,4 +1,5 @@
 import React from "react";
+import { useState, useEffect, useRef } from "react";
 import Rectangle77 from "../../images/Rectangle77.png";
 import washingmachine from "../../images/washingmachine.png";
 import lockerCabinet from "../../images/lockerCabinet.png";
@@ -8,6 +9,7 @@ import coporateGifts from "../../images/coporateGifts.png";
 import cleaningProducts from "../../images/cleaningProducts.png";
 import Rectangle68 from "../../images/Rectangle68.png";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
+import { motion, useInView, useAnimation } from "framer-motion";
 import Footer from "../Footer/Footer";
 import "./Home.css";
 
@@ -33,9 +35,9 @@ export const Home = () => {
   };
 
   return (
-    <>
+    <div>
       <div className="home-container">
-        <div className="banner">
+        <div className={`banner`}>
           <div className="parts">
             <div>
               <h1>Complete</h1>
@@ -172,8 +174,7 @@ export const Home = () => {
           </div>
         </div>
       </div>
-
       <Footer />
-    </>
+    </div>
   );
 };

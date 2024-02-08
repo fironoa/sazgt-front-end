@@ -107,6 +107,16 @@
     padding: 12px 25px;
     border-radius: 2px;
 }
+/* Scroll animation*/
+.home-box {
+    opacity: 0;
+    transition: opacity 2s ease-out;
+  }
+  
+  .home-box.visible {
+    opacity: 1;
+  }
+
 @media(max-width:900px){
     .banner{
        flex-direction: column;

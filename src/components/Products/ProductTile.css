@@ -1,0 +1,6 @@
+.product-tile{
+    display: flex;
+    flex-direction: column;
+    width:20%;
+    min-width: 200px;
+}
