@@ -7,7 +7,7 @@ import config from '../../../configuration/ApiConfig';
 import { MdAddBox } from "react-icons/md";
 import { FaMinus } from "react-icons/fa";
 
-function ProductDetails() {
+function ProductDetails({providedPId}) {
 
   const baseURL = config.baseURL;
 
@@ -23,12 +23,16 @@ function ProductDetails() {
   const [productId, setproductId] = useState(-1);
   const [isLoading, setIsLoading] = useState(false);
 
-  const [categories, setCategories] = useState(["chair", "table"]); // For storing categories
+  const [categories, setCategories] = useState([]); // For storing categories
   const [newCategory, setNewCategory] = useState(''); // For storing a new category name
 
   const [snackBarOpen, setSnackBarOpen] = useState(false);
   const [message, setMessage] = useState('');
   const [messagetype, setMessagetype] = useState('');
+
+  const [recentProductImages, setRecentProductImages] = useState([]);
+
+  const [recentlyAddedProduct, setRecentlyAddedProduct] = useState(null);
 
 
 
@@ -57,6 +61,68 @@ function ProductDetails() {
     }, 3000); // Close the snack bar after 3 seconds
   };
 
+  const handleRemoveImage = (indexToRemove) => {
+
+    const token = localStorage.getItem('accessToken');
+
+
+    setIsLoading(true);
+    // Remove the selected file and its preview by index
+    console.log(recentProductImages[indexToRemove]);
+    const deleteImage = async () => {
+      // Example fetch request; adjust according to your actual API
+      const response = await fetch(recentProductImages[indexToRemove], {
+        method: 'DELETE',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + token
+        }
+      });
+
+      const data = await response.json();
+
+      console.log(data);
+      getImages();
+      setIsLoading(false);
+
+    };
+
+    deleteImage();
+  };
+
+
+  const getImages = () => {
+    // Replace 'your-api-endpoint' with your actual product API endpoint
+    setRecentProductImages([]);
+    const imageAPI = baseURL + '/sazgt/products/' + productId + '/images';
+    if (productId > -1) {
+      fetch(imageAPI)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+
+          // Define your base URL
+          const imageShowAPIBase = baseURL + '/sazgt/images/';
+
+          // Destructure foldername and files from the response object
+          const { foldername, files } = data;
+
+          // Create new paths by appending base URL, folder name, and file name
+          const newImagePaths = files.map(file => `${imageShowAPIBase}${foldername}/${file}`);
+
+          // Update the imagePaths state with these new paths
+          setRecentProductImages(currentPaths => [...currentPaths, ...newImagePaths]);
+
+
+        }) // Adjust based on your API response structur
+        .catch(error => console.error('Error fetching data:', error));
+    } else {
+      console.log("Skipping image get api")
+    }
+  }
+
+
   useEffect(() => {
     // Fetch categories from your backend or define them statically
     const fetchCategories = async () => {
@@ -64,6 +130,7 @@ function ProductDetails() {
       const response = await fetch(baseURL + '/sazgt/products/distinct/categories');
 
       const data = await response.json();
+
       console.log(data);
       setCategories(data); // Assuming 'data' is an array of category names
     };
@@ -87,6 +154,19 @@ function ProductDetails() {
     setSpecifications(specifications.filter((_, specIndex) => index !== specIndex));
   };
 
+  const handleResetForm = (event) => {
+    event.preventDefault();
+    setName('');
+    setCategory('');
+    setTags('');
+    setModel('');
+    setDescription('');
+    setSpecifications(['']);
+    setproductId(-1);
+    setNewCategory('');
+    setRecentlyAddedProduct(null);
+    setRecentProductImages([]);
+  }
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -135,28 +215,16 @@ function ProductDetails() {
       tags: tags,
       model: model,
       specifications: specificationsStr,
-      description: model,
+      description: description,
       ...(productId !== -1 && { id: productId }),
-      // Uncomment and include the file data if needed
-      // primaryPhoto: primaryPhoto,
-      // secondaryPhoto: secondaryPhoto,
-      // extraPhoto1: extraPhoto1,
-      // extraPhoto2: extraPhoto2,
-      // extraPhoto3: extraPhoto3
     };
-    /*formData.append('primaryPhoto', primaryPhoto);
-    formData.append('secondaryPhoto', secondaryPhoto);
-    formData.append('extraPhoto1', extraPhoto1);
-    formData.append('extraPhoto2', extraPhoto2);
-    formData.append('extraPhoto3', extraPhoto3);*/
-    console.log(data);
-    console.log(api);
+
     const token = localStorage.getItem('accessToken');
 
     setIsLoading(true);
     // Example: Post formData to a server
 
-    fetch(api , {
+    fetch(api, {
       method: method,
       body: JSON.stringify(data),
       headers: {
@@ -180,6 +248,7 @@ function ProductDetails() {
       })
       .then(data => {
         console.log('Success:', data);
+        setRecentlyAddedProduct(data);
         setproductId(data.id);
         showSnackBar("Product added/updated Successfully", "success");
         // Handle success here (e.g., show success message, redirect)
@@ -200,72 +269,113 @@ function ProductDetails() {
   const isProductAdded = productId > -1;
 
   return (
-    <div class="content">
-      {isLoading && (<LinearLoading />)}
-      <h3 style={{ textAlign: 'left' }}>Product Details</h3>
-      <br></br>
-      <form className='product-form-layout' onSubmit={handleSubmit}>
-        <input type="text" placeholder='name' id='name' name='name' value={name} onChange={handleChange}></input>
+    <>
 
-        <select name="category" value={category} onChange={handleChange} id='category'>
-          {categories.map((category, index) => (
-            <option key={index} value={category}>{category}</option>
-          ))}
-          <option value="other">Other...</option>
-        </select>
-        {category === 'other' && (
-          <input
-            type="text"
-            placeholder="Enter new category"
-            value={newCategory}
-            onChange={(e) => setNewCategory(e.target.value)}
-          />
-        )}
-        <input type="text" value={tags} onChange={handleChange} placeholder='tags' id='tags' name='tags'></input>
+      <div className="content">
+        {isLoading && (<LinearLoading />)}
+        <h4 style={{ textAlign: 'left', padding: '15px' }}>Product Details</h4>
+        <form className='product-form-layout' onSubmit={handleSubmit} id="product-form">
+          <input type="text" placeholder='name' id='name' name='name' value={name} onChange={handleChange} required></input>
 
-        <input type="text" value={model} onChange={handleChange} placeholder='model' id='model' name='model'></input>
+          <select name="category" value={category} onChange={handleChange} id='category' required>
+            <option value="">Select a category</option>
+            {categories.map((category, index) => (
+              <option key={index} value={category}>{category}</option>
+            ))}
+            <option value="other">Other...</option>
+          </select>
+          {category === 'other' && (
+            <input
+              type="text"
+              placeholder="Enter new category"
+              value={newCategory}
+              onChange={(e) => setNewCategory(e.target.value)}
+              required
+            />
+          )}
+          <input type="text" value={tags} onChange={handleChange} placeholder='tags' id='tags' name='tags'></input>
 
-        <input type="text" placeholder='description' id='description' name='description' value={description} onChange={handleChange}></input>
+          <input type="text" value={model} onChange={handleChange} placeholder='model' id='model' name='model' required></input>
 
-        <div className='specifications'>
-          <h4>Specifications</h4>
-          {specifications.map((specification, index) => (
-            <div key={index} style={inputAndRemoveControl}>
-              <input
-                style={{
-                  width: '40vw'
-                }}
-                type="text"
-                value={specification}
-                onChange={(e) => handleSpecificationChange(e, index)}
-                placeholder="Specification"
-                name={`specifications-${index}`}
-              />
-              {specifications.length > 1 && (
-                <FaMinus
-                  style={{
-                    cursor: 'pointer'
-                  }}
-                  onClick={() => removeSpecificationInput(index)}
-                />
-              )}
+          <input type="text" placeholder='description' id='description' name='description' value={description} onChange={handleChange}></input>
+
+          <div className='specifications'>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <h4>Specifications</h4>
+              <div style={addButtonStyle} onClick={addSpecificationInput}><MdAddBox className='icon-properties' /> Add </div>
             </div>
-          ))}
-          <div style={addButtonStyle} onClick={addSpecificationInput}><MdAddBox className='icon-properties' /> Add </div>
+            {specifications.map((specification, index) => (
+              <div key={index} style={inputAndRemoveControl}>
+                <input
+                  style={{
+                    width: '40vw'
+                  }}
+                  type="text"
+                  value={specification}
+                  onChange={(e) => handleSpecificationChange(e, index)}
+                  placeholder="Specification"
+                  name={`specifications-${index}`}
+                  required
+                />
+                {specifications.length > 1 && (
+                  <FaMinus
+                    style={{
+                      cursor: 'pointer'
+                    }}
+                    onClick={() => removeSpecificationInput(index)}
+                  />
+                )}
+              </div>
+            ))}
+
+          </div>
+
+          {!isProductAdded && <input type="submit" value="Add Product"></input>}
+
+          {isProductAdded && <input type="submit" value="Update Product"></input>}
+
+          <button type="button" className='form-button' onClick={handleResetForm}>Reset Form</button>
+
+        </form>
+        <div className='file-controls'>
+          <div className='file-inputs-wrapper'>
+            {isProductAdded && (<ImageUpload productId={productId} onUpload={getImages}></ImageUpload>)}
+
+          </div>
         </div>
-
-        {!isProductAdded &&  <input type="submit" value="Add Product"></input>}
-
-        {isProductAdded &&  <input type="submit" value="Edit this Product"></input>}
-      </form>
-      <div className='file-controls'>
-        <div className='file-inputs-wrapper'>
-          {isProductAdded && (<ImageUpload></ImageUpload>)}
-
-        </div>
+        <SnackBar isOpen={snackBarOpen} message={message} type={messagetype} />
       </div>
-      <SnackBar isOpen={snackBarOpen} message={message} type={messagetype} />
-    </div>
+      <div className="content">
+        <h4 style={{ textAlign: 'left', padding: '15px' }}>Preview</h4>
+        {recentlyAddedProduct == null && <div style={{ textAlign: 'left', padding: '15px' }}>No Product to Display</div>}
+        {
+          recentlyAddedProduct !== null &&
+          <div className='product-form-layout'>
+            <div><span><b>Name :</b> </span><span>{recentlyAddedProduct.name}</span></div>
+            <div><span><b>Category</b> : </span><span>{recentlyAddedProduct.category}</span></div>
+            <div><span><b>Tags : </b></span><span>{recentlyAddedProduct.tags}</span></div>
+            <div><span><b>Model : </b></span><span>{recentlyAddedProduct.model}</span></div>
+            <div><span><b>Description : </b></span><span>{recentlyAddedProduct.description}</span></div>
+            <div><span><b>Specification : </b></span><span>{recentlyAddedProduct.specifications}</span></div>
+            <br></br>
+            <div><b>Images of this product</b></div>
+            <div style={{border: "1px solid #ccc", padding:'10px'}}>
+              {recentProductImages.length == 0 && <div>No Images to display for this product</div>}
+              {recentProductImages.map((image, index) => (
+                <div key={index} style={{ position: 'relative', display: 'inline-block', marginRight: '10px' }}>
+                  <img src={image} alt={`Selected ${index + 1}`} style={{ width: 100, height: 100 }} />
+                  <button
+                    onClick={() => handleRemoveImage(index)}
+                    style={{ position: 'absolute', top: 0, right: 0, cursor: 'pointer', background: 'red', color: 'white', border: 'none', padding: '0 4px', margin: '6px 6px' }}>
+                    &times;
+                  </button>
+                </div>
+              ))}
+            </div>
+          </div>
+        }
+      </div>
+    </>
   )
 }
 

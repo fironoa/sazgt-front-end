@@ -1,17 +1,18 @@
 
 
 .container-admin-page{
-    margin-left: 10vw;
-    margin-right: 10vw;
-    margin-top:7vh;
+    padding-top: 10px;
+    padding-bottom: 10px;
     display: flex;
+    flex-wrap: wrap;
+    background-color: #eaeaec;
 
 }
 
 .sidebar {
     margin: 0;
     padding: 0;
-    width: 300px;
+    min-width: 200px;
     background-color: #fff;
     height: 100%;
     overflow: auto;
@@ -23,8 +24,8 @@
   .sidebar p{
       font-weight:600;
       padding-left: 16px;
-      padding-top: 10px;
-      padding-bottom: 10px;
+      padding-top: 20px;
+      padding-bottom: 20px;
       border-bottom:solid 1px #E7E7E7;
   }
   .sidebar div, .sidebar button {
@@ -65,26 +66,35 @@
   }
   
   .content {
-    padding-left:5vw;
-    width: 100%;
-    height: 1000px;
+    background-color: #fff;
+    margin-left: 10px;
+    width: 35vw;
   }
   
 
   .product-form-layout{
+    padding: 15px;
     display: flex;
     flex-direction: column;
     row-gap:20px;
   }
 
-  .product-form-layout input[type="text"], input[type="submit"], select{
+  .product-form-layout input[type="text"], input[type="submit"], select, .form-button{
     padding: 10px;
     border: none;
     border: 1px solid #cccccc;
     border-radius: 3px;
   }
 
-
+  .form-button{
+    border: 1px solid #285789;
+    background-color: white;
+    color: #285789;
+    font-weight:500;
+    font-size: 16px;
+    transition: background-color 0.3s;
+  }
+  
   input[type="submit"]{
     border: none;
     background-color: #285789;
@@ -95,12 +105,21 @@
   }
 
   input[type="submit"]:hover{
-    background-color: #163d68;
+    background-color: black;
     cursor: pointer;
   }
 
+  .form-button:hover{
+
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    border: none;
+    padding: 11px;
+  }
   .file-controls{
-    margin-top: 50px;
+    margin-top: 30px;
+    padding: 15px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -110,6 +129,7 @@
     display: flex;
     flex-direction: column;
     row-gap: 2vh;
+    width: 100%;
   }
 
 
@@ -136,9 +156,9 @@
       position: relative;
     }
     .sidebar a {float: left;}
-    .content {margin-left: 0; padding-left:0; margin-top: 50px;}
+    .content {margin-left: 0; margin-top: 50px; width: 100%;}
     .file-controls{flex-direction: column;}
-    .container-admin-page{flex-direction: column;}
+    .container-admin-page{flex-direction: column; padding-left: 10px; padding-right:10px;}
   }
   
   @media screen and (max-width: 400px) {
