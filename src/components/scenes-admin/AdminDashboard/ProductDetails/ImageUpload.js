@@ -1,8 +1,14 @@
 import React, { useState } from 'react'
 import { MdAddBox } from "react-icons/md";
+import config from '../../../configuration/ApiConfig';
+import LinearLoading from '../../../LinearLoading/LinearLoading';
 
-function ImageUpload() {
 
+function ImageUpload({ productId, onUpload }) {
+
+    const [isLoading, setIsLoading] = useState(false);
+
+    const baseURL = config.baseURL;
     const noOfImages = 5;
     const selectButtonStyle = { 
         display: 'flex', 
@@ -52,24 +58,58 @@ function ImageUpload() {
     };
 
 
-    const handleUpload = () => {
-        const formData = new FormData();
-        selectedFiles.forEach((file, index) => {
-            formData.append(`image${index}`, file); // You might want to adjust the key/name based on your backend requirements
-        });
+    const handleUpload = async () => {
+        setIsLoading(true);
+        // Ensure there are files selected
+        if (selectedFiles.length > 0) {
+            const formData = new FormData();
+            const token = localStorage.getItem('accessToken');
+            const api = baseURL + '/sazgt/images';
+            // Append each file to the 'images' field
+            selectedFiles.forEach(file => {
+                formData.append('images[]', file);
+            });
+    
+            console.log(productId);
+            formData.append('productId', productId);
+    
+            try {
+                const response = await fetch(api, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                         'Authorization': 'Bearer ' + token,
+                    },
+                });
+    
+                if (!response.ok) {
+                    throw new Error('Server error: ' + response.statusText);
+                }
+    
+                // Handle success response
+                const data = await response.json();
+                console.log(data);
+                alert('Upload successful!');
+                onUpload();
+                setSelectedFiles([]);
+                setImagePreviews([]);
 
-        // Here you would upload formData to your server
-        console.log('Ready to upload:', formData);
-
-        // Reset selections after upload if necessary
-        // setSelectedFiles([]);
-        // setImagePreviews([]);
+    
+            } catch (error) {
+                console.error('Upload failed:', error);
+                alert('Upload failed!');
+            }
+        } else {
+            alert('Please select files to upload.');
+        }
+        setIsLoading(false);
     };
 
     const canUploadMore = imagePreviews.length < noOfImages;
 
     return (
         <div className='image-upload-controls-wrapper'>
+            {isLoading && (<LinearLoading />)}
             {canUploadMore && (
                 <label style={selectButtonStyle}>
                     <input
@@ -94,11 +134,16 @@ function ImageUpload() {
                 </div>
                 ))}
             </div>
+
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             {selectedFiles.length > 0 && (
                 <button onClick={handleUpload} style={uploadButtonStyle}>
                     Upload Images
                 </button>
             )}
+            
+            </div>
+            
         </div>
     );
 }
