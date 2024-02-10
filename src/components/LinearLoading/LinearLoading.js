@@ -3,7 +3,7 @@ import React from 'react'
 function LinearLoading() {
     return (
         <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 1500 }}>
-          <div style={{ width: '100%', height: '4px', backgroundColor: '#ddd' }}>
+          <div style={{ width: '100%', height: '6px', backgroundColor: '#ddd' }}>
             <div style={{
               height: '100%',
               width: '60%',

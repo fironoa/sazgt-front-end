@@ -1,17 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import Modal from 'react-modal';
 import ProductRow from './ProductRow';
 import './ProductList.css';
+import { useNavigate } from 'react-router-dom';
+import Modal from '../../../Modal/Modal';
+import EditProduct from './EditProduct';
 
 function ProductList({ baseURL }) {
 
+    const navigate = useNavigate();
     const [products, setProducts] = useState([]);
-    const [isModalOpen, setIsModalOpen] = useState(false);
+
     const [currentProduct, setCurrentProduct] = useState(null);
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
+
+
     const handleEditClick = (product) => {
+        // navigate("/admin-dashboard?op=edit-product&pId=" + productId);
         setCurrentProduct(product);
-        setIsModalOpen(true);
+        openModal();
     };
     const productsAPI = baseURL + '/sazgt/products?per_page=40';
     console.log(productsAPI);
@@ -45,18 +55,21 @@ function ProductList({ baseURL }) {
                             <th>Specifications</th>
                             <th>Tags</th>
                             <th>Category</th>
-                            <th colspan="2">Actions</th>
+                            <th colSpan="2">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
                         {products.map((product) => (
-                            <ProductRow product={product} baseURL={baseURL} />
+                            <ProductRow key={product.id} product={product} baseURL={baseURL} onEdit={handleEditClick} />
                         ))}
                     </tbody>
                 </table>
             </div>
 
             {/* Modal for editing will go here */}
+            <Modal isOpen={isModalOpen} onClose={closeModal}>
+                <EditProduct product={currentProduct}/>
+            </Modal>
         </div>
     );
 }
