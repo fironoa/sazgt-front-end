@@ -10,19 +10,19 @@ function Sidebar() {
   const navigate = useNavigate();
 
   const queryParams = new URLSearchParams(location.search);
-  const [operation, setOperation] = useState("add-product");
-
-  console.log(queryParams.get("op"));
+  const op = queryParams.get('op');
+  console.log(op);
+  const [operation, setOperation] = useState(op === null ? 'add-product' : op);
 
   const handleLogout = (event) => {
-    localStorage.setItem("accessToken", null);
-    window.location.href = "auth/admin-login";
-  };
+    localStorage.setItem('accessToken', null);
+    window.location.href = "auth/admin-login"
+  }
+
 
   const handleNavigate = (event) => {
     const { name } = event.currentTarget; // Use currentTarget to ensure you get the element the event handler is attached to
-    console.log(name);
-
+    
     switch (name) {
       case "add-product":
         navigate("/admin-dashboard?op=add-product");
@@ -32,40 +32,18 @@ function Sidebar() {
         navigate("/admin-dashboard?op=list-product");
         setOperation(name);
         break;
+      
     }
   };
 
   return (
     <div class="sidebar">
-      <p>Admin Dashboard</p>
-      <button
-        onClick={handleNavigate}
-        id="add-product"
-        name="add-product"
-        className={`icon-alignment ${
-          operation === "add-product" ? "active" : ""
-        }`}
-      >
-        <MdAddBox className="icon-properties" />
-        Add Product
-      </button>
-      <button
-        onClick={handleNavigate}
-        id="list-product"
-        name="list-product"
-        className={`icon-alignment ${
-          operation === "list-product" ? "active" : ""
-        }`}
-      >
-        <FaListUl className="icon-properties" />
-        List Product
-      </button>
-      <div className="icon-alignment" onClick={handleLogout}>
-        <TbLogout2 className="icon-properties" />
-        Logout
-      </div>
-    </div>
-  );
+          <p>Admin Dashboard</p>
+          <button onClick={handleNavigate} id="add-product" name="add-product" className={`icon-alignment ${operation === 'add-product' ? 'active' : ''}`}><MdAddBox className='icon-properties'/>Add Product</button>
+          <button onClick={handleNavigate} id="list-product" name="list-product" className={`icon-alignment ${operation === 'list-product' ? 'active' : ''}`}><FaListUl className='icon-properties'/>List Product</button>
+          <button className="icon-alignment" onClick={handleLogout}><TbLogout2 className='icon-properties'/>Logout</button>
+        </div>
+  )
 }
 
 export default Sidebar;

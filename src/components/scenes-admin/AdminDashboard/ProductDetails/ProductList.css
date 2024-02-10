@@ -25,9 +25,10 @@ table {
   }
 
   .content-product-list{
-    padding-left: 4vw;
-    width: 60vw;
-    height: 1000px;
+    margin-left: 10px;
+    padding: 16px;
+    width: 70vw;
+    background-color: #fff;
   }
   .table-wrapper {
     overflow-x: scroll;

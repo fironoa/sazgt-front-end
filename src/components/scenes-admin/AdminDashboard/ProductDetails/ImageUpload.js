@@ -38,12 +38,26 @@ function ImageUpload({ productId, onUpload }) {
     const [imagePreviews, setImagePreviews] = useState([]); // Stores URLs for preview
     //const [productId, setProductId] = useState(-1);
 
-    const handleImageChange = (e) => {
+    /*const handleImageChange = (e) => {
         // Collect the selected files
         const files = Array.from(e.target.files);
         const updatedFiles = selectedFiles.concat(files).slice(0, noOfImages); // Ensure not more than noOfImages
         setSelectedFiles(updatedFiles);
 
+        // Create image URLs for preview
+        const newImagePreviews = updatedFiles.map(file => URL.createObjectURL(file));
+        setImagePreviews(newImagePreviews);
+    };*/
+
+    const handleImageChange = (e) => {
+        // Collect the selected files
+        const files = Array.from(e.target.files);
+        const updatedFiles = selectedFiles.concat(files).slice(0, noOfImages); // Ensure not more than noOfImages
+        setSelectedFiles(updatedFiles);
+    
+        // Clean up old image previews to avoid memory leaks
+        imagePreviews.forEach(previewUrl => URL.revokeObjectURL(previewUrl));
+    
         // Create image URLs for preview
         const newImagePreviews = updatedFiles.map(file => URL.createObjectURL(file));
         setImagePreviews(newImagePreviews);
@@ -90,7 +104,7 @@ function ImageUpload({ productId, onUpload }) {
                 const data = await response.json();
                 console.log(data);
                 alert('Upload successful!');
-                onUpload();
+                onUpload(productId);
                 setSelectedFiles([]);
                 setImagePreviews([]);
 
@@ -117,6 +131,7 @@ function ImageUpload({ productId, onUpload }) {
                         style={{ display: 'none' }} // Hide the input but keep it in the document
                         onChange={handleImageChange}
                         accept="image/*" // Accept only image files
+                        multiple
                     />
                     <MdAddBox className='icon-properties' />Upload Image
                 </label>

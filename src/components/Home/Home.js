@@ -9,7 +9,6 @@ import coporateGifts from "../../images/coporateGifts.png";
 import cleaningProducts from "../../images/cleaningProducts.png";
 import Rectangle68 from "../../images/Rectangle68.png";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
-import { motion, useInView, useAnimation } from "framer-motion";
 import Footer from "../Footer/Footer";
 import "./Home.css";
 

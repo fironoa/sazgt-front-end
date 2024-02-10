@@ -7,6 +7,7 @@ import Sidebar from './Sidebar/Sidebar';
 import ProductList from './ProductDetails/ProductList';
 import LinearLoading from '../../LinearLoading/LinearLoading';
 import SnackBar from '../../Snackbar/Snackbar';
+import EditProduct from './ProductDetails/EditProduct';
 
 function AdminDashboard() {
 

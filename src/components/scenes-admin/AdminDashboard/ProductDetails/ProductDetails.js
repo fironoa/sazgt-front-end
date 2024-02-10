@@ -7,7 +7,7 @@ import config from '../../../configuration/ApiConfig';
 import { MdAddBox } from "react-icons/md";
 import { FaMinus } from "react-icons/fa";
 
-function ProductDetails({providedPId}) {
+function ProductDetails({ providedPId }) {
 
   const baseURL = config.baseURL;
 
@@ -34,16 +34,19 @@ function ProductDetails({providedPId}) {
 
   const [recentlyAddedProduct, setRecentlyAddedProduct] = useState(null);
 
+  const [hasImagesLoaded, setHasImagesLoaded] = useState(false);
+
 
 
   const addButtonStyle = {
+    fontSize: '12px',
     display: 'flex',
     alignItems: 'center',
     gap: '10px',
     backgroundColor: '#ddd',
-    padding: "5px",
-    border: '3px solid black',
-    width: '100px',
+    padding: "1px",
+    border: '1px solid black',
+    width: '70px',
     cursor: 'pointer'
   }
 
@@ -95,6 +98,7 @@ function ProductDetails({providedPId}) {
   const getImages = () => {
     // Replace 'your-api-endpoint' with your actual product API endpoint
     setRecentProductImages([]);
+    setHasImagesLoaded(false)
     const imageAPI = baseURL + '/sazgt/products/' + productId + '/images';
     if (productId > -1) {
       fetch(imageAPI)
@@ -116,7 +120,8 @@ function ProductDetails({providedPId}) {
 
 
         }) // Adjust based on your API response structur
-        .catch(error => console.error('Error fetching data:', error));
+        .catch(error => console.error('Error fetching data:', error))
+        .finally(() => setHasImagesLoaded(true));
     } else {
       console.log("Skipping image get api")
     }
@@ -301,7 +306,7 @@ function ProductDetails({providedPId}) {
 
           <div className='specifications'>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <h4>Specifications</h4>
+              <h5>Specifications</h5>
               <div style={addButtonStyle} onClick={addSpecificationInput}><MdAddBox className='icon-properties' /> Add </div>
             </div>
             {specifications.map((specification, index) => (
@@ -347,7 +352,7 @@ function ProductDetails({providedPId}) {
       </div>
       <div className="content">
         <h4 style={{ textAlign: 'left', padding: '15px' }}>Preview</h4>
-        {recentlyAddedProduct == null && <div style={{ textAlign: 'left', padding: '15px' }}>No Product to Display</div>}
+        {recentlyAddedProduct == null && <div style={{ textAlign: 'left', padding: '15px' }}>Add a Product to Display</div>}
         {
           recentlyAddedProduct !== null &&
           <div className='product-form-layout'>
@@ -359,7 +364,8 @@ function ProductDetails({providedPId}) {
             <div><span><b>Specification : </b></span><span>{recentlyAddedProduct.specifications}</span></div>
             <br></br>
             <div><b>Images of this product</b></div>
-            <div style={{border: "1px solid #ccc", padding:'10px'}}>
+            {!hasImagesLoaded && <div>Loading images ...</div>}
+            {hasImagesLoaded && <div style={{ border: "1px solid #ccc", padding: '10px' }}>
               {recentProductImages.length == 0 && <div>No Images to display for this product</div>}
               {recentProductImages.map((image, index) => (
                 <div key={index} style={{ position: 'relative', display: 'inline-block', marginRight: '10px' }}>
@@ -371,7 +377,7 @@ function ProductDetails({providedPId}) {
                   </button>
                 </div>
               ))}
-            </div>
+            </div>}
           </div>
         }
       </div>
