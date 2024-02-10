@@ -3,4 +3,27 @@
     flex-direction: column;
     width:20%;
     min-width: 200px;
+    border: 1px solid #DEDEDE;
+}
+.product-details{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.product-label{
+    margin:12px;
+}
+.product-label h4{
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 5px;
+}
+.product-label p{
+    font-size: 14px;
+    font-weight: 300;
+}
+.heart-icon{
+    display: flex;
+    align-items:flex-start;
+    margin-right: 12px;
 }

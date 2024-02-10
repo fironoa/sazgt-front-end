@@ -78,9 +78,12 @@
     padding-left: 16px;
     padding-top: 10px;
     padding-bottom: 10px;
+    border-bottom: solid 1px #E7E7E7;
+    line-height: 2;
 }
-.product-sidebar div {
+.product-sidebar button {
     font-weight:400;
+    font-size: 16px;
     display: flex;
     align-items: center;
     color: black;
@@ -90,23 +93,25 @@
     transition: background-color 0.3s;
     border-bottom:solid 1px #E7E7E7;
     cursor: pointer;
+    
+    background-color: white;
 }
 
-.product-sidebar div a{
+/*.product-sidebar button a{
     margin:0;
     color: black;
     text-decoration: none;
-}
-.product-sidebar div.active a{
+}*/
+.product-sidebar button.active{
     color: white;
 }
 
-.product-sidebar div.active{
+.product-sidebar button.active{
     background-color: #285789;
     color: white;
 }
   
-.product-sidebar div:hover:not(.active) {
+.product-sidebar button:hover:not(.active) {
     background-color: #eaeaec;
 }
 .sidebar-tiles-wrapper{
@@ -116,7 +121,7 @@
 .product-tiles-wrapper{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: left;
     gap:2.5vw;
     width:100%;
     min-width:700px;
