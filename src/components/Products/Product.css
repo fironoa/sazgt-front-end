@@ -89,8 +89,9 @@
     font-size: 16px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     color: black;
-    padding: 16px;
+    padding: 15px 10px 15px 10px;
     margin:0;
     text-decoration: none;
     transition: background-color 0.3s;
