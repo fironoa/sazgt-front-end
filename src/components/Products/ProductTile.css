@@ -1,8 +1,9 @@
 .product-tile{
+    width: 100%; /* Ensure the tile's width is always 100% of its container */
+    aspect-ratio: 1 / 1; /* Adjust this to your desired aspect ratio, e.g., 16 / 9 for a widescreen aspect ratio */
     display: flex;
     flex-direction: column;
-    width:20%;
-    min-width: 200px;
+    
     border: 1px solid #DEDEDE;
 }
 .product-details{
@@ -11,7 +12,7 @@
     align-items: center;
 }
 .product-label{
-    margin:12px;
+   padding: 10px;
 }
 .product-label h4{
     font-size: 14px;

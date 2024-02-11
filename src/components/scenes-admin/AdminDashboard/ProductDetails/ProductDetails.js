@@ -86,7 +86,7 @@ function ProductDetails({ providedPId }) {
       const data = await response.json();
 
       console.log(data);
-      getImages();
+      getImages(productId);
       setIsLoading(false);
 
     };
@@ -95,37 +95,34 @@ function ProductDetails({ providedPId }) {
   };
 
 
-  const getImages = () => {
+  const getImages = (pId) => {
     // Replace 'your-api-endpoint' with your actual product API endpoint
     setRecentProductImages([]);
-    setHasImagesLoaded(false)
-    const imageAPI = baseURL + '/sazgt/products/' + productId + '/images';
-    if (productId > -1) {
-      fetch(imageAPI)
+    setHasImagesLoaded(false);
+    const imageAPI = baseURL + '/sazgt/products/' + pId + '/images';
+
+    fetch(imageAPI)
         .then(response => response.json())
         .then(data => {
-          console.log(data);
+            console.log(data);
 
-          // Define your base URL
-          const imageShowAPIBase = baseURL + '/sazgt/images/';
+            // Define your base URL
+            const imageShowAPIBase = baseURL + '/sazgt/images/';
 
-          // Destructure foldername and files from the response object
-          const { foldername, files } = data;
+            // Destructure foldername and files from the response object
+            const { foldername, files } = data;
 
-          // Create new paths by appending base URL, folder name, and file name
-          const newImagePaths = files.map(file => `${imageShowAPIBase}${foldername}/${file}`);
+            // Create new paths by appending base URL, folder name, and file name
+            const newImagePaths = files.map(file => `${imageShowAPIBase}${foldername}/${file}`);
 
-          // Update the imagePaths state with these new paths
-          setRecentProductImages(currentPaths => [...currentPaths, ...newImagePaths]);
+            // Update the imagePaths state with these new paths
+            setRecentProductImages(currentPaths => [...currentPaths, ...newImagePaths]);
 
 
         }) // Adjust based on your API response structur
         .catch(error => console.error('Error fetching data:', error))
         .finally(() => setHasImagesLoaded(true));
-    } else {
-      console.log("Skipping image get api")
-    }
-  }
+}
 
 
   useEffect(() => {
@@ -256,13 +253,16 @@ function ProductDetails({ providedPId }) {
         setRecentlyAddedProduct(data);
         setproductId(data.id);
         showSnackBar("Product added/updated Successfully", "success");
+        getImages(data.id);
         // Handle success here (e.g., show success message, redirect)
       })
       .catch(error => {
         console.error(error);
         if (error.errors) {
           showSnackBar(JSON.stringify(error.errors), "error");
-        }
+        } else if(error.message){
+          showSnackBar(error.message, "error");
+      }
         // Handle errors here (e.g., show error message)
       })
       .finally(() => {
@@ -356,14 +356,21 @@ function ProductDetails({ providedPId }) {
         {
           recentlyAddedProduct !== null &&
           <div className='product-form-layout'>
-            <div><span><b>Name :</b> </span><span>{recentlyAddedProduct.name}</span></div>
-            <div><span><b>Category</b> : </span><span>{recentlyAddedProduct.category}</span></div>
-            <div><span><b>Tags : </b></span><span>{recentlyAddedProduct.tags}</span></div>
-            <div><span><b>Model : </b></span><span>{recentlyAddedProduct.model}</span></div>
-            <div><span><b>Description : </b></span><span>{recentlyAddedProduct.description}</span></div>
-            <div><span><b>Specification : </b></span><span>{recentlyAddedProduct.specifications}</span></div>
+            <table className='table_preview'>
+              <tbody>
+                {Object.entries(recentlyAddedProduct).map(([key, value]) => {
+                  if (key === "id" || key.includes("created") || key.includes("updated")) return null;
+                  return (
+                    <tr key={key}>
+                      <td style={{ fontWeight: 'bold' }}>{key.charAt(0).toUpperCase() + key.slice(1)}</td>
+                      <td>{value}</td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
             <br></br>
-            <div><b>Images of this product</b></div>
+            <h5>Images of this product</h5>
             {!hasImagesLoaded && <div>Loading images ...</div>}
             {hasImagesLoaded && <div style={{ border: "1px solid #ccc", padding: '10px' }}>
               {recentProductImages.length == 0 && <div>No Images to display for this product</div>}

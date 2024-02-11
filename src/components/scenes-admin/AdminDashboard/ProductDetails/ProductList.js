@@ -43,7 +43,7 @@ function ProductList({ baseURL }) {
     return (
         <div class="content-product-list">
 
-            <h3>Product List</h3>
+            <h4>Product List</h4><br></br>
             <div className='table-wrapper'>
                 <table>
                     <thead>

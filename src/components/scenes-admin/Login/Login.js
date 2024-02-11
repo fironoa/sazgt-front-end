@@ -17,13 +17,13 @@ function Login() {
   const [messagetype, setMessagetype] = useState('');
 
 
-  const showSnackBar = (message) => {
+  const showSnackBar = (message, type) => {
     setMessage(message);
     setSnackBarOpen(true);
-    setMessagetype(messagetype);
+    setMessagetype(type);
     setTimeout(() => {
       setSnackBarOpen(false);
-    }, 3000); // Close the snack bar after 3 seconds
+    }, 2000); // Close the snack bar after 3 seconds
   };
 
   const loginFormLogo = {
@@ -86,15 +86,14 @@ function Login() {
         <div className='login-form-wrapper'>
           <div style={loginFormLogo}><img src={logodraft1} alt="Logo" width="100%" /></div>
           <p>Login to view Sazgt Admin Dashboard</p>
-          <input className='form-inputs' type="text" name='username' placeholder='Username' onChange={handleChange} />
+          <input className='form-inputs' type="text" name='username' placeholder='Username' onChange={handleChange} required/>
 
-          <input className='form-inputs' type="text" name='password' placeholder='password' onChange={handleChange} />
-
+          <input className='form-inputs' type="password" name='password' placeholder='password' onChange={handleChange} required/>
           <div className='login-button' onClick={handleLogin}><span>Login</span></div>
 
         </div>
       </div>
-      <SnackBar isOpen={snackBarOpen} message={message} />
+      <SnackBar isOpen={snackBarOpen} message={message} type={messagetype} />
     </>
   )
 }

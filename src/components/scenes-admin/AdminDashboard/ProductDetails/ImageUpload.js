@@ -17,13 +17,11 @@ function ImageUpload({ productId, onUpload }) {
         backgroundColor: '#ddd',
         padding:"10px",
         border: '3px solid black',
-        height:'20px',
-        width:'150px',
+        width:'170px',
         cursor:'pointer'
     }
 
     const uploadButtonStyle = { 
-        marginTop: '10px', 
         cursor: 'pointer', 
         background: '#28a745', 
         color: 'white', 
@@ -97,7 +95,8 @@ function ImageUpload({ productId, onUpload }) {
                 });
     
                 if (!response.ok) {
-                    throw new Error('Server error: ' + response.statusText);
+                    const errorResponseBody = await response.json();
+                    throw new Error('Server error: ' + errorResponseBody.message);
                 }
     
                 // Handle success response
@@ -111,7 +110,7 @@ function ImageUpload({ productId, onUpload }) {
     
             } catch (error) {
                 console.error('Upload failed:', error);
-                alert('Upload failed!');
+                alert('Upload failed!' + "\n" + error);
             }
         } else {
             alert('Please select files to upload.');
@@ -133,7 +132,7 @@ function ImageUpload({ productId, onUpload }) {
                         accept="image/*" // Accept only image files
                         multiple
                     />
-                    <MdAddBox className='icon-properties' />Upload Image
+                    <MdAddBox className='icon-properties' />Select Image
                 </label>
             )}
 

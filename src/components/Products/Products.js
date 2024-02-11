@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { FaChevronDown } from "react-icons/fa6";
 import { ProductTile } from "./ProductTile";
+import { IoIosArrowForward } from "react-icons/io";
 import { FiChevronRight } from "react-icons/fi";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -11,8 +12,10 @@ import { FaChevronLeft } from "react-icons/fa6";
 import { FaChevronRight } from "react-icons/fa6";
 import "./Product.css";
 import LinearLoading from "../LinearLoading/LinearLoading";
+import config from '../configuration/ApiConfig';
 
 export const Products = () => {
+  const baseURL = config.baseURL;
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -39,7 +42,7 @@ export const Products = () => {
     const getCategories = async () => {
       setIsLoading(true);
       const response = await fetch(
-        "http://192.168.1.15:5000/api/sazgt/products/distinct/categories"
+        baseURL + "/sazgt/products/distinct/categories"
       );
       const responseData = await response.json();
 
@@ -136,6 +139,7 @@ export const Products = () => {
                 className={`${selectedCategory === cat ? "active" : ""}`}
               >
                 {cat}
+                {selectedCategory === cat && <IoIosArrowForward />}
               </button>
             ))}
         </div>
