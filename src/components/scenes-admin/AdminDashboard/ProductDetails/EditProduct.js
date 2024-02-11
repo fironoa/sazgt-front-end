@@ -267,7 +267,7 @@ function EditProduct({ product }) {
                 console.log('Success:', data);
                 setRecentlyAddedProduct(data);
                 setproductId(data.id);
-                showSnackBar("Product added/updated Successfully", "success");
+                showSnackBar("Updated Successfully", "success");
                 // Handle success here (e.g., show success message, redirect)
             })
             .catch(error => {

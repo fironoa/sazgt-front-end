@@ -11,8 +11,10 @@ import { FaChevronLeft } from "react-icons/fa6";
 import { FaChevronRight } from "react-icons/fa6";
 import "./Product.css";
 import LinearLoading from "../LinearLoading/LinearLoading";
+import config from '../configuration/ApiConfig';
 
 export const Products = () => {
+  const baseURL = config.baseURL;
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -39,7 +41,7 @@ export const Products = () => {
     const getCategories = async () => {
       setIsLoading(true);
       const response = await fetch(
-        "http://192.168.1.15:5000/api/sazgt/products/distinct/categories"
+        baseURL + "/sazgt/products/distinct/categories"
       );
       const responseData = await response.json();
 

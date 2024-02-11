@@ -17,8 +17,7 @@ function ImageUpload({ productId, onUpload }) {
         backgroundColor: '#ddd',
         padding:"10px",
         border: '3px solid black',
-        height:'20px',
-        width:'150px',
+        width:'170px',
         cursor:'pointer'
     }
 
@@ -133,7 +132,7 @@ function ImageUpload({ productId, onUpload }) {
                         accept="image/*" // Accept only image files
                         multiple
                     />
-                    <MdAddBox className='icon-properties' />Upload Image
+                    <MdAddBox className='icon-properties' />Select Image
                 </label>
             )}
 
