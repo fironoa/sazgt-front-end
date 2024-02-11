@@ -3,8 +3,9 @@
     aspect-ratio: 1 / 1; /* Adjust this to your desired aspect ratio, e.g., 16 / 9 for a widescreen aspect ratio */
     display: flex;
     flex-direction: column;
-    
+    cursor: pointer;
     border: 1px solid #DEDEDE;
+    transition: background-color 0.3s;
 }
 .product-details{
     display: flex;
@@ -32,4 +33,10 @@
 .icon-align{
     display:flex;
     align-items: top;
+}
+
+.product-tile:hover{
+    background-color: #000;
+    color:#fff;
+    
 }

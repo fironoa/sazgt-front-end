@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { AiOutlineEdit } from "react-icons/ai";
+import { BiShowAlt } from "react-icons/bi";
 
 const ProductRow = ({ product, baseURL, onEdit }) => {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -6,6 +8,7 @@ const ProductRow = ({ product, baseURL, onEdit }) => {
     const [hasFetchedImages, setHasFetchedImages] = useState(false); // New state to track if images have been fetched
     const imageAPI = `${baseURL}/sazgt/products/${product.id}/images`;
 
+    
     // Function to fetch images
     const fetchImages = () => {
         if (hasFetchedImages) return; // Prevent fetching again if already done
@@ -40,10 +43,10 @@ const ProductRow = ({ product, baseURL, onEdit }) => {
                 <td>{product.tags}</td>
                 <td>{product.category}</td>
                 <td>
-                    <button onClick={toggleExpand}>Images</button>
+                    <button className="table-action-buttons" onClick={toggleExpand}><BiShowAlt /> Images</button>
                 </td>
                 <td>
-                    <button onClick={() => onEdit(product)}>Edit</button>
+                    <button className="table-action-buttons" onClick={() => onEdit(product)}><AiOutlineEdit /> Edit</button>
                 </td>
             </tr>
             {isExpanded && (
