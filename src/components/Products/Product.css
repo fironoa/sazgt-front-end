@@ -14,9 +14,12 @@
     align-items: center;
 }
 .product-path p{
+    display: flex;
+    align-items: center;
     font-size: 17px;
     color: #646464;
 }
+
 .product-sort{
     display: flex;
     align-items: baseline;
@@ -125,4 +128,15 @@
     gap:2.5vw;
     width:100%;
     min-width:700px;
+    height: fit-content;
+}
+.pagination{
+    display: flex;
+    justify-content: center;
+    border-radius: 5px;
+    margin-bottom: 60px;
+}
+.pagination-div{
+    padding: 10px 15px;
+    border:1px solid #D6D6D6;
 }

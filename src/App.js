@@ -32,6 +32,7 @@ function App() {
         <Route path="/auth/admin-login" element={<Login />}></Route>
         <Route path="/admin-dashboard" element={<AdminDashboard />}></Route>
       </Routes>
+      <Footer />
     </>
   );
 }

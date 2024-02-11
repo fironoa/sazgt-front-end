@@ -6,8 +6,11 @@ import { FiChevronRight } from "react-icons/fi";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
-
+import { IoMdHome } from "react-icons/io";
+import { FaChevronLeft } from "react-icons/fa6";
+import { FaChevronRight } from "react-icons/fa6";
 import "./Product.css";
+import LinearLoading from "../LinearLoading/LinearLoading";
 
 export const Products = () => {
   const location = useLocation();
@@ -16,74 +19,68 @@ export const Products = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [rotate, setRotate] = useState(false);
 
-  const [selectedProduct, setSelectedProduct] = useState("camp-furniture");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   const [searchParams] = useSearchParams();
   const category = searchParams.get("cat");
 
-  const [categories, setCategories] = useState(null);
+  const [categories, setCategories] = useState([]);
 
   const queryParams = new URLSearchParams(location.search);
   console.log(queryParams.get("cat"));
 
-  const [products, setProducts] = useState([
-    {
-      name: "Washing machine",
-      model: "Model:2HEF",
-      category: "camp-furniture",
-    },
-    {
-      name: "Washing machine",
-      model: "Model:2HEF",
-      category: "locker-cabinets",
-    },
-    {
-      name: "Washing machine",
-      model: "Model:2HEF",
-      category: "camp-furniture",
-    },
-    {
-      name: "Washing machine",
-      model: "Model:2HEF",
-      category: "locker-cabinets",
-    },
-    {
-      name: "Washing machine",
-      model: "Model:2HEF",
-      category: "camp-furniture",
-    },
-  ]);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     console.log("loading...");
+
+    const getCategories = async () => {
+      setIsLoading(true);
+      const response = await fetch(
+        "http://192.168.1.15:5000/api/sazgt/products/distinct/categories"
+      );
+      const responseData = await response.json();
+
+      setCategories(responseData);
+      console.log(categories);
+
+      if (responseData.length > 0) {
+        setSelectedCategory(responseData[0]);
+      }
+      setIsLoading(false);
+    };
+
+    getCategories();
   }, []);
+
+  const getProducts = async (category) => {
+    setIsLoading(true);
+    const productAPI =
+      "http://192.168.1.15:5000/api/sazgt/products?category=" + category;
+    console.log(productAPI);
+    const response = await fetch(productAPI);
+    const responseData = await response.json();
+    console.log(responseData);
+    setProducts(responseData.data);
+    setIsLoading(false);
+  };
+
+  useEffect(() => {
+    console.log("Getting products on selecting catg");
+    if (selectedCategory !== "") {
+      console.log("Ready to get products...");
+      getProducts(selectedCategory);
+    }
+  }, [selectedCategory]);
 
   const handleNavigate = (event) => {
     const { name } = event.target; // Use currentTarget to ensure you get the element the event handler is attached to
     console.log(name);
 
-    switch (name) {
-      case "camp-furniture":
-        navigate("/products?cat=camp-furniture");
-        setSelectedProduct(name);
-        break;
-      case "corporate-gifts":
-        navigate("/products?cat=corporate-gifts");
-        setSelectedProduct(name);
-        break;
-      case "locker-cabinets":
-        navigate("/products?cat=locker-cabinets");
-        setSelectedProduct(name);
-        break;
-      case "other-categories":
-        navigate("/products?cat=other-categories");
-        setSelectedProduct(name);
-        break;
-      case "washing-machine":
-        navigate("/products?cat=washing-machine");
-        setSelectedProduct(name);
-        break;
-    }
+    navigate("/products?category=" + name);
+    setSelectedCategory(name);
   };
 
   const handleRotate = () => {
@@ -100,19 +97,22 @@ export const Products = () => {
   };
   return (
     <div className="product-container">
+      {isLoading && <LinearLoading></LinearLoading>}
       <div className="product-path-sort">
         <div className="product-path">
-          <p>/Products/Camp Furniture</p>
+          <p>
+            <div style={{ display: "flex" }}>
+              <IoMdHome />
+            </div>
+            /Products/{selectedCategory}
+          </p>
         </div>
         <div className="product-sort">
           <p>Sort by</p>
           <div className="dropdown ">
-            <button className="dropbtn">
+            <button className={`dropbtn`} onClick={handleClick}>
               Rating
-              <FaChevronDown
-                className={`chevron ${rotate ? "rotate" : ""}`}
-                onClick={handleClick}
-              />
+              <FaChevronDown className={`chevron ${rotate ? "rotate" : ""}`} />
             </button>
             {isOpen && (
               <div className="dropdown-content">
@@ -127,63 +127,32 @@ export const Products = () => {
       <div className="sidebar-tiles-wrapper">
         <div className="product-sidebar">
           <p>Categories</p>
-          <button
-            onClick={handleNavigate}
-            id="camp-furniture"
-            name="camp-furniture"
-            className={`${
-              selectedProduct === "camp-furniture" ? "active" : ""
-            }`}
-          >
-            Camp Furniture
-          </button>
-          <button
-            onClick={handleNavigate}
-            id="corporate-gifts"
-            name="corporate-gifts"
-            className={`${
-              selectedProduct === "corporate-gifts" ? "active" : ""
-            }`}
-          >
-            Corporate Gifts
-          </button>
-          <button
-            onClick={handleNavigate}
-            other-categories
-            id="locker-cabinets"
-            name="locker-cabinets"
-            className={`${
-              selectedProduct === "locker-cabinets" ? "active" : ""
-            }`}
-          >
-            Locker Cabinets
-          </button>
-          <button
-            onClick={handleNavigate}
-            id=""
-            name="other-categories"
-            className={`${
-              selectedProduct === "other-categories" ? "active" : ""
-            }`}
-          >
-            Other Category
-          </button>
-          <button
-            onClick={handleNavigate}
-            id="washing-machine"
-            name="washing-machine"
-            className={`${
-              selectedProduct === "washing-machine" ? "active" : ""
-            }`}
-          >
-            Washing Machines
-          </button>
+          {categories !== null &&
+            categories.map((cat) => (
+              <button
+                onClick={handleNavigate}
+                id={cat}
+                name={cat}
+                className={`${selectedCategory === cat ? "active" : ""}`}
+              >
+                {cat}
+              </button>
+            ))}
         </div>
         <div className="product-tiles-wrapper">
           {products.map((product, index) => (
             <ProductTile product={product} />
           ))}
-          {category === "locker-cabinets" && <div>locker-cabinets</div>}
+        </div>
+      </div>
+      <div className="pagination">
+        <div className="pagination-div">
+          <FaChevronLeft />
+        </div>
+        <div className="pagination-div">1</div>
+        <div className="pagination-div">1</div>
+        <div className="pagination-div">
+          <FaChevronRight />
         </div>
       </div>
     </div>

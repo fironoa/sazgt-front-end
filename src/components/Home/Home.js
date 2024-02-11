@@ -16,6 +16,7 @@ import "./Home.css";
 export const Home = () => {
   const divStyle = {
     backgroundColor: "#F3F3F3",
+    paddingBottom: "65px",
   };
 
   const styleText = {
@@ -124,11 +125,6 @@ export const Home = () => {
                   <p>Cleaning Products</p>
                 </div>
               </div>
-            </div>
-            <div className="view-more-button">
-              <button>
-                <a>View more</a>
-              </button>
             </div>
           </div>
         </div>

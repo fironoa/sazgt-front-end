@@ -3,8 +3,14 @@ import logodraft1 from "../../images/logodraft1.png";
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
+import { useNavigate } from "react-router-dom";
 import "./Header.css";
 function Header() {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate("/products");
+  };
   return (
     <div className="container">
       <div className="header">
@@ -37,22 +43,22 @@ function Header() {
         <nav className="navbar">
           <ul className="nav-list">
             <li>
-              <a href="#">Camp Furniture</a>
+              <a onClick={handleClick}>Camp Furniture</a>
             </li>
             <li>
-              <a href="#">Office Furniture</a>
+              <a onClick={handleClick}>Office Furniture</a>
             </li>
             <li>
-              <a href="#">School Furniture</a>
+              <a onClick={handleClick}>School Furniture</a>
             </li>
             <li>
-              <a href="#">Restaurant & pantry furniture</a>
+              <a onClick={handleClick}>Restaurant & pantry furniture</a>
             </li>
             <li>
-              <a href="#">Electronic appliances</a>
+              <a onClick={handleClick}>Electronic appliances</a>
             </li>
             <li>
-              <a href="#">Safety products</a>
+              <a onClick={handleClick}>Safety products</a>
             </li>
           </ul>
         </nav>

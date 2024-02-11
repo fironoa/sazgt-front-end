@@ -26,4 +26,9 @@
     display: flex;
     align-items:flex-start;
     margin-right: 12px;
+    margin-bottom:30px;
+}
+.icon-align{
+    display:flex;
+    align-items: top;
 }
