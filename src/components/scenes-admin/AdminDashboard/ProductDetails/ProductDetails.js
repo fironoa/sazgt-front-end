@@ -4,6 +4,7 @@ import ImageUpload from './ImageUpload';
 import LinearLoading from '../../../LinearLoading/LinearLoading';
 import SnackBar from '../../../Snackbar/Snackbar';
 import config from '../../../configuration/ApiConfig';
+import { categoriesFromConfig } from '../../../configuration/ApiConfig';
 import { MdAddBox } from "react-icons/md";
 import { FaMinus } from "react-icons/fa";
 
@@ -126,19 +127,9 @@ function ProductDetails({ providedPId }) {
 
 
   useEffect(() => {
-    // Fetch categories from your backend or define them statically
-    const fetchCategories = async () => {
-      // Example fetch request; adjust according to your actual API
-      const response = await fetch(baseURL + '/sazgt/products/distinct/categories');
-
-      const data = await response.json();
-
-      console.log(data);
-      setCategories(data); // Assuming 'data' is an array of category names
-    };
-
-    fetchCategories();
+    setCategories(categoriesFromConfig);
   }, []);
+  
 
 
 
