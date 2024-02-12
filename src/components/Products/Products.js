@@ -12,7 +12,7 @@ import { FaChevronLeft } from "react-icons/fa6";
 import { FaChevronRight } from "react-icons/fa6";
 import "./Product.css";
 import LinearLoading from "../LinearLoading/LinearLoading";
-import config from '../configuration/ApiConfig';
+import config from "../configuration/ApiConfig";
 
 export const Products = () => {
   const baseURL = config.baseURL;
@@ -60,8 +60,7 @@ export const Products = () => {
 
   const getProducts = async (category) => {
     setIsLoading(true);
-    const productAPI =
-      baseURL + "/sazgt/products?category=" + category;
+    const productAPI = baseURL + "/sazgt/products?category=" + category;
     console.log(productAPI);
     const response = await fetch(productAPI);
     const responseData = await response.json();
