@@ -6,7 +6,8 @@
 .banner{
     display: flex;
     justify-content: space-between;
-    width: 100%;   
+    width: 100%; 
+    margin-top: 10vh;  
 }
 .parts{
     display: flex;
@@ -14,11 +15,12 @@
     justify-content:center;
     align-items: left;
     width: 35vw;
-    margin-bottom: 50px;
+    margin-bottom:10vh;
+    gap:3vh;
 }
 
 .banner-image-wrapper{
-    padding-top: 3vw;
+    
     object-fit: fit;
     overflow: hidden;
 }
@@ -33,9 +35,13 @@
 }
 .count-box{
     display: flex;
+    gap:5vw;
 }
 .count{
-    margin-right: 50px;
+    display: flex;
+    flex-direction: column;
+    gap:1vh;
+   
 }
 .categories{
     display: flex;
@@ -69,7 +75,12 @@
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 .tile img{
-    object-fit: fit;
+    object-fit: contain;
+    width:auto;
+    height: 100%;
+}
+.tile-img{
+    object-fit: contain;
 }
 .product-name{
     text-align: center;
@@ -91,14 +102,31 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    margin-top: 6.5vh;
+    
+}
+.latest-arrivals-parts{
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    width: 35vw;
+    margin-bottom:10vh;
+    gap:4.5vh;
 }
 .arrivals-image-wrapper{
-
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+.arrivals-image-wrapper img{
+    object-fit: contain;
+    height: 100%;
+    width: 100%;
 }
 .read-more-button{
     display: flex;
     align-items: center;
-    margin-top: 20px;
+    
 }
 .read-more-button button{
     border: none;
@@ -126,6 +154,11 @@
         flex-grow: 1;
         align-items: stretch;
         width:100%;
+    }
+    .latest-arrivals-parts{
+        flex-grow: 1;
+        align-items: stretch;
+        width:100%;  
     }
     .banner h1{
         font-size:2.5rem;
