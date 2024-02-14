@@ -1,5 +1,5 @@
 export default {
-  baseURL: "http://192.168.1.2:5000/api",
+  baseURL: "https://gobartsdev.com/api",
 };
 
 export const categoriesFromConfig = [

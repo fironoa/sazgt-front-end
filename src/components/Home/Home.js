@@ -98,38 +98,51 @@ export const Home = () => {
             <div className="tiles-wrapper">
               <div className="tile">
                 <div className="tile-img">
-                  <img src={washingmachine} />
+                  <img src={washingmachine} width="100%" />
                 </div>
                 <div className="product-name">
                   <p>Washing Machine</p>
                 </div>
               </div>
               <div className="tile">
-                <img src={lockerCabinet} />
+                <div className="tile-img">
+                  <img src={lockerCabinet} width="100%" />
+                </div>
+
                 <div className="product-name">
                   <p>Locker Cabinet</p>
                 </div>
               </div>
               <div className="tile">
-                <img src={campFurniture} />
+                <div className="tile-img">
+                  <img src={campFurniture} width="100%" />
+                </div>
                 <div className="product-name">
                   <p>Camp Furniture</p>
                 </div>
               </div>
               <div className="tile">
-                <img src={houseHold} />
+                <div className="tile-img">
+                  <img src={houseHold} width="100%" />
+                </div>
                 <div className="product-name">
                   <p>House hold Appliances</p>
                 </div>
               </div>
               <div className="tile">
-                <img src={coporateGifts} />
+                <div className="tile-img">
+                  <img src={coporateGifts} width="100%" />
+                </div>
+
                 <div className="product-name">
                   <p>Corpoarate Gifts</p>
                 </div>
               </div>
               <div className="tile">
-                <img src={cleaningProducts} />
+                <div className="tile-img">
+                  <img src={cleaningProducts} width="100%" />
+                </div>
+
                 <div className="product-name">
                   <p>Cleaning Products</p>
                 </div>
