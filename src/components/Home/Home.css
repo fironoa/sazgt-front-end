@@ -57,33 +57,33 @@
     border-radius: 2rem;
 }
 .tiles-wrapper{
-    display: flex;
-    flex-wrap: wrap;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 30px;
     justify-content: center;
-    align-items: center;
-    width:100%;
-    gap:3vw;
 }
 .tile{
     display: flex;
+    width: 100%; /* Ensure the tile's width is always 100% of its container */
+    aspect-ratio: 1 / 1; /* Adjust this to your desired aspect ratio, e.g., 16 / 9 for a widescreen aspect ratio */
     flex-direction: column;
-    justify-content: space-around;
-    margin:15px;
-    width:23%;
-    min-width: 200px;
+    cursor: pointer;
     background-color: #ffffff;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-.tile img{
-    object-fit: contain;
-    width:auto;
-    height: 100%;
-}
-.tile-img{
-    object-fit: contain;
-}
+
+
+    
+@media (max-width: 800px) {
+    .tiles-wrapper {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      }
+    }
+
 .product-name{
-    text-align: center;
+    display: flex;
+    justify-content: center;
     padding: 15px;
 }
 .view-more-button{
