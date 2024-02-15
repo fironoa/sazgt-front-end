@@ -28,6 +28,7 @@ export const Products = () => {
 
   const [searchParams] = useSearchParams();
   const category = searchParams.get("cat");
+  const [perPage, setPerPage] = useState(30);
 
   const [categories, setCategories] = useState([]);
 
@@ -97,6 +98,18 @@ export const Products = () => {
     handleRotate();
     toggleDropdown();
   };
+
+  const handlePerPage = (event) => {
+
+    const {id} = event.target;
+
+    console.log(event);
+    const value = parseInt(id);
+    setPerPage(value);
+    handleRotate();
+    toggleDropdown();
+
+  }
   return (
     <div className="product-container">
       {isLoading && <LinearLoading></LinearLoading>}
@@ -110,17 +123,17 @@ export const Products = () => {
           </p>
         </div>
         <div className="product-sort">
-          <p>Sort by</p>
+          <p>Show</p>
           <div className="dropdown ">
             <button className={`dropbtn`} onClick={handleClick}>
-              Rating
+              {perPage} Products
               <FaChevronDown className={`chevron ${rotate ? "rotate" : ""}`} />
             </button>
             {isOpen && (
               <div className="dropdown-content">
-                <p>A-Z</p>
-                <p>Link 2</p>
-                <p>Link 3</p>
+                <p id="30" onClick={handlePerPage}>30</p>
+                <p id="50" onClick={handlePerPage}>50</p>
+                <p id="100" onClick={handlePerPage}>100</p>
               </div>
             )}
           </div>
