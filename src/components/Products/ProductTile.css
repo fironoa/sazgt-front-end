@@ -40,3 +40,12 @@
     color:#fff;
     
 }
+
+.product-image{
+    height: 100%;
+}
+
+.product-image img{
+    height: 100%;
+    object-fit: cover;
+}

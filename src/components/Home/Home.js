@@ -15,7 +15,7 @@ import "./Home.css";
 export const Home = () => {
   const divStyle = {
     backgroundColor: "#F3F3F3",
-    paddingBottom: "65px",
+    paddingBottom: "10vh",
   };
 
   const styleText = {
@@ -27,11 +27,19 @@ export const Home = () => {
     flexDirection: "column",
     alignItems: "center",
     gap: "2vh",
-    marginTop: "50px",
-    marginBottom: "50px",
+    marginTop: "10vh",
+    marginBottom: "5vh",
+  };
+  const subHeadingLatestArrival = {
+    display: "flex",
+    flexDirection: "column",
+    gap: "3vh",
+    marginTop: "8vh",
   };
   const arrowIcon = {
     display: "flex",
+    gap: "10px",
+    fontSize: "1rem",
   };
 
   return (
@@ -60,7 +68,7 @@ export const Home = () => {
                   <h2>400+</h2>
                 </div>
                 <div className="number-label">
-                  <p>Clients</p>
+                  <h5>Clients</h5>
                 </div>
               </div>
               <div className="count">
@@ -68,7 +76,7 @@ export const Home = () => {
                   <h2>1000+</h2>
                 </div>
                 <div className="number-label">
-                  <p>Product Sold</p>
+                  <h5>Product Sold</h5>
                 </div>
               </div>
             </div>
@@ -89,37 +97,52 @@ export const Home = () => {
             </div>
             <div className="tiles-wrapper">
               <div className="tile">
-                <img src={washingmachine} width="100%" />
+                <div className="tile-img">
+                  <img src={washingmachine} width="100%" />
+                </div>
                 <div className="product-name">
                   <p>Washing Machine</p>
                 </div>
               </div>
               <div className="tile">
-                <img src={lockerCabinet} />
+                <div className="tile-img">
+                  <img src={lockerCabinet} width="100%" />
+                </div>
+
                 <div className="product-name">
                   <p>Locker Cabinet</p>
                 </div>
               </div>
               <div className="tile">
-                <img src={campFurniture} />
+                <div className="tile-img">
+                  <img src={campFurniture} width="100%" />
+                </div>
                 <div className="product-name">
                   <p>Camp Furniture</p>
                 </div>
               </div>
               <div className="tile">
-                <img src={houseHold} />
+                <div className="tile-img">
+                  <img src={houseHold} width="100%" />
+                </div>
                 <div className="product-name">
                   <p>House hold Appliances</p>
                 </div>
               </div>
               <div className="tile">
-                <img src={coporateGifts} />
+                <div className="tile-img">
+                  <img src={coporateGifts} width="100%" />
+                </div>
+
                 <div className="product-name">
                   <p>Corpoarate Gifts</p>
                 </div>
               </div>
               <div className="tile">
-                <img src={cleaningProducts} />
+                <div className="tile-img">
+                  <img src={cleaningProducts} width="100%" />
+                </div>
+
                 <div className="product-name">
                   <p>Cleaning Products</p>
                 </div>
@@ -135,23 +158,22 @@ export const Home = () => {
             <div className="heading-boarder"></div>
           </div>
           <div className="latest-arrivals-wrapper">
-            <div className="parts">
-              <h3>
-                Introducing Hassle-Free Laundry: Our New Coin-Operated Washing
-                Machines
-              </h3>
+            <div className="latest-arrivals-parts">
+              <div style={subHeadingLatestArrival}>
+                <h3>
+                  Introducing Hassle-Free Laundry: Our New Coin-Operated Washing
+                  Machines
+                </h3>
+                <div className="heading-boarder"></div>
+              </div>
               <ul>
                 <li style={arrowIcon}>
-                  <div>
-                    <MdKeyboardDoubleArrowRight />
-                  </div>
+                  <MdKeyboardDoubleArrowRight style={{ marginTop: "5px" }} />
                   Experience the convenience of our latest coin-operated washing
                   machines,
                 </li>
                 <li style={arrowIcon}>
-                  <div>
-                    <MdKeyboardDoubleArrowRight />
-                  </div>
+                  <MdKeyboardDoubleArrowRight style={{ marginTop: "5px" }} />
                   designed to make your laundry tasks easier and more efficient.
                 </li>
               </ul>
@@ -161,15 +183,14 @@ export const Home = () => {
                 </button>
               </div>
             </div>
-            <div className="parts">
+            <div className="latest-arrivals-parts">
               <div className="arrivals-image-wrapper">
-                <img src={Rectangle68} width="100%" />
+                <img src={Rectangle68} />
               </div>
             </div>
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

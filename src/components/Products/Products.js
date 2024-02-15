@@ -12,7 +12,7 @@ import { FaChevronLeft } from "react-icons/fa6";
 import { FaChevronRight } from "react-icons/fa6";
 import "./Product.css";
 import LinearLoading from "../LinearLoading/LinearLoading";
-import config from '../configuration/ApiConfig';
+import config from "../configuration/ApiConfig";
 
 export const Products = () => {
   const baseURL = config.baseURL;
@@ -60,8 +60,7 @@ export const Products = () => {
 
   const getProducts = async (category) => {
     setIsLoading(true);
-    const productAPI =
-      baseURL + "/sazgt/products?category=" + category;
+    const productAPI = baseURL + "/sazgt/products?category=" + category;
     console.log(productAPI);
     const response = await fetch(productAPI);
     const responseData = await response.json();
@@ -119,9 +118,9 @@ export const Products = () => {
             </button>
             {isOpen && (
               <div className="dropdown-content">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
+                <p>A-Z</p>
+                <p>Link 2</p>
+                <p>Link 3</p>
               </div>
             )}
           </div>
