@@ -61,7 +61,7 @@ export const Products = () => {
   const getProducts = async (category) => {
     setIsLoading(true);
     const productAPI =
-      "http://192.168.1.15:5000/api/sazgt/products?category=" + category;
+      baseURL + "/sazgt/products?category=" + category;
     console.log(productAPI);
     const response = await fetch(productAPI);
     const responseData = await response.json();
@@ -153,7 +153,7 @@ export const Products = () => {
         <div className="pagination-div">
           <FaChevronLeft />
         </div>
-        <div className="pagination-div">1</div>
+        <div className="pagination-div active">1</div>
         <div className="pagination-div">1</div>
         <div className="pagination-div">
           <FaChevronRight />
