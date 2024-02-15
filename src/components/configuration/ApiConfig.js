@@ -1,6 +1,5 @@
 export default {
-    baseURL: 'https://gobartsdev.com/api',
-
+  baseURL: "https://gobartsdev.com/api",
 };
 
 export const categoriesFromConfig = [
