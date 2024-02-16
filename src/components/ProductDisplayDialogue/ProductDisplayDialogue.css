@@ -1,0 +1,122 @@
+.display_container{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.product-image-container{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    justify-content: center;
+    gap:25px;
+}
+
+.product-details-container{
+    padding: 16px;
+    height: 45%;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    overflow: hidden;
+    overflow-y: scroll;
+    
+}
+
+
+.product-details-container h5{
+    margin-bottom: 5px;
+    line-height: 1;
+}
+
+.product-details-container li{
+    font-size: 0.8rem;
+    margin-left: 15px;
+}
+
+.product-details-container ul{
+    font-size: 1rem;
+    list-style: decimal;
+    margin-bottom: 5px;
+}
+.main-image-container{
+    
+    height: 70%;
+    width: 60%;
+}
+
+.main-image-container img{
+    width: 100%;
+    border-radius: 5px;
+}
+
+.extra-image-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    width: 10%;
+    height: 60%;
+}
+
+.extra-product-image{
+    width: 100%;
+    cursor: pointer;
+}
+
+.extra-product-image img{
+    object-fit: cover;
+    border-radius: 4px;
+    width: 100%;
+}
+
+.product-button-submit{
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    height: 35px;
+    width: 80px;
+    background-color: #007A87;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.product-display-details{
+    width: 70%;
+}
+@media(max-width:800px){
+    .product-image-container{
+        flex-direction: column-reverse;
+    }
+
+    .extra-image-container{
+        width: 80%;
+        max-width: 300px;
+        height: 10%;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .main-image-container{
+        height: 60%;
+        width: 80%;
+        max-width: 300px;
+    }
+
+    .extra-product-image img{
+        height:100%;
+        object-fit: cover;
+    }
+
+    .extra-product-image{
+        width: 50px;
+        height: 50px;
+    }
+}
+

@@ -63,4 +63,9 @@
         align-items: center;
         width:100%;
     }
+
+    .footer-container{
+        margin-left:10vw;
+        margin-right:10vw;
+    }
 }

@@ -33,12 +33,10 @@ export const Products = () => {
   const [categories, setCategories] = useState([]);
 
   const queryParams = new URLSearchParams(location.search);
-  console.log(queryParams.get("cat"));
 
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    console.log("loading...");
 
     const getCategories = async () => {
       setIsLoading(true);
@@ -48,7 +46,6 @@ export const Products = () => {
       const responseData = await response.json();
 
       setCategories(responseData);
-      console.log(categories);
 
       if (responseData.length > 0) {
         setSelectedCategory(responseData[0]);
@@ -61,26 +58,23 @@ export const Products = () => {
 
   const getProducts = async (category) => {
     setIsLoading(true);
+    setProducts([]);
     const productAPI = baseURL + "/sazgt/products?category=" + category;
-    console.log(productAPI);
     const response = await fetch(productAPI);
     const responseData = await response.json();
-    console.log(responseData);
     setProducts(responseData.data);
+    console.log(responseData.data)
     setIsLoading(false);
   };
 
   useEffect(() => {
-    console.log("Getting products on selecting catg");
     if (selectedCategory !== "") {
-      console.log("Ready to get products...");
       getProducts(selectedCategory);
     }
   }, [selectedCategory]);
 
   const handleNavigate = (event) => {
-    const { name } = event.target; // Use currentTarget to ensure you get the element the event handler is attached to
-    console.log(name);
+    const { name } = event.target;
 
     navigate("/products?category=" + name);
     setSelectedCategory(name);
@@ -102,8 +96,6 @@ export const Products = () => {
   const handlePerPage = (event) => {
 
     const {id} = event.target;
-
-    console.log(event);
     const value = parseInt(id);
     setPerPage(value);
     handleRotate();
@@ -114,14 +106,6 @@ export const Products = () => {
     <div className="product-container">
       {isLoading && <LinearLoading></LinearLoading>}
       <div className="product-path-sort">
-        <div className="product-path">
-          <p>
-            <div style={{ display: "flex" }}>
-              <IoMdHome />
-            </div>
-            /Products/{selectedCategory}
-          </p>
-        </div>
         <div className="product-sort">
           <p>Show</p>
           <div className="dropdown ">
@@ -156,8 +140,9 @@ export const Products = () => {
             ))}
         </div>
         <div className="product-tiles-wrapper">
+          
           {products.map((product, index) => (
-            <ProductTile product={product} />
+            <ProductTile product={product} key={index}/>
           ))}
         </div>
       </div>

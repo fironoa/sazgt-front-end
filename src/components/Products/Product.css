@@ -1,11 +1,11 @@
 .product-container{
-    margin-left:8vw;
-   margin-right:8vw;
+    margin-left:13vw;
+    margin-right:13vw;
    margin-top: 30px;
 }
 .product-path-sort{
     display: flex;
-    justify-content: space-between;
+    justify-content: right;
     margin-bottom: 30px;
     
 }
@@ -165,13 +165,22 @@
 
 @media (max-width: 1000px) {
     .product-tiles-wrapper {
-      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     }
   }
   
   @media (max-width: 800px) {
     .product-tiles-wrapper {
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    }
+
+    .product-sidebar{
+        display: none;
+    }
+
+    .product-container{
+        margin-left:10vw;
+        margin-right:10vw;
     }
   }
   
