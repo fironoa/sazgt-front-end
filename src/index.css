@@ -7,11 +7,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-p,a,ul,li,input,label,textarea,button,td{
+p,a,li,input,label,textarea,button,td{
   font-family: 'Barlow', sans-serif;
 }
 
-h1,h2,h3,h4,h5{
+h1,h2,ul,h3,h4,h5{
   font-family: 'Nunito', sans-serif;
 }
 

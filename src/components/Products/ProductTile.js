@@ -5,49 +5,75 @@ import { useState, useEffect } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import config from "../configuration/ApiConfig";
 import defaultImage from "../../images/defaultImage.png";
+import ProductModal from "../ProductModal/ProductModal";
+import ProductDisplayDialogue from "../ProductDisplayDialogue/ProductDisplayDialogue";
 
 export const ProductTile = ({ product }) => {
   const baseURL = config.baseURL;
-  const [imageAvailable, setImageAvailable] = useState(false);
+  const [imageAvailable, setImageAvailable] = useState(true);
+  const [currentProductsPrimaryImage, setCurrentProductsPrimaryImage] = useState('');
   const [imagePaths, setImagePaths] = useState([]);
-  const [hasFetchedImages, setHasFetchedImages] = useState(false);
   const [liked, setLiked] = useState(false);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   const imageAPI = `${baseURL}/sazgt/products/${product.id}/images`;
 
   useEffect(() => {
     const fetchImages = () => {
-      if (hasFetchedImages) return; // Prevent fetching again if already done
 
       fetch(imageAPI)
         .then((response) => response.json())
         .then((data) => {
-          console.log(data);
           const imageShowAPIBase = `${baseURL}/sazgt/images/`;
           const { foldername, files } = data;
           const newImagePaths = files.map(
             (file) => `${imageShowAPIBase}${foldername}/${file}`
           );
           setImagePaths(newImagePaths);
-          setHasFetchedImages(true); // Mark as fetched
         })
         .catch((error) => console.error("Error fetching data:", error));
     };
+
+    const initialLoad = () => {
+      if (product.primaryImageUrl == null) {
+        setImageAvailable(false);
+      }
+      setCurrentProductsPrimaryImage(`${baseURL}/sazgt/images/${product.primaryImageUrl}`);
+    }
+    initialLoad()
     fetchImages();
   }, []);
 
   const handleLike = () => {
     setLiked(!liked);
   };
+
+  const handleClick = () => {
+    openModal();
+  }
+
+
   return (
     <>
-      <div className="product-tile">
+      <div className="product-tile" onClick={handleClick}>
         <div className="product-image">
-          <img
-            src={imagePaths[0]}
-            alt={product.name}
-            style={{ width: "100%" }}
-          />
+          {!imageAvailable &&
+            <img
+              src={defaultImage}
+              alt={product.name}
+              style={{ width: "100%" }}
+            />}
+          {imageAvailable &&
+            <img
+              src={currentProductsPrimaryImage}
+              alt={product.name}
+              style={{ width: "100%" }}
+            />}
+
         </div>
         <div className="product-details">
           <div className="product-label">
@@ -63,6 +89,10 @@ export const ProductTile = ({ product }) => {
           </div>
         </div>
       </div>
+      <ProductModal isOpen={isModalOpen} onClose={closeModal}>
+        <ProductDisplayDialogue product={product} baseURL={baseURL} extraImages={imagePaths} />
+
+      </ProductModal>
     </>
   );
 };
