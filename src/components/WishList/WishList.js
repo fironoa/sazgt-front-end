@@ -1,15 +1,22 @@
 import React from "react";
 import "./WishList.css";
+import { useState } from "react";
 import campFurniture from "../../images/campFurniture.png";
 import { FaRegTrashAlt } from "react-icons/fa";
 import { IoIosArrowRoundBack } from "react-icons/io";
+import { set } from "react-hook-form";
 function WishList() {
+  const [isFormVisible, setFormVisible] = useState(false);
+
+  const toggleFormVisibility = () => {
+    setFormVisible(!isFormVisible);
+  };
   return (
     <>
       <div className="wishlist-container">
         <div className="wislist-heading">
           <h3>Wish list</h3>
-          <p>3 Items</p>
+          <h6>3 Items</h6>
         </div>
         <div className="break-line"></div>
         <div className="wishlist-sub-heading">
@@ -83,10 +90,24 @@ function WishList() {
             <IoIosArrowRoundBack />
             <p>Continue Browsing</p>
           </div>
-          <div className="email-button">
-            <button>Sent Email</button>
-          </div>
+          {!isFormVisible && (
+            <div className="email-button">
+              <button onClick={toggleFormVisibility}>Sent Email</button>
+            </div>
+          )}
         </div>
+        {isFormVisible && (
+          <div className="mail-form">
+            <div className="email-phone">
+              <input placeholder="Email" />
+              <input placeholder="Phone Number(Optional)" />
+            </div>
+            <textarea placeholder="Message" />
+            <div className="expanded-button">
+              <button>Sent Email</button>
+            </div>
+          </div>
+        )}
       </div>
     </>
   );
