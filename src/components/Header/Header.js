@@ -1,13 +1,20 @@
 import React from "react";
+import { useState, useRef } from "react";
 import logodraft1 from "../../images/logodraft1.png";
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import { useNavigate } from "react-router-dom";
+
+import { FaTimes, FaBars } from "react-icons/fa";
 import "./Header.css";
 function Header() {
   const navigate = useNavigate();
 
+  const navRef = useRef();
+  const showNavbar = () => {
+    navRef.current.classList.toggle("responsive_nav");
+  };
   const handleClick = () => {
     navigate("/products");
   };
@@ -37,30 +44,26 @@ function Header() {
             <div className="cont-content">info@sazgt.com</div>
           </div>
         </div>
+        <div>
+          <button className="nav-btn">
+            <FaBars onClick={showNavbar} />
+          </button>
+        </div>
       </div>
       <div className="line"></div>
-      <div className="navbar-wrapper">
-        <nav className="navbar">
-          <ul className="nav-list">
-            <li>
-              <a onClick={handleClick}>Camp Furniture</a>
-            </li>
-            <li>
-              <a onClick={handleClick}>Office Furniture</a>
-            </li>
-            <li>
-              <a onClick={handleClick}>School Furniture</a>
-            </li>
-            <li>
-              <a onClick={handleClick}>Restaurant & pantry furniture</a>
-            </li>
-            <li>
-              <a onClick={handleClick}>Electronic appliances</a>
-            </li>
-            <li>
-              <a onClick={handleClick}>Safety products</a>
-            </li>
-          </ul>
+      <div className={`navbar-wrapper `}>
+        <nav className={`navbar`}>
+          <div className={`nav-list`} ref={navRef}>
+            <a onClick={handleClick}>Camp Furniture</a>
+            <a onClick={handleClick}>Office Furniture</a>
+            <a onClick={handleClick}>School Furniture</a>
+            <a onClick={handleClick}>Restaurant & pantry furniture</a>
+            <a onClick={handleClick}>Electronic appliances</a>
+            <a onClick={handleClick}>Safety products</a>
+            <button className={`nav-btn nav-close-btn`}>
+              <FaTimes onClick={showNavbar} />
+            </button>
+          </div>
         </nav>
       </div>
       <div className="line"></div>

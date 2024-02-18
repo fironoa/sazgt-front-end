@@ -11,7 +11,7 @@ p,a,li,input,label,textarea,button,td{
   font-family: 'Barlow', sans-serif;
 }
 
-h1,h2,ul,h3,h4,h5{
+h1,h2,ul,h3,h4,h5,h6{
   font-family: 'Nunito', sans-serif;
 }
 
@@ -41,6 +41,10 @@ h4{
 
 h5{
   font-size:1.1rem;
+  margin:0px;
+}
+h6{
+  font-size: 0.9rem;
   margin:0px;
 }
 a{
