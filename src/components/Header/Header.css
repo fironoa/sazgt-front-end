@@ -41,7 +41,7 @@
     padding-left: 30px;
     border: 1px solid #ccc;
     border-radius: 32px;
-    width:30vw;
+    min-width:20vw;
     outline: none;
   }
 .search svg {
@@ -113,21 +113,22 @@
     }
     .nav-list{
         position: fixed;
+        z-index: 999;
         top: 0;
         left:0;
         height: 80%;
-        width: 100%;
+        width: 0;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         background-color: rgba(191, 193, 193, 0.91);
         gap:1.5rem;
-        transition: 1s;
-        transform: translate(-160vh);
+        transition:width 0.3s;
+        overflow: hidden;
     }
     .responsive_nav{
-        transform: none;
+        width:100%
     }
     .nav-close-btn{
         position: absolute;
