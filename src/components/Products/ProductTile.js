@@ -12,7 +12,6 @@ export const ProductTile = ({ product }) => {
   const baseURL = config.baseURL;
   const [imageAvailable, setImageAvailable] = useState(true);
   const [currentProductsPrimaryImage, setCurrentProductsPrimaryImage] = useState('');
-  const [imagePaths, setImagePaths] = useState([]);
 
   const [productId, setProductId] = useState(product.id);
 
@@ -23,29 +22,12 @@ export const ProductTile = ({ product }) => {
 
   const [isSelected, setIsSelected] = useState(false);
 
-  const imageAPI = `${baseURL}/sazgt/products/${product.id}/images`;
-
   useEffect(() => {
     const selectedItems = JSON.parse(localStorage.getItem('selectedItems')) || [];
     setIsSelected(selectedItems.includes(product.id));
   }, [product]);
 
   useEffect(() => {
-    const fetchImages = () => {
-
-      fetch(imageAPI)
-        .then((response) => response.json())
-        .then((data) => {
-          const imageShowAPIBase = `${baseURL}/sazgt/images/`;
-          const { foldername, files } = data;
-          const newImagePaths = files.map(
-            (file) => `${imageShowAPIBase}${foldername}/${file}`
-          );
-          setImagePaths(newImagePaths);
-        })
-        .catch((error) => console.error("Error fetching data:", error));
-    };
-
     const initialLoad = () => {
       if (product.primaryImageUrl == null) {
         setImageAvailable(false);
@@ -53,7 +35,6 @@ export const ProductTile = ({ product }) => {
       setCurrentProductsPrimaryImage(`${baseURL}/sazgt/images/${product.primaryImageUrl}`);
     }
     initialLoad()
-    fetchImages();
   }, []);
 
   const toggleItem = () => {
@@ -122,7 +103,7 @@ export const ProductTile = ({ product }) => {
         </div>
       </div>
       <ProductModal isOpen={isModalOpen} onClose={closeModal}>
-        <ProductDisplayDialogue product={product} baseURL={baseURL} extraImages={imagePaths} addItem={addItem} />
+        <ProductDisplayDialogue product={product} baseURL={baseURL} addItem={addItem} />
       </ProductModal>
     </>
   );

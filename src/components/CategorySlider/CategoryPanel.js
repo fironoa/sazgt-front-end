@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 const CategoryPanel = () => {
 
     const [searchParams] = useSearchParams();
+    const [perPage, setPerPage] = useState(localStorage.getItem("perPage") || "10");
 
     const [selectedCategory, setSelectedCategory] = useState(searchParams.get("category"));
 
@@ -16,7 +17,8 @@ const CategoryPanel = () => {
     const navigate = useNavigate();
 
     const handleClick = (cat) => {
-        navigate('/products?category=' + cat);
+        const url = '/products?category=' + cat + '&per_page=' + perPage;
+        navigate(url);
         togglePanel();
     };
 
@@ -32,7 +34,7 @@ const CategoryPanel = () => {
                 top: 0,
                 width: '100%',
                 height: '100%',
-                backgroundColor: 'rgb(240, 240, 240, 0.5)',
+                backgroundColor: 'rgb(240, 240, 240, 0.7)',
                 backdropFilter: "blur(5px)",
                 transition: 'left 0.5s ease',
                 zIndex: 1001, // Ensure it's above other content
