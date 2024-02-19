@@ -11,14 +11,15 @@ import {categoriesFromConfig} from "../configuration/ApiConfig";
 
 function Header() {
   const navigate = useNavigate();
+  const [perPage, setPerPage] = useState(localStorage.getItem("perPage") || "10");
 
   const navRef = useRef();
   const showNavbar = () => {
     navRef.current.classList.toggle("responsive_nav");
   };
   const handleClick = (cat) => {
-    console.log("Calling wach page")
-    navigate("/products?category=" + cat);
+    const url = '/products?category=' + cat + '&per_page=' + perPage;
+    navigate(url);
   };
 
   return (

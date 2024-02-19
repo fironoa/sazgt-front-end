@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import './ProductDisplayDialogue.css'
 import SnackBar from '../Snackbar/Snackbar';
 
-const ProductDisplayDialogue = ({ product, baseURL, extraImages, addItem }) => {
+const ProductDisplayDialogue = ({ product, baseURL, addItem }) => {
 
   const [specifications, setSpecifications] = useState([]);
   const [currentImage, setCurrentImage] = useState('');
@@ -16,6 +16,8 @@ const ProductDisplayDialogue = ({ product, baseURL, extraImages, addItem }) => {
   const [snackBarOpen, setSnackBarOpen] = useState(false);
   const [message, setMessage] = useState('');
   const [messagetype, setMessagetype] = useState('');
+
+  const imageAPI = `${baseURL}/sazgt/products/${product.id}/images`;
 
   const focusEmailBox = () => {
     if (emailBox.current) {
@@ -31,6 +33,23 @@ const ProductDisplayDialogue = ({ product, baseURL, extraImages, addItem }) => {
     }
   };
 
+  useEffect(() => {
+    const fetchImages = () => {
+
+      fetch(imageAPI)
+        .then((response) => response.json())
+        .then((data) => {
+          const imageShowAPIBase = `${baseURL}/sazgt/images/`;
+          const { foldername, files } = data;
+          const newImagePaths = files.map(
+            (file) => `${imageShowAPIBase}${foldername}/${file}`
+          );
+          setImagePaths(newImagePaths);
+        })
+        .catch((error) => console.error("Error fetching data:", error));
+    };
+    fetchImages();
+  }, []);
 
   const handleChange = (event) => {
 
@@ -87,7 +106,6 @@ const ProductDisplayDialogue = ({ product, baseURL, extraImages, addItem }) => {
       setSpecifications(product.specifications.split(','));
       setCurrentImage(`${baseURL}/sazgt/images/${product.primaryImageUrl}`);
       setActiveImage(`${baseURL}/sazgt/images/${product.primaryImageUrl}`);
-      setImagePaths(extraImages);
     }
 
     load();
