@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 const CategoryPanel = () => {
 
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
 
     const [selectedCategory, setSelectedCategory] = useState(searchParams.get("category"));
 
@@ -16,7 +16,8 @@ const CategoryPanel = () => {
     const navigate = useNavigate();
 
     const handleClick = (cat) => {
-        setSearchParams({ category: cat });
+        navigate('/products?category=' + cat);
+        togglePanel();
     };
 
     useEffect(() => {

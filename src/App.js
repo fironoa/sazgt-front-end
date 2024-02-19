@@ -9,6 +9,7 @@ import CategoryPanel from './components/CategorySlider/CategoryPanel';
 import AdminDashboard from "./components/scenes-admin/AdminDashboard/AdminDashboard";
 import "./App.css";
 import WishList from "./components/WishList/WishList";
+import FloatingLabel from "./components/FloatingWishListLabel/FloatingLabel";
 
 function App() {
   const fontLinkHref =
@@ -38,6 +39,7 @@ function App() {
           <Route path="/admin-dashboard" element={<AdminDashboard />}></Route>
           <Route path="/wish-list" element={<WishList />}></Route>
         </Routes>
+        <FloatingLabel/>
         <Footer />
       </PanelProvider>
     </>

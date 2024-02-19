@@ -1,0 +1,35 @@
+.floatingLabel {
+    width: 120px;
+    height: 40px;
+    position: fixed;
+    cursor: pointer;
+    bottom: 20px; /* Default to bottom right */
+    right: 0px;
+    background-color: #ffc438;
+    color: #000;
+    display: flex;
+    gap: 7px;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    transition: right 0.5s ease-in-out, color 0.3s;
+}
+.icon-properties{
+    font-size: 18px;
+}
+
+
+@media (min-width: 1300px) {
+    .floatingLabel {
+        gap: 10px;
+        top: 272px; /* Move to top right on larger screens */
+        bottom: initial;
+        min-width: 150px;
+        height: 50px;
+    }
+
+    .icon-properties{
+        font-size: 22px;
+    }
+}
