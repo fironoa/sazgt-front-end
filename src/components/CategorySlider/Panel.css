@@ -1,0 +1,19 @@
+.anchor-style{
+    padding: 10px;
+    font-size: 24px;
+    font-weight: 500;
+    text-align: end;
+    cursor: pointer;
+    color: #494949;
+    transition: color 0.3s, font-size 0.3s;
+}
+
+
+.anchor-style:hover{
+    color: #000;
+}
+.anchor-style.active{
+    font-size: 45px;
+    font-weight: 700;
+    color: #007A87;
+}

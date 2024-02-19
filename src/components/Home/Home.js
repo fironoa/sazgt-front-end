@@ -10,9 +10,12 @@ import cleaningProducts from "../../images/cleaningProducts.png";
 import Rectangle68 from "../../images/Rectangle68.png";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import Footer from "../Footer/Footer";
+import CategorySlider from "../CategorySlider/CategorySlider";
 import "./Home.css";
+import IncrementCounter from "../IncrementCounter/IncrementCounter";
 
 export const Home = () => {
+
   const divStyle = {
     backgroundColor: "#F3F3F3",
     paddingBottom: "10vh",
@@ -45,6 +48,7 @@ export const Home = () => {
   return (
     <div>
       <div className="home-container">
+      <CategorySlider></CategorySlider>
         <div className={`banner`}>
           <div className="parts">
             <div>
@@ -54,7 +58,7 @@ export const Home = () => {
               </h1>
             </div>
             <div className="description">
-              <p>
+              <p align="justify">
                 Sahil - Al- Zuhoor General Trading L.L.C, founded in 2007 in
                 Dubai, offers a wide range of office and industry comfort
                 solutions, specializing in furniture and comprehensive staff
@@ -65,7 +69,7 @@ export const Home = () => {
             <div className="count-box">
               <div className="count">
                 <div className="number">
-                  <h2>400+</h2>
+                <IncrementCounter target={467}></IncrementCounter>
                 </div>
                 <div className="number-label">
                   <h5>Clients</h5>
@@ -73,7 +77,7 @@ export const Home = () => {
               </div>
               <div className="count">
                 <div className="number">
-                  <h2>1000+</h2>
+                  <IncrementCounter target={10578}></IncrementCounter>
                 </div>
                 <div className="number-label">
                   <h5>Product Sold</h5>

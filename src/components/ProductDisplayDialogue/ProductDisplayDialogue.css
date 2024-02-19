@@ -78,6 +78,7 @@
 
 .product-button-submit{
     position: absolute;
+    cursor: pointer;
     bottom: 16px;
     right: 16px;
     height: 35px;
@@ -90,7 +91,57 @@
 .product-display-details{
     width: 70%;
 }
-@media(max-width:800px){
+
+
+.radio-buttons-container{
+    display: flex;
+    margin-top: 10px;
+    font-size: 0.8rem;
+    flex-direction: column;
+    gap: 5px;
+}
+.product-enuiry-form{
+    display: flex;
+    margin-top:20px;
+    font-size: 0.8rem;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.enquiry-form-input{
+    border-radius: 5px;
+    border:none;
+    border:1px solid #D2D2D2;
+    height: 40px;
+    max-width: 100%;
+    min-width: 100%;
+    font-size: 0.8rem;
+    padding-left: 10px;
+}
+
+.enquiry-form-input-button{
+    border-radius: 5px;
+    border:none;
+    height: 40px;
+    font-size: 0.9rem;
+    color: #fff;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+.enquiry-form-input-button:hover{
+    background-color: #000;
+}
+
+.product-enuiry-form textarea{
+    height: 60px;
+}
+
+.radio-button-label-input-wrapper{
+    display: flex;
+    gap: 5px;
+}
+@media(max-width:900px){
     .product-image-container{
         flex-direction: column-reverse;
     }

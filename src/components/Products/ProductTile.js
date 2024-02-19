@@ -13,14 +13,22 @@ export const ProductTile = ({ product }) => {
   const [imageAvailable, setImageAvailable] = useState(true);
   const [currentProductsPrimaryImage, setCurrentProductsPrimaryImage] = useState('');
   const [imagePaths, setImagePaths] = useState([]);
-  const [liked, setLiked] = useState(false);
+
+  const [productId, setProductId] = useState(product.id);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
+  const [isSelected, setIsSelected] = useState(false);
+
   const imageAPI = `${baseURL}/sazgt/products/${product.id}/images`;
+
+  useEffect(() => {
+    const selectedItems = JSON.parse(localStorage.getItem('selectedItems')) || [];
+    setIsSelected(selectedItems.includes(product.id));
+  }, [product]);
 
   useEffect(() => {
     const fetchImages = () => {
@@ -48,14 +56,36 @@ export const ProductTile = ({ product }) => {
     fetchImages();
   }, []);
 
-  const handleLike = () => {
-    setLiked(!liked);
+  const toggleItem = () => {
+
+    const selectedItems = JSON.parse(localStorage.getItem('selectedItems')) || [];
+    if (selectedItems.includes(productId)) {
+      const newItems = selectedItems.filter(itemId => itemId !== productId);
+      localStorage.setItem('selectedItems', JSON.stringify(newItems));
+      setIsSelected(false);
+    } else {
+      addItem(productId); // Use addItem to add if not already present
+    }
   };
+
+  const addItem = (itemId) => {
+    const selectedItems = JSON.parse(localStorage.getItem('selectedItems')) || [];
+    if (!selectedItems.includes(itemId)) {
+      selectedItems.push(itemId);
+      localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
+      setIsSelected(true); // Update the state to reflect the addition
+    }
+  };
+
+  const handleLike = (event, itemId) => {
+    event.stopPropagation(); // Prevent click from bubbling up
+    toggleItem();
+  };
+
 
   const handleClick = () => {
     openModal();
   }
-
 
   return (
     <>
@@ -80,8 +110,8 @@ export const ProductTile = ({ product }) => {
             <h4>{product.name}</h4>
             <p>{product.model}</p>
           </div>
-          <div className="heart-icon" onClick={handleLike}>
-            {liked ? (
+          <div className="heart-icon" onClick={(event) => handleLike(event, product.id)}>
+            {isSelected ? (
               <FaHeart color="red" />
             ) : (
               <FaRegHeart color="currentColor" />
@@ -90,8 +120,7 @@ export const ProductTile = ({ product }) => {
         </div>
       </div>
       <ProductModal isOpen={isModalOpen} onClose={closeModal}>
-        <ProductDisplayDialogue product={product} baseURL={baseURL} extraImages={imagePaths} />
-
+        <ProductDisplayDialogue product={product} baseURL={baseURL} extraImages={imagePaths} addItem={addItem} />
       </ProductModal>
     </>
   );

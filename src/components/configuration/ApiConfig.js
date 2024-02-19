@@ -6,7 +6,7 @@ export const categoriesFromConfig = [
     "Camp Furniture",
     "Office Furniture",
     "School Furniture",
-    "Restaurant & Pantry Furniture",
+    "Restaurant and Pantry Furniture",
     "Electronic Appliances",
     "Safety Products",
 ];

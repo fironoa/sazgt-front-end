@@ -80,7 +80,7 @@
     row-gap:20px;
   }
 
-  .product-form-layout input[type="text"], input[type="submit"], select, .form-button{
+  .product-form-layout input[type="text"], .product-form-layout input[type="submit"], select, .form-button{
     padding: 10px;
     border: none;
     border: 1px solid #cccccc;
@@ -96,7 +96,7 @@
     transition: background-color 0.3s;
   }
   
-  input[type="submit"]{
+  .product-form-layout input[type="submit"]{
     border: none;
     background-color: #285789;
     color: white;
