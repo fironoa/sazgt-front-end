@@ -23,13 +23,7 @@
     margin-top:1.5vh;
     
 }
-.details-icon-wrapper{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1.5vh;
-    
-}
+
 .wishlist-product-image img{
     display: flex;
     align-items: center;
@@ -46,14 +40,7 @@
     justify-content: center;
 }
 
-.delete-icon{
-    margin-right: 1vw;
-    cursor: pointer;
-    color: #a4a2a2;
-}
-.delete-icon:hover{
-    color: #323131;
-}
+
 .browse-email-button{
     display: flex;
     justify-content: space-between;
@@ -65,6 +52,9 @@
     display: flex;
     align-items: center;
     gap:2px;
+}
+.browse-button:hover{
+    color: #9b9999;
 }
 .email-button button{
     background-color: #007A87;

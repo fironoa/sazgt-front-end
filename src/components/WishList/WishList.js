@@ -1,22 +1,58 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./WishList.css";
 import { useState } from "react";
-import campFurniture from "../../images/campFurniture.png";
-import { FaRegTrashAlt } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 import { IoIosArrowRoundBack } from "react-icons/io";
 import { set } from "react-hook-form";
+import config from "../configuration/ApiConfig";
+import WishlistProductTile from "./WishlistProductTile";
+
 function WishList() {
+  const navigate = useNavigate();
   const [isFormVisible, setFormVisible] = useState(false);
+  const [selectedItems, setSelectedItems] = useState(
+    JSON.parse(localStorage.getItem("selectedItems")) || []
+  );
+  const [products, setProducts] = useState([]);
 
   const toggleFormVisibility = () => {
     setFormVisible(!isFormVisible);
   };
+
+  useEffect(() => {
+    const runGetproducts = () => {
+      const data = {
+        ids: selectedItems,
+      };
+      getProducts(data);
+    };
+
+    runGetproducts();
+  }, []);
+
+  const getProducts = async (data) => {
+    console.log(data);
+    const productAPI = config.baseURL + "/sazgt/products/by-id";
+    console.log(productAPI);
+    const response = await fetch(productAPI, {
+      body: JSON.stringify(data),
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+    const responseData = await response.json();
+    console.log(responseData);
+    setProducts(responseData);
+  };
+  let lastProductId = products.length > 0 ? [products.length] : "0";
   return (
     <>
       <div className="wishlist-container">
         <div className="wislist-heading">
           <h3>Wish list</h3>
-          <h6>3 Items</h6>
+          {lastProductId && <h6>{lastProductId} Items</h6>}
         </div>
         <div className="break-line"></div>
         <div className="wishlist-sub-heading">
@@ -24,71 +60,19 @@ function WishList() {
         </div>
         <div className="break-line" style={{ marginBottom: "1vh" }}></div>
         <div clasName="wishlist-wapper">
-          <div className="wishlisted-product">
-            <div className="details-icon-wrapper">
-              <div className="wishlist-product-details">
-                <div className="wishlist-product-image">
-                  <img
-                    src={campFurniture}
-                    style={{ width: "100px", height: "100px" }}
-                  />
-                </div>
-                <div className="wishlist-product-label">
-                  <h5>Product 1 Camp Furniture</h5>
-                  <p>Model:465FG</p>
-                </div>
-              </div>
-              <div className="delete-icon">
-                <FaRegTrashAlt />
-              </div>
-            </div>
-            <div className="break-line"></div>
-          </div>
-          <div className="wishlisted-product">
-            <div className="details-icon-wrapper">
-              <div className="wishlist-product-details">
-                <div className="wishlist-product-image">
-                  <img
-                    src={campFurniture}
-                    style={{ width: "100px", height: "100px" }}
-                  />
-                </div>
-                <div className="wishlist-product-label">
-                  <h5>Product 1 Camp Furniture</h5>
-                  <p>Model:465FG</p>
-                </div>
-              </div>
-              <div className="delete-icon">
-                <FaRegTrashAlt />
-              </div>
-            </div>
-            <div className="break-line"></div>
-          </div>
-          <div className="wishlisted-product">
-            <div className="details-icon-wrapper">
-              <div className="wishlist-product-details">
-                <div className="wishlist-product-image">
-                  <img
-                    src={campFurniture}
-                    style={{ width: "100px", height: "100px" }}
-                  />
-                </div>
-                <div className="wishlist-product-label">
-                  <h5>Product 1 Camp Furniture</h5>
-                  <p>Model:465FG</p>
-                </div>
-              </div>
-              <div className="delete-icon">
-                <FaRegTrashAlt />
-              </div>
-            </div>
-            <div className="break-line"></div>
-          </div>
+          {products.map((product) => (
+            <WishlistProductTile product={product} />
+          ))}
         </div>
         <div className="browse-email-button">
           <div className="browse-button">
             <IoIosArrowRoundBack />
-            <p>Continue Browsing</p>
+            <p
+              style={{ cursor: "pointer" }}
+              onClick={() => navigate("/products")}
+            >
+              Continue Browsing
+            </p>
           </div>
           {!isFormVisible && (
             <div className="email-button">
