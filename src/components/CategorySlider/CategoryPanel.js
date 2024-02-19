@@ -16,7 +16,9 @@ const CategoryPanel = () => {
     const navigate = useNavigate();
 
     const handleClick = (cat) => {
-        setSearchParams({ category: cat });
+        console.log(searchParams);
+        navigate('/products?category=' + cat);
+        togglePanel();
     };
 
     useEffect(() => {
