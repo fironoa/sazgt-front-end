@@ -63,6 +63,7 @@ export const ProductTile = ({ product }) => {
       const newItems = selectedItems.filter(itemId => itemId !== productId);
       localStorage.setItem('selectedItems', JSON.stringify(newItems));
       setIsSelected(false);
+      window.dispatchEvent(new CustomEvent('selectedItemsUpdated'));
     } else {
       addItem(productId); // Use addItem to add if not already present
     }
@@ -74,6 +75,7 @@ export const ProductTile = ({ product }) => {
       selectedItems.push(itemId);
       localStorage.setItem('selectedItems', JSON.stringify(selectedItems));
       setIsSelected(true); // Update the state to reflect the addition
+      window.dispatchEvent(new CustomEvent('selectedItemsUpdated'));
     }
   };
 
