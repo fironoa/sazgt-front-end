@@ -4,6 +4,8 @@ import { Home } from "./components/Home/Home";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Login from "./components/scenes-admin/Login/Login";
+import { PanelProvider } from './components/Contexts/PanelContext';
+import CategoryPanel from './components/CategorySlider/CategoryPanel';
 import AdminDashboard from "./components/scenes-admin/AdminDashboard/AdminDashboard";
 import "./App.css";
 import WishList from "./components/WishList/WishList";
@@ -26,15 +28,18 @@ function App() {
 
   return (
     <>
-      <Header />
-      <Routes>
-        <Route path="/products" element={<Products />}></Route>
-        <Route path="/" element={<Home />}></Route>
-        <Route path="/auth/admin-login" element={<Login />}></Route>
-        <Route path="/admin-dashboard" element={<AdminDashboard />}></Route>
-        <Route path="/wish-list" element={<WishList />}></Route>
-      </Routes>
-      <Footer />
+      <PanelProvider>
+        <CategoryPanel />
+        <Header />
+        <Routes>
+          <Route path="/products" element={<Products />}></Route>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/auth/admin-login" element={<Login />}></Route>
+          <Route path="/admin-dashboard" element={<AdminDashboard />}></Route>
+          <Route path="/wish-list" element={<WishList />}></Route>
+        </Routes>
+        <Footer />
+      </PanelProvider>
     </>
   );
 }

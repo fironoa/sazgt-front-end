@@ -3,63 +3,37 @@ import { useState, useEffect } from "react";
 import { FaChevronDown } from "react-icons/fa6";
 import { ProductTile } from "./ProductTile";
 import { IoIosArrowForward } from "react-icons/io";
-import { FiChevronRight } from "react-icons/fi";
-import { useLocation } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
-import { IoMdHome } from "react-icons/io";
 import { FaChevronLeft } from "react-icons/fa6";
 import { FaChevronRight } from "react-icons/fa6";
 import "./Product.css";
 import LinearLoading from "../LinearLoading/LinearLoading";
 import config from "../configuration/ApiConfig";
+import CategorySlider from "../CategorySlider/CategorySlider";
+import {categoriesFromConfig} from "../configuration/ApiConfig";
 
 export const Products = () => {
   const baseURL = config.baseURL;
-  const location = useLocation();
-  const navigate = useNavigate();
 
   const [isOpen, setIsOpen] = useState(false);
   const [rotate, setRotate] = useState(false);
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const [selectedCategory, setSelectedCategory] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const [searchParams] = useSearchParams();
-  const category = searchParams.get("cat");
+  const selectedCategory = searchParams.get("category");
+  
   const [perPage, setPerPage] = useState(30);
 
-  const [categories, setCategories] = useState([]);
-
-  const queryParams = new URLSearchParams(location.search);
+  const [categories, setCategories] = useState(categoriesFromConfig);
 
   const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-
-    const getCategories = async () => {
-      setIsLoading(true);
-      const response = await fetch(
-        baseURL + "/sazgt/products/distinct/categories"
-      );
-      const responseData = await response.json();
-
-      setCategories(responseData);
-
-      if (responseData.length > 0) {
-        setSelectedCategory(responseData[0]);
-      }
-      setIsLoading(false);
-    };
-
-    getCategories();
-  }, []);
 
   const getProducts = async (category) => {
     setIsLoading(true);
     setProducts([]);
-    const productAPI = baseURL + "/sazgt/products?category=" + category;
+    const productAPI = baseURL + "/sazgt/products?" + category;
     const response = await fetch(productAPI);
     const responseData = await response.json();
     setProducts(responseData.data);
@@ -68,16 +42,12 @@ export const Products = () => {
   };
 
   useEffect(() => {
-    if (selectedCategory !== "") {
-      getProducts(selectedCategory);
-    }
-  }, [selectedCategory]);
+    getProducts(searchParams);
+  }, [searchParams]);
 
   const handleNavigate = (event) => {
     const { name } = event.target;
-
-    navigate("/products?category=" + name);
-    setSelectedCategory(name);
+    setSearchParams({ category: name });
   };
 
   const handleRotate = () => {
@@ -106,6 +76,7 @@ export const Products = () => {
     <div className="product-container">
       {isLoading && <LinearLoading></LinearLoading>}
       <div className="product-path-sort">
+      <CategorySlider></CategorySlider>
         <div className="product-sort">
           <p>Show</p>
           <div className="dropdown ">
@@ -129,6 +100,7 @@ export const Products = () => {
           {categories !== null &&
             categories.map((cat) => (
               <button
+                key={cat} // Assuming 'cat' is unique for each category
                 onClick={handleNavigate}
                 id={cat}
                 name={cat}

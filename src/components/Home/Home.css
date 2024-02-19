@@ -1,72 +1,82 @@
-.home-container{
-    margin-left:13vw;
-   margin-right:13vw;
-   border: solid 1 black;
-}
-.banner{
-    display: flex;
-    justify-content: space-between;
-    width: 100%; 
-    margin-top: 10vh;  
-}
-.parts{
-    display: flex;
-    flex-direction: column;
-    justify-content:center;
-    align-items: left;
-    width: 35vw;
-    margin-bottom:10vh;
-    gap:3vh;
+.home-container {
+    margin-left: 12vw;
+    margin-right: 12vw;
+   margin-top: 16px;
 }
 
-.banner-image-wrapper{
-    
+.banner {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 10vh;
+}
+
+.parts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    width: 35vw;
+    margin-bottom: 10vh;
+    gap: 3vh;
+}
+
+.banner-image-wrapper {
+
     object-fit: fit;
     overflow: hidden;
 }
-.banner-heading{
+
+.banner-heading {
     display: flex;
     flex-direction: column;
-    align-items:left ;
+    align-items: left;
 }
 
-.description{
+.description {
     margin-bottom: 15px;
 }
-.count-box{
+
+.count-box {
     display: flex;
-    gap:5vw;
+    gap: 5vw;
 }
-.count{
+
+.count {
     display: flex;
     flex-direction: column;
-    gap:1vh;
-   
+    gap: 1vh;
+
 }
-.categories{
+
+.categories {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.heading-boarder{
+.heading-boarder {
     height: 5px;
-    background-color:#01AEEF;
-    width:84px;
+    background-color: #01AEEF;
+    width: 84px;
     border-radius: 2rem;
 }
-.tiles-wrapper{
+
+.tiles-wrapper {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 30px;
     justify-content: center;
 }
-.tile{
+
+.tile {
     display: flex;
-    width: 100%; /* Ensure the tile's width is always 100% of its container */
-    aspect-ratio: 1 / 1; /* Adjust this to your desired aspect ratio, e.g., 16 / 9 for a widescreen aspect ratio */
+    width: 100%;
+    /* Ensure the tile's width is always 100% of its container */
+    aspect-ratio: 1 / 1;
+    /* Adjust this to your desired aspect ratio, e.g., 16 / 9 for a widescreen aspect ratio */
     flex-direction: column;
     cursor: pointer;
     background-color: #ffffff;
@@ -74,99 +84,125 @@
 }
 
 
-    
+
 @media (max-width: 800px) {
     .tiles-wrapper {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      }
     }
+}
 
-.product-name{
+.home-container {
+    margin-left: 6vw;
+    margin-right: 6vw;
+    border: solid 1 black;
+}
+
+.product-name {
     display: flex;
     justify-content: center;
     padding: 15px;
 }
-.view-more-button{
+
+.view-more-button {
     display: flex;
     align-items: center;
-    margin:50px;
+    margin: 50px;
 }
-.view-more-button button{
+
+.view-more-button button {
     border: none;
     color: aliceblue;
     background-color: #285789;
     padding: 12px 25px;
     border-radius: 2px;
 }
-.latest-arrivals-wrapper{
+
+.latest-arrivals-wrapper {
     display: flex;
     justify-content: space-between;
     width: 100%;
     margin-top: 6.5vh;
-    
+
 }
-.latest-arrivals-parts{
+
+.latest-arrivals-parts {
     display: flex;
     flex-direction: column;
-    justify-content:center;
+    justify-content: center;
     width: 35vw;
-    margin-bottom:10vh;
-    gap:4.5vh;
+    margin-bottom: 10vh;
+    gap: 4.5vh;
 }
-.arrivals-image-wrapper{
+
+.arrivals-image-wrapper {
     display: flex;
     align-items: center;
     overflow: hidden;
 }
-.arrivals-image-wrapper img{
+
+.arrivals-image-wrapper img {
     object-fit: contain;
     height: 100%;
     width: 100%;
 }
-.read-more-button{
+
+.read-more-button {
     display: flex;
     align-items: center;
-    
+
 }
-.read-more-button button{
+
+.read-more-button button {
     border: none;
     color: aliceblue;
     background-color: #285789;
     padding: 12px 25px;
     border-radius: 2px;
 }
+
 /* Scroll animation*/
 .home-box {
     opacity: 0;
     transition: opacity 2s ease-out;
-  }
-  
-  .home-box.visible {
-    opacity: 1;
-  }
+}
 
-@media(max-width:900px){
-    .banner{
-       flex-direction: column;
-       margin-top: 30px;
-    }
-    .parts{
-        flex-grow: 1;
-        align-items: stretch;
-        width:100%;
-    }
-    .latest-arrivals-parts{
-        flex-grow: 1;
-        align-items: stretch;
-        width:100%;  
-    }
-    .banner h1{
-        font-size:2.5rem;
-    
-    }
-    .latest-arrivals-wrapper{
+.home-box.visible {
+    opacity: 1;
+}
+
+@media(max-width:900px) {
+    .banner {
         flex-direction: column;
         margin-top: 30px;
     }
 
+    .parts {
+        flex-grow: 1;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .latest-arrivals-parts {
+        flex-grow: 1;
+        align-items: stretch;
+        width: 100%;
+    }
+
+    .banner h1 {
+        font-size: 2.5rem;
+
+    }
+
+    .latest-arrivals-wrapper {
+        flex-direction: column;
+        margin-top: 30px;
+    }
+
+    .count-box {
+        justify-content: center;
+        gap: 8vw;
+    }
+    .count {
+        align-items: center;
+    }
 }

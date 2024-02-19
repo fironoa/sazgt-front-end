@@ -1,17 +1,18 @@
 .container{
-    
+    margin-left:13vw;
+    margin-right:13vw;
     
 }
 .header{
     display: flex;
+    gap: 10px;
     flex-wrap: wrap;
+    margin-top:2vh;
+    margin-bottom:2vh;
 }
 .box{
     display: flex;
     flex:1;
-    margin:10px;
-    padding-top:5px;
-    padding-bottom:5px;
     justify-content: center;
     align-items: center;
 }
@@ -26,15 +27,17 @@
 }*/
 .box:nth-child(1){
     justify-content: left;
-    padding-left: 50px;
 }
 .box:nth-child(3){
     justify-content: right;
-    padding-right: 20px;
+    gap: 30px;
+
 }
 .search{
     justify-content: left;
     position:relative;
+    width: 100%;
+    min-width: 300px;
 }
 .search input{
     padding: 10px;
@@ -42,6 +45,7 @@
     border: 1px solid #ccc;
     border-radius: 32px;
     min-width:20vw;
+    width:100%;
     outline: none;
   }
 .search svg {
@@ -52,9 +56,9 @@
 }
 .contact{
     display: flex;
-    margin:10px;
-    margin-right:30px ;
     align-items: center;
+    justify-content: right;
+    gap: 10px;
 }
 .icon{
    display: flex;
@@ -62,7 +66,6 @@
 }
 
 .cont-content{
-   padding-left:10px;
    font-family: 'Inter', sans-serif;
    font-size: 13px;
    text-align: center;
@@ -100,8 +103,32 @@
     opacity: 0;
 }
 
+@media (max-width:900px){
+    #line-below-nav-bar{
+        display: none;
+    }
+    .header{
+        flex-direction: column;
+        gap:2vh;
+    }
 
-@media (max-width:1045px){
+    .box:nth-child(1){
+        justify-content: center;
+    }
+
+    .container{
+        margin-left:10vw;
+        margin-right:10vw;
+    }
+
+    .box:nth-child(3){
+        justify-content: center;
+        gap: 20px;
+    }
+}
+
+@media (max-width:900px){
+    
     .navbar-wrapper{
         height: 0;
     }
@@ -138,6 +165,10 @@
     .nav-list a{
         font-size: 1.2rem;
     }
-
+    .container{
+        margin-left:6vw;
+        margin-right:6vw;
+        
+    }
    
 }

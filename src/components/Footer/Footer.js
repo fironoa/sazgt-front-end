@@ -20,7 +20,7 @@ function Footer() {
           <Form />
         </div>
         <div className="company-contact-details">
-          <p>
+          <p align='center'>
             Telephone: +97142808392 | FAX: +97142821973 | Mobile: +97150-8362620
           </p>
           <p>E-mail : info@sazgt.com</p>
@@ -30,15 +30,15 @@ function Footer() {
           <div className="quick-links-border"></div>
         </div>
         <div className="quick-links">
-          <p>
+          <p align='center'>
             Locker Cabinets | Camp Furniture | Electronics | House Hold
             Appliances
           </p>
         </div>
         <div className="copyright">
-          <p>
+          <p align='center'>
             Copyright © 2023 Sahil Al Zuhoor. All Rights Reserved |Privacy
-            Policy | Design by Second Route Entertainments
+            Policy | Design by gobartsdev.com
           </p>
         </div>
       </div>
