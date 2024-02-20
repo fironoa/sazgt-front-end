@@ -74,7 +74,6 @@ function EditProduct({ product }) {
 
         const token = localStorage.getItem('accessToken');
 
-
         setIsLoading(true);
         // Remove the selected file and its preview by index
         console.log(recentProductImages[indexToRemove]);
@@ -96,8 +95,11 @@ function EditProduct({ product }) {
             setIsLoading(false);
 
         };
-
-        deleteImage();
+        const isConfirmed = window.confirm('Are you sure you want to delete this image?');
+        if (isConfirmed) {
+            deleteImage();
+        }
+        
     };
 
     useEffect(() => {

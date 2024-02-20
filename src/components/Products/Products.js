@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef  } from "react";
 import { FaChevronDown } from "react-icons/fa6";
 import { ProductTile } from "./ProductTile";
 import { IoIosArrowForward } from "react-icons/io";
@@ -32,6 +32,8 @@ export const Products = () => {
   const [products, setProducts] = useState([]);
 
   const [paginationLinks, setPaginationLinks] = useState(null);
+
+  const topElemenrRef = useRef(null);
 
   const noProductsImage = (
     <div style={{ display: 'flex', flexDirection:"column", justifyContent: 'center', alignItems: 'center', height: '100%' }}>
@@ -80,6 +82,7 @@ export const Products = () => {
     newSearchParams.set("per_page", perPage);
 
     setSearchParams(newSearchParams);
+    topElemenrRef.current.focus();
   };
 
 
@@ -120,7 +123,7 @@ export const Products = () => {
         <div className="product-sort">
           <p>Show</p>
           <div className="dropdown ">
-            <button className={`dropbtn`} onClick={handleClick}>
+            <button className={`dropbtn`} onClick={handleClick} ref={topElemenrRef}>
               {perPage} Products
               <FaChevronDown className={`chevron ${rotate ? "rotate" : ""}`} />
             </button>
