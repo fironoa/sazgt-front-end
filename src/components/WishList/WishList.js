@@ -67,10 +67,7 @@ function WishList() {
         <div className="browse-email-button">
           <div className="browse-button">
             <IoIosArrowRoundBack />
-            <p
-              style={{ cursor: "pointer" }}
-              onClick={() => navigate("/products")}
-            >
+            <p style={{ cursor: "pointer" }} onClick={() => navigate(-1)}>
               Continue Browsing
             </p>
           </div>
