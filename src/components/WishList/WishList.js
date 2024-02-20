@@ -3,7 +3,7 @@ import "./WishList.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { IoIosArrowRoundBack } from "react-icons/io";
-import { set } from "react-hook-form";
+import CategorySlider from '../CategorySlider/CategorySlider';
 import config from "../configuration/ApiConfig";
 import WishlistProductTile from "./WishlistProductTile";
 
@@ -50,6 +50,7 @@ function WishList() {
   return (
     <>
       <div className="wishlist-container">
+      <CategorySlider></CategorySlider>
         <div className="wislist-heading">
           <h3>Wish list</h3>
           {lastProductId && <h6>{lastProductId} Items</h6>}
@@ -60,8 +61,8 @@ function WishList() {
         </div>
         <div className="break-line" style={{ marginBottom: "1vh" }}></div>
         <div clasName="wishlist-wapper">
-          {products.map((product) => (
-            <WishlistProductTile product={product} />
+          {products.length > 0 && products.map((product) => (
+            <WishlistProductTile product={product} updateProducts={getProducts}/>
           ))}
         </div>
         <div className="browse-email-button">

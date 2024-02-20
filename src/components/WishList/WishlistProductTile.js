@@ -3,9 +3,15 @@ import "./WishlistProductTile.css";
 import { FaRegTrashAlt } from "react-icons/fa";
 import config from "../configuration/ApiConfig";
 import defaultImage from "../../images/defaultImage.png";
-function WishlistProductTile({ product }) {
-  const [currentProductsPrimaryImage, setCurrentProductsPrimaryImage] =
+
+
+function WishlistProductTile({ product, updateProducts }) {
+
+
+  const [currentProductsPrimaryImage] =
     useState(`${config.baseURL}/sazgt/images/${product.primaryImageUrl}`);
+
+
   const [imageAvailable, setImageAvailable] = useState(true);
 
   useEffect(() => {
@@ -16,6 +22,17 @@ function WishlistProductTile({ product }) {
     };
     initialLoad();
   });
+
+  const handleDeleteItemFromWishList = () =>{
+    const selectedItems = JSON.parse(localStorage.getItem('selectedItems')) || [];
+    if (selectedItems.includes(product.id)) {
+      const newItems = selectedItems.filter(itemId => itemId !== product.id);
+      localStorage.setItem('selectedItems', JSON.stringify(newItems));
+      window.dispatchEvent(new CustomEvent('selectedItemsUpdated'));
+      updateProducts({ids : newItems});
+    }
+  }
+
 
   return (
     <div>
@@ -44,7 +61,7 @@ function WishlistProductTile({ product }) {
             </div>
           </div>
           <div className="delete-icon">
-            <FaRegTrashAlt />
+            <FaRegTrashAlt onClick={handleDeleteItemFromWishList}/>
           </div>
         </div>
         <div className="break-line"></div>
