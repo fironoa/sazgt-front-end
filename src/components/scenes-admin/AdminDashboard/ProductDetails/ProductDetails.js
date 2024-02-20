@@ -91,8 +91,10 @@ function ProductDetails({ providedPId }) {
       setIsLoading(false);
 
     };
-
-    deleteImage();
+    const isConfirmed = window.confirm('Are you sure you want to delete this image?');
+    if (isConfirmed) {
+      deleteImage();
+    }
   };
 
 
@@ -103,33 +105,33 @@ function ProductDetails({ providedPId }) {
     const imageAPI = baseURL + '/sazgt/products/' + pId + '/images';
 
     fetch(imageAPI)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
 
-            // Define your base URL
-            const imageShowAPIBase = baseURL + '/sazgt/images/';
+        // Define your base URL
+        const imageShowAPIBase = baseURL + '/sazgt/images/';
 
-            // Destructure foldername and files from the response object
-            const { foldername, files } = data;
+        // Destructure foldername and files from the response object
+        const { foldername, files } = data;
 
-            // Create new paths by appending base URL, folder name, and file name
-            const newImagePaths = files.map(file => `${imageShowAPIBase}${foldername}/${file}`);
+        // Create new paths by appending base URL, folder name, and file name
+        const newImagePaths = files.map(file => `${imageShowAPIBase}${foldername}/${file}`);
 
-            // Update the imagePaths state with these new paths
-            setRecentProductImages(currentPaths => [...currentPaths, ...newImagePaths]);
+        // Update the imagePaths state with these new paths
+        setRecentProductImages(currentPaths => [...currentPaths, ...newImagePaths]);
 
 
-        }) // Adjust based on your API response structur
-        .catch(error => console.error('Error fetching data:', error))
-        .finally(() => setHasImagesLoaded(true));
-}
+      }) // Adjust based on your API response structur
+      .catch(error => console.error('Error fetching data:', error))
+      .finally(() => setHasImagesLoaded(true));
+  }
 
 
   useEffect(() => {
     setCategories(categoriesFromConfig);
   }, []);
-  
+
 
 
 
@@ -251,9 +253,9 @@ function ProductDetails({ providedPId }) {
         console.error(error);
         if (error.errors) {
           showSnackBar(JSON.stringify(error.errors), "error");
-        } else if(error.message){
+        } else if (error.message) {
           showSnackBar(error.message, "error");
-      }
+        }
         // Handle errors here (e.g., show error message)
       })
       .finally(() => {

@@ -91,12 +91,6 @@
     }
 }
 
-.home-container {
-    margin-left: 6vw;
-    margin-right: 6vw;
-    border: solid 1 black;
-}
-
 .product-name {
     display: flex;
     justify-content: center;
@@ -205,4 +199,10 @@
     .count {
         align-items: center;
     }
+
+    
+.home-container {
+    margin-left: 6vw;
+    margin-right: 6vw;
+}
 }

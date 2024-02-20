@@ -17,14 +17,21 @@ function ProductList({ baseURL }) {
     const openModal = () => setIsModalOpen(true);
     const closeModal = () => setIsModalOpen(false);
 
+    const removeProductById = (productId) => {
+        // Filter out the product with the matching id
+        const updatedProducts = products.filter(product => product.id !== productId);
+        // Update the products state
+        setProducts(updatedProducts);
+    };
+
 
     const handleEditClick = (product) => {
         // navigate("/admin-dashboard?op=edit-product&pId=" + productId);
         setCurrentProduct(product);
         openModal();
     };
-    const productsAPI = baseURL + '/sazgt/products?per_page=40';
-    console.log(productsAPI);
+    const productsAPI = baseURL + '/sazgt/products/get-all';
+    
     useEffect(() => {
         // Replace 'your-api-endpoint' with your actual product API endpoint
         //http://localhost:8000/api/sazgt/products?per_page=3
@@ -33,8 +40,7 @@ function ProductList({ baseURL }) {
         fetch(productsAPI)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
-                setProducts(data.data);
+                setProducts(data);
             }) // Adjust based on your API response structur
             .catch(error => console.error('Error fetching data:', error));
     }, []);
@@ -55,12 +61,13 @@ function ProductList({ baseURL }) {
                             <th>Specifications</th>
                             <th>Tags</th>
                             <th>Category</th>
-                            <th colSpan="2">Actions</th>
+                            <th colSpan="3">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {products.map((product) => (
-                            <ProductRow key={product.id} product={product} baseURL={baseURL} onEdit={handleEditClick} />
+                        {products && products.map((product) => (
+                            <ProductRow key={product.id} product={product} baseURL={baseURL} 
+                            onEdit={handleEditClick} removeProductById={removeProductById}/>
                         ))}
                     </tbody>
                 </table>
@@ -68,7 +75,7 @@ function ProductList({ baseURL }) {
 
             {/* Modal for editing will go here */}
             <Modal isOpen={isModalOpen} onClose={closeModal}>
-                <EditProduct product={currentProduct}/>
+                <EditProduct product={currentProduct} />
             </Modal>
         </div>
     );
