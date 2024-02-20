@@ -130,7 +130,7 @@
 .product-tiles-wrapper{
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 20px; /* This sets both row and column gaps */
     justify-content: center; /* Aligns the grid to the center of its container */
     /*height: fit-content;*/

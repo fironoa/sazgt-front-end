@@ -7,6 +7,7 @@ import config from '../../../configuration/ApiConfig';
 import { MdAddBox } from "react-icons/md";
 import { FaMinus } from "react-icons/fa";
 import { useLocation } from 'react-router-dom';
+import { categoriesFromConfig } from '../../../configuration/ApiConfig';
 
 function EditProduct({ product }) {
 
@@ -29,7 +30,7 @@ function EditProduct({ product }) {
     const [productId, setproductId] = useState(-1);
     const [isLoading, setIsLoading] = useState(false);
 
-    const [categories, setCategories] = useState([]); // For storing categories
+    const [categories] = useState(categoriesFromConfig); // For storing categories
     const [newCategory, setNewCategory] = useState(''); // For storing a new category name
 
     const [snackBarOpen, setSnackBarOpen] = useState(false);
@@ -153,24 +154,6 @@ function EditProduct({ product }) {
             .finally(() => setHasImagesLoaded(true));
 
     }
-
-
-    useEffect(() => {
-        // Fetch categories from your backend or define them statically
-        const fetchCategories = async () => {
-            // Example fetch request; adjust according to your actual API
-            const response = await fetch(baseURL + '/sazgt/products/distinct/categories');
-
-            const data = await response.json();
-
-            console.log(data);
-            setCategories(data); // Assuming 'data' is an array of category names
-        };
-
-        fetchCategories();
-    }, []);
-
-
 
     const handleSpecificationChange = (event, index) => {
         const newSpecifications = specifications.map((specification, specIndex) => index === specIndex ? event.target.value : specification);
