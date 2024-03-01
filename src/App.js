@@ -1,13 +1,14 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { Products } from "./components/Products/Products";
 import { Home } from "./components/Home/Home";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Login from "./components/scenes-admin/Login/Login";
-import { PanelProvider } from './components/Contexts/PanelContext';
-import CategoryPanel from './components/CategorySlider/CategoryPanel';
+import { PanelProvider } from "./components/Contexts/PanelContext";
+import CategoryPanel from "./components/CategorySlider/CategoryPanel";
 import AdminDashboard from "./components/scenes-admin/AdminDashboard/AdminDashboard";
 import "./App.css";
+
 import WishList from "./components/WishList/WishList";
 import FloatingLabel from "./components/FloatingWishListLabel/FloatingLabel";
 import SnackbarProvider from "./components/Contexts/SnackbarContext";
@@ -27,6 +28,14 @@ function App() {
     link.rel = "stylesheet";
     document.head.appendChild(link);
   }
+  const ConditionalFooter = () => {
+    const location = useLocation();
+
+    if (location.pathname === "/products") {
+      return null;
+    }
+    return <Footer />;
+  };
 
   return (
     <>
@@ -41,8 +50,8 @@ function App() {
             <Route path="/admin-dashboard" element={<AdminDashboard />}></Route>
             <Route path="/wish-list" element={<WishList />}></Route>
           </Routes>
-          <FloatingLabel />
-          <Footer />
+          <FloatingLabel  />
+          <ConditionalFooter />
         </SnackbarProvider>
       </PanelProvider>
     </>

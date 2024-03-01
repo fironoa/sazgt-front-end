@@ -65,8 +65,9 @@
 
 .tiles-wrapper {
     width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    
     gap: 30px;
     justify-content: center;
 }
@@ -79,9 +80,11 @@
     /* Adjust this to your desired aspect ratio, e.g., 16 / 9 for a widescreen aspect ratio */
     flex-direction: column;
     cursor: pointer;
+    max-width: 300px;
     background-color: #ffffff;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
+
 
 
 

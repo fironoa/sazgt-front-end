@@ -13,9 +13,9 @@ import Footer from "../Footer/Footer";
 import CategorySlider from "../CategorySlider/CategorySlider";
 import "./Home.css";
 import IncrementCounter from "../IncrementCounter/IncrementCounter";
+import { categoriesFromConfig } from "../configuration/ApiConfig";
 
 export const Home = () => {
-
   const divStyle = {
     backgroundColor: "#F3F3F3",
     paddingBottom: "10vh",
@@ -48,7 +48,7 @@ export const Home = () => {
   return (
     <div>
       <div className="home-container">
-      <CategorySlider></CategorySlider>
+        <CategorySlider></CategorySlider>
         <div className={`banner`}>
           <div className="parts">
             <div>
@@ -69,7 +69,7 @@ export const Home = () => {
             <div className="count-box">
               <div className="count">
                 <div className="number">
-                <IncrementCounter target={467}></IncrementCounter>
+                  <IncrementCounter target={467}></IncrementCounter>
                 </div>
                 <div className="number-label">
                   <h5>Clients</h5>
@@ -100,57 +100,19 @@ export const Home = () => {
               <div className="heading-boarder"></div>
             </div>
             <div className="tiles-wrapper">
-              <div className="tile">
-                <div className="tile-img">
-                  <img src={washingmachine} width="100%" />
+              {categoriesFromConfig.map((category) => (
+                <div className="tile">
+                  <div className="tile-img">
+                    <img
+                      width="100%"
+                      src={"/images/" + category.replace(/\s+/g, "") + ".webp"}
+                    />
+                  </div>
+                  <div className="product-name">
+                    <p>{category}</p>
+                  </div>
                 </div>
-                <div className="product-name">
-                  <p>Washing Machine</p>
-                </div>
-              </div>
-              <div className="tile">
-                <div className="tile-img">
-                  <img src={lockerCabinet} width="100%" />
-                </div>
-
-                <div className="product-name">
-                  <p>Locker Cabinet</p>
-                </div>
-              </div>
-              <div className="tile">
-                <div className="tile-img">
-                  <img src={campFurniture} width="100%" />
-                </div>
-                <div className="product-name">
-                  <p>Camp Furniture</p>
-                </div>
-              </div>
-              <div className="tile">
-                <div className="tile-img">
-                  <img src={houseHold} width="100%" />
-                </div>
-                <div className="product-name">
-                  <p>House hold Appliances</p>
-                </div>
-              </div>
-              <div className="tile">
-                <div className="tile-img">
-                  <img src={coporateGifts} width="100%" />
-                </div>
-
-                <div className="product-name">
-                  <p>Corpoarate Gifts</p>
-                </div>
-              </div>
-              <div className="tile">
-                <div className="tile-img">
-                  <img src={cleaningProducts} width="100%" />
-                </div>
-
-                <div className="product-name">
-                  <p>Cleaning Products</p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
