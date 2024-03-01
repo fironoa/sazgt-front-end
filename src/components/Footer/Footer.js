@@ -1,12 +1,28 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Form from "./Form/Form";
 import Map from "./Map/Map";
 import "./Footer.css";
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
+
 
 function Footer() {
   const bgColor = {
     backgroundColor: "#F8F9FB",
   };
+
+  const [mapToBeShown, setMapToBeShown] = useState(false);
+  const location = useLocation();
+  
+  useEffect(() => {
+    console.log(location.pathname);
+    if (location.pathname == "/") {
+      setMapToBeShown(true);
+    } else {
+      setMapToBeShown(false);
+    }
+  }, [location])
+   
 
   return (
     <div style={bgColor}>
@@ -15,10 +31,10 @@ function Footer() {
           <h2>Contact Us</h2>
           <div className="heading-boarder"></div>
         </div>
-        <div className="footer-components-wrapper">
+        {mapToBeShown && <div className="footer-components-wrapper">
           <Map />
           <Form />
-        </div>
+        </div>}
         <div className="company-contact-details">
           <p align='center'>
             Telephone: +97142808392 | FAX: +97142821973 | Mobile: +97150-8362620

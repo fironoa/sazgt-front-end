@@ -28,15 +28,7 @@ function App() {
     link.rel = "stylesheet";
     document.head.appendChild(link);
   }
-  const ConditionalFooter = () => {
-    const location = useLocation();
-
-    if (location.pathname === "/products") {
-      return null;
-    }
-    return <Footer />;
-  };
-
+  
   return (
     <>
       <PanelProvider>
@@ -51,7 +43,7 @@ function App() {
             <Route path="/wish-list" element={<WishList />}></Route>
           </Routes>
           <FloatingLabel  />
-          <ConditionalFooter />
+          <Footer />
         </SnackbarProvider>
       </PanelProvider>
     </>
