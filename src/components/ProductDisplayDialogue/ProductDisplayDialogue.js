@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './ProductDisplayDialogue.css'
 import SnackBar from '../Snackbar/Snackbar';
+import { useSnackbar } from '../Contexts/SnackbarContext';
 
-const ProductDisplayDialogue = ({ product, baseURL, addItem }) => {
+const ProductDisplayDialogue = ({ product, baseURL, addItem, closeModal }) => {
 
   const [specifications, setSpecifications] = useState([]);
   const [currentImage, setCurrentImage] = useState('');
@@ -16,7 +17,7 @@ const ProductDisplayDialogue = ({ product, baseURL, addItem }) => {
   const [snackBarOpen, setSnackBarOpen] = useState(false);
   const [message, setMessage] = useState('');
   const [messagetype, setMessagetype] = useState('');
-
+  const { showSnackbar } = useSnackbar();
   const imageAPI = `${baseURL}/sazgt/products/${product.id}/images`;
 
   const focusEmailBox = () => {
@@ -82,16 +83,17 @@ const ProductDisplayDialogue = ({ product, baseURL, addItem }) => {
   const handleContinueClick = () => {
     console.log(continueWithOne);
     if (continueWithOne === 'unknown') {
-      alert("Please select an option");
+      showSnackbar("Select an option", "error");
       return null;
     } else if (continueWithOne === 'true') {
-      alert("Provide Contact Info");
+      showSnackbar("Provide Contact information", "error");
       setIsReadyToTakeContactInfo(true);
     } else if (continueWithOne === 'false') {
       setIsReadyToTakeContactInfo(false);
       addItem(product.id);
-      showSnackBar("Product added to wish List, Continue Browsing", "success");
-
+      //showSnackBar2("Product added to wish List, Continue Browsing", "success");
+      showSnackbar("Product added to Wish List", "info");
+      closeModal();
     }
 
   }
@@ -119,7 +121,7 @@ const ProductDisplayDialogue = ({ product, baseURL, addItem }) => {
 
 
 
-  const showSnackBar = (message, type) => {
+  const showSnackBar2 = (message, type) => {
     setMessage(message);
     setSnackBarOpen(true);
     setMessagetype(type);
@@ -171,6 +173,7 @@ const ProductDisplayDialogue = ({ product, baseURL, addItem }) => {
           {
             isReadyToContinue &&
             <div className='radio-buttons-container'>
+              <h6>Would you like to ?</h6>
               <label className='radio-button-label-input-wrapper'>
                 <div>
                   <input

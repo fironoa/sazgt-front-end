@@ -53,6 +53,7 @@
     display: flex;
     align-items: center;
     gap:2px;
+    transition:color 0.3s;
 }
 .browse-button:hover{
     color: #9b9999;
@@ -60,9 +61,14 @@
 .email-button button{
     background-color: #007A87;
     color:#ffffff;
-    padding: 2vh 7vw;
+    padding: 20px 30px;
     border-radius: 3px;
     cursor: pointer;
+    transition:background-color 0.3s;
+}
+
+.email-button button:hover{
+    background-color: #005963;
 }
 .mail-form{
    display: flex;

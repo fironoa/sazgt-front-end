@@ -103,7 +103,7 @@ export const ProductTile = ({ product }) => {
         </div>
       </div>
       <ProductModal isOpen={isModalOpen} onClose={closeModal}>
-        <ProductDisplayDialogue product={product} baseURL={baseURL} addItem={addItem} />
+        <ProductDisplayDialogue product={product} baseURL={baseURL} addItem={addItem} closeModal = {closeModal} />
       </ProductModal>
     </>
   );

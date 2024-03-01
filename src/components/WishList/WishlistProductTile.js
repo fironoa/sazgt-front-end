@@ -5,7 +5,7 @@ import config from "../configuration/ApiConfig";
 import defaultImage from "../../images/defaultImage.png";
 
 
-function WishlistProductTile({ product, updateProducts }) {
+function WishlistProductTile({ product, updateProducts, setSelectedItems }) {
 
 
   const [currentProductsPrimaryImage] =
@@ -30,6 +30,7 @@ function WishlistProductTile({ product, updateProducts }) {
       localStorage.setItem('selectedItems', JSON.stringify(newItems));
       window.dispatchEvent(new CustomEvent('selectedItemsUpdated'));
       updateProducts({ids : newItems});
+      setSelectedItems(newItems)
     }
   }
 
