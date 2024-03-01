@@ -3,10 +3,10 @@ export default {
 };
 
 export const categoriesFromConfig = [
-    "Camp Furniture",
-    "Office Furniture",
-    "School Furniture",
-    "Restaurant and Pantry Furniture",
-    "Electronic Appliances",
-    "Safety Products",
+  "Camp Furniture",
+  "Office Furniture",
+  "School Furniture",
+  "Restaurant and Pantry Furniture",
+  "Electronic Appliances",
+  "Safety Products",
 ];
