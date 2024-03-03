@@ -17,7 +17,7 @@ const IncrementCounter = ({ target }) => {
 
     return (
         <h2 style={{
-            fontSize: "3rem"
+            fontSize: "2.4rem"
         }}>{count}+</h2>
     );
 

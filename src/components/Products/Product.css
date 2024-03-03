@@ -146,20 +146,29 @@
 .pagination{
     display: flex;
     justify-content: center;
-    border-radius: 5px;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
     margin-top: 60px;
 }
 .pagination-div{
     padding: 10px;
     border: 1px solid #D6D6D6;
     background-color: #fff;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
+}
+
+.pagination-div:first-child {
+    border-top-left-radius:3px;
+    border-bottom-left-radius:3px;
+}
+
+.pagination-div:last-child {
+    border-top-right-radius:3px;
+    border-bottom-right-radius:3px;
 }
 
 .pagination-div:hover{
@@ -171,6 +180,12 @@
     color: white;
 }
 
+@media(min-width:1920px) {
+    .product-container{
+        margin-left:18vw;
+        margin-right:18vw;
+    }
+}
 
 @media (max-width: 1000px) {
     .product-tiles-wrapper {
@@ -180,7 +195,7 @@
   
   @media (max-width:900px) {
     .product-tiles-wrapper {
-      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     }
 
     .product-path-sort{

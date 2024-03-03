@@ -22,10 +22,16 @@ function WishList() {
     setFormVisible(!isFormVisible);
   };
 
+  const removeProductById = (productId) => {
+    setProducts(currentProducts => 
+      currentProducts.filter(product => product.id !== productId)
+    );
+  };
+
   const noProductsImage = (
-    <div style={{ paddingTop:"6vh", display: 'flex', flexDirection:"column", justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+    <div style={{ paddingTop: "6vh", display: 'flex', flexDirection: "column", justifyContent: 'center', alignItems: 'center', height: '100%' }}>
       <img src={noCartImage} alt="No products found" style={{ maxWidth: '20%', maxHeight: '20%', width: 'auto', height: 'auto' }} />
-      <h5><span style={{color:"#ddd"}}>This wish List is Empty</span></h5>
+      <h5><span style={{ color: "#ddd" }}>This wishlist is Empty</span></h5>
     </div>
   );
   useEffect(() => {
@@ -57,29 +63,33 @@ function WishList() {
     setProducts(responseData);
     setIsLoading(false);
   };
+
+
   let lastProductId = products.length > 0 ? [products.length] : "0";
   return (
     <>
       <div className="wishlist-container">
-        {isLoading && <LinearLoading></LinearLoading>}
         <CategorySlider></CategorySlider>
         <div className="wislist-heading">
-          <h3>Wish list</h3>
-          {lastProductId && <h6>{lastProductId} Items</h6>}
+          <h3>Wishlist</h3>
         </div>
         <div className="break-line"></div>
         <div className="wishlist-sub-heading">
           <h5>Product Details</h5>
+          {lastProductId && <h6>{lastProductId} Items</h6>}
         </div>
         <div className="break-line" style={{ marginBottom: "1vh" }}></div>
         <div clasName="wishlist-wapper">
-          
-          {products.length > 0 ? (
+
+          {isLoading ? (
+            <LinearLoading />
+          ) : products.length > 0 ? (
             products.map((product) => (
-              <WishlistProductTile product={product} updateProducts={getProducts} setSelectedItems={setSelectedItems} />
+              <WishlistProductTile product={product} updateProducts={removeProductById} setSelectedItems={setSelectedItems} />
             ))
           ) : (
-              noProductsImage
+
+            noProductsImage
           )}
         </div>
         <div className="browse-email-button">

@@ -29,6 +29,12 @@
     background-color: #007A87;
     height: 40px;
     width: 100%;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.message-button button:hover{
+    background-color: #01565f;
 }
 .form-textarea{
     height: 297px;

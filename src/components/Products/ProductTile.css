@@ -8,18 +8,33 @@
     transition: background-color 0.3s;
 }
 .product-details{
+    position: relative; 
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height:70px;
+    transition: background-color 0.1s;
 }
 .product-label{
+    
+   overflow: hidden;
    padding: 10px;
 }
-.product-label h4{
+
+
+.product-label h4 {
+    z-index: -5;
     font-size: 14px;
     font-weight: 400;
     margin-bottom: 5px;
+    color: inherit;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
+
+
+
 .product-label p{
     font-size: 14px;
     font-weight: 300;
@@ -29,13 +44,14 @@
     align-items:flex-start;
     margin-right: 12px;
     margin-bottom:30px;
+    z-index: 3;
 }
 .icon-align{
     display:flex;
     align-items: top;
 }
 
-.product-tile:hover{
+.product-details:hover{
     background-color: #000;
     color:#fff;
     

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { usePanel } from '../Contexts/PanelContext';
+import { IoArrowForward } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
 import "./Panel.css";
 import { useSearchParams } from "react-router-dom";
@@ -22,6 +23,11 @@ const CategoryPanel = () => {
         togglePanel();
     };
 
+
+    const handleContactClick = () => {
+        navigate('/#contact-us-section');
+        togglePanel();
+    }
     useEffect(() => {
         setSelectedCategory(searchParams.get("category"));
     }, [searchParams]);
@@ -63,6 +69,13 @@ const CategoryPanel = () => {
                     <a className={`anchor-style ${selectedCategory === cat ? "active" : ""}`} onClick={() => handleClick(cat)}>{cat}</a>
                 ))}
 
+                <div className='contact-us-button'>
+                    <a 
+                    href='/#contact-us-section'
+                    onClick={handleContactClick}
+                    className={`anchor-style`}>Contact Us </a>
+                    <IoArrowForward className='icon-properties'/>
+                </div>
             </nav>
         </div>
     );

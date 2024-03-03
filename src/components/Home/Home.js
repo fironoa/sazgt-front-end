@@ -1,21 +1,17 @@
-import React from "react";
-import { useState, useEffect, useRef } from "react";
+import React, {useState} from "react";
 import Rectangle77 from "../../images/Rectangle77.png";
-import washingmachine from "../../images/washingmachine.png";
-import lockerCabinet from "../../images/lockerCabinet.png";
-import campFurniture from "../../images/campFurniture.png";
-import houseHold from "../../images/houseHold.png";
-import coporateGifts from "../../images/coporateGifts.png";
-import cleaningProducts from "../../images/cleaningProducts.png";
 import Rectangle68 from "../../images/Rectangle68.png";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
-import Footer from "../Footer/Footer";
 import CategorySlider from "../CategorySlider/CategorySlider";
 import "./Home.css";
+import { useNavigate } from "react-router-dom";
 import IncrementCounter from "../IncrementCounter/IncrementCounter";
 import { categoriesFromConfig } from "../configuration/ApiConfig";
 
 export const Home = () => {
+  const [perPage] = useState(localStorage.getItem("perPage") || "30");
+  const navigate = useNavigate();
+  
   const divStyle = {
     backgroundColor: "#F3F3F3",
     paddingBottom: "10vh",
@@ -44,6 +40,12 @@ export const Home = () => {
     gap: "10px",
     fontSize: "1rem",
   };
+
+  const handleClick = (cat) => {
+    const url = '/products?category=' + cat + '&per_page=' + perPage;
+    navigate(url);
+  };
+
 
   return (
     <div>
@@ -101,7 +103,7 @@ export const Home = () => {
             </div>
             <div className="tiles-wrapper">
               {categoriesFromConfig.map((category) => (
-                <div className="tile">
+                <div className="tile" onClick={() => handleClick(category)}>
                   <div className="tile-img">
                     <img
                       width="100%"
@@ -145,7 +147,7 @@ export const Home = () => {
               </ul>
               <div className="read-more-button">
                 <button>
-                  <a>Read more</a>
+                  <a href="#contact-us-section" style={{color:"white"}}>Leave a Message</a>
                 </button>
               </div>
             </div>

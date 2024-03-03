@@ -55,7 +55,8 @@
 .copyright{
     color:#9D9D9D;
     font-size: 14px;
-    margin-bottom: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 @media (max-width:900px){
     .footer-components-wrapper{
@@ -67,5 +68,18 @@
     .footer-container{
         margin-left:6vw;
         margin-right:6vw;
+    }
+}
+
+
+@media(min-width:1920px) {
+    .footer-container{
+        margin-left: 18vw;
+        margin-right: 18vw;
+
+    } 
+
+    .footer-components-wrapper{
+        gap: 40px;
     }
 }

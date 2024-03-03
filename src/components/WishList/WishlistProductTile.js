@@ -29,7 +29,7 @@ function WishlistProductTile({ product, updateProducts, setSelectedItems }) {
       const newItems = selectedItems.filter(itemId => itemId !== product.id);
       localStorage.setItem('selectedItems', JSON.stringify(newItems));
       window.dispatchEvent(new CustomEvent('selectedItemsUpdated'));
-      updateProducts({ids : newItems});
+      updateProducts(product.id);
       setSelectedItems(newItems)
     }
   }

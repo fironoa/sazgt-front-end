@@ -1,7 +1,6 @@
 import React from "react";
-import Rectangle77 from "../../images/Rectangle77.png";
 import "./ProductTile.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import config from "../configuration/ApiConfig";
 import defaultImage from "../../images/defaultImage.png";
@@ -10,6 +9,8 @@ import ProductDisplayDialogue from "../ProductDisplayDialogue/ProductDisplayDial
 
 export const ProductTile = ({ product }) => {
   const baseURL = config.baseURL;
+
+
   const [imageAvailable, setImageAvailable] = useState(true);
   const [currentProductsPrimaryImage, setCurrentProductsPrimaryImage] = useState('');
 
@@ -26,6 +27,8 @@ export const ProductTile = ({ product }) => {
     const selectedItems = JSON.parse(localStorage.getItem('selectedItems')) || [];
     setIsSelected(selectedItems.includes(product.id));
   }, [product]);
+
+  
 
   useEffect(() => {
     const initialLoad = () => {
@@ -90,7 +93,7 @@ export const ProductTile = ({ product }) => {
         </div>
         <div className="product-details">
           <div className="product-label">
-            <h4>{product.name}</h4>
+            <h4 style={{ whiteSpace: 'nowrap'}}>{product.name}</h4>
             <p>{product.model}</p>
           </div>
           <div className="heart-icon" onClick={(event) => handleLike(event, product.id)}>
