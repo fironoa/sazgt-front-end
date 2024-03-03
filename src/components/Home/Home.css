@@ -67,8 +67,8 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-
-    gap: 30px;
+    max-width: 1080px;
+    gap: 50px;
     justify-content: center;
 }
 
@@ -124,7 +124,7 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
-    margin-top: 6.5vh;
+    margin-bottom: 6vh;
 
 }
 
@@ -133,7 +133,6 @@
     flex-direction: column;
     justify-content: center;
     width: 35vw;
-    margin-bottom: 10vh;
     gap: 4.5vh;
 }
 
@@ -205,6 +204,7 @@
         flex-grow: 1;
         align-items: stretch;
         width: 100%;
+        margin-bottom: 3vh;
     }
 
     .banner h1 {

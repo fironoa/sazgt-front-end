@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import Rectangle77 from "../../images/Rectangle77.png";
 import Rectangle68 from "../../images/Rectangle68.png";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
@@ -11,7 +11,7 @@ import { categoriesFromConfig } from "../configuration/ApiConfig";
 export const Home = () => {
   const [perPage] = useState(localStorage.getItem("perPage") || "30");
   const navigate = useNavigate();
-  
+
   const divStyle = {
     backgroundColor: "#F3F3F3",
     paddingBottom: "10vh",
@@ -33,7 +33,6 @@ export const Home = () => {
     display: "flex",
     flexDirection: "column",
     gap: "3vh",
-    marginTop: "8vh",
   };
   const arrowIcon = {
     display: "flex",
@@ -128,10 +127,12 @@ export const Home = () => {
           <div className="latest-arrivals-wrapper">
             <div className="latest-arrivals-parts">
               <div style={subHeadingLatestArrival}>
-                <h3>
-                  Introducing Hassle-Free Laundry: Our New Coin-Operated Washing
-                  Machines
-                </h3>
+                <div>
+                  <h3>
+                    Introducing Hassle-Free Laundry:
+                    Our New <span style={{whiteSpace:"nowrap"}}>Coin-Operated</span> Washing Machines
+                  </h3>
+                </div>
                 <div className="heading-boarder"></div>
               </div>
               <ul>
@@ -147,7 +148,7 @@ export const Home = () => {
               </ul>
               <div className="read-more-button">
                 <button>
-                  <a href="#contact-us-section" style={{color:"white"}}>Leave a Message</a>
+                  <a href="#contact-us-section" style={{ color: "white" }}>Leave a Message</a>
                 </button>
               </div>
             </div>
