@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Rectangle77 from "../../images/Rectangle77.png";
 import Rectangle68 from "../../images/Rectangle68.png";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
@@ -130,7 +130,7 @@ export const Home = () => {
                 <div>
                   <h3>
                     Introducing Hassle-Free Laundry:
-                    Our New <span style={{whiteSpace:"nowrap"}}>Coin-Operated</span> Washing Machines
+                    Our New <span style={{ whiteSpace: "nowrap" }}>Coin-Operated</span> Washing Machines
                   </h3>
                 </div>
                 <div className="heading-boarder"></div>

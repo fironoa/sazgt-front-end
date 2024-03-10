@@ -1,0 +1,46 @@
+
+/* Define the animation */
+@keyframes rotateVideo {
+
+    0%,
+    100% {
+        transform: rotate(-40deg);
+    }
+
+    69.19% {
+        transform: rotate(0deg);
+
+    }
+}
+
+/* Apply the animation to the video */
+#myVideo {
+    /* Initial rotation */
+    transform: rotate(0deg);
+    /* Animation */
+
+
+    overflow: visible;
+}
+
+.video-overlay {
+    position: fixed;
+    width: 100%;
+    /* Existing styles */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+    z-index: 100001;
+    /* Backdrop effect */
+    background-color: rgba(255, 255, 255, 0.5);
+    /* Semi-transparent black */
+    backdrop-filter: blur(5px);
+    transition: opacity 0.5s ease-out;
+    opacity: 1;
+}
+
+.fade-out {
+    opacity: 0;
+  }

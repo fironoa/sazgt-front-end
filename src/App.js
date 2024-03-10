@@ -8,6 +8,8 @@ import { PanelProvider } from "./components/Contexts/PanelContext";
 import CategoryPanel from "./components/CategorySlider/CategoryPanel";
 import AdminDashboard from "./components/scenes-admin/AdminDashboard/AdminDashboard";
 import "./App.css";
+import { LogoAnimationProvider } from "./components/Contexts/LogoAnimationContext";
+import VideoOverlay from "./components/LogoAnimation/VideoOverlay";
 
 import WishList from "./components/WishList/WishList";
 import FloatingLabel from "./components/FloatingWishListLabel/FloatingLabel";
@@ -28,24 +30,27 @@ function App() {
     link.rel = "stylesheet";
     document.head.appendChild(link);
   }
-  
+
   return (
     <>
-      <PanelProvider>
-        <SnackbarProvider>
-          <CategoryPanel />
-          <Header />
-          <Routes>
-            <Route path="/products" element={<Products />}></Route>
-            <Route path="/" element={<Home />}></Route>
-            <Route path="/auth/admin-login" element={<Login />}></Route>
-            <Route path="/admin-dashboard" element={<AdminDashboard />}></Route>
-            <Route path="/wish-list" element={<WishList />}></Route>
-          </Routes>
-          <FloatingLabel  />
-          <Footer />
-        </SnackbarProvider>
-      </PanelProvider>
+      <LogoAnimationProvider>
+        <VideoOverlay/>
+        <PanelProvider>
+          <SnackbarProvider>
+            <CategoryPanel />
+            <Header />
+            <Routes>
+              <Route path="/products" element={<Products />}></Route>
+              <Route path="/" element={<Home />}></Route>
+              <Route path="/auth/admin-login" element={<Login />}></Route>
+              <Route path="/admin-dashboard" element={<AdminDashboard />}></Route>
+              <Route path="/wish-list" element={<WishList />}></Route>
+            </Routes>
+            <FloatingLabel />
+            <Footer />
+          </SnackbarProvider>
+        </PanelProvider>
+      </LogoAnimationProvider>
     </>
   );
 }
