@@ -10,6 +10,13 @@ import WishlistProductTile from "./WishlistProductTile";
 import noCartImage from "../../images/emptyCart.png";
 
 function WishList() {
+
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
+  const [phone, setPhone] = useState();
+  const [message, setMessage] = useState();
+
+
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [isFormVisible, setFormVisible] = useState(false);
@@ -23,7 +30,7 @@ function WishList() {
   };
 
   const removeProductById = (productId) => {
-    setProducts(currentProducts => 
+    setProducts(currentProducts =>
       currentProducts.filter(product => product.id !== productId)
     );
   };
@@ -65,6 +72,84 @@ function WishList() {
   };
 
 
+  const handleFormInput = (event) => {
+    const { name, value } = event.target;
+    console.log(name + " " + value);
+    switch (name) {
+      case 'name':
+        setName(value);
+        break;
+      case 'email':
+        setEmail(value);
+        break;
+      case 'phone':
+        setPhone(value);
+        break;
+      case 'message':
+        setMessage(value);
+        break;
+    }
+  }
+
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const api = config.baseURL + '/sazgt/sent-email';
+    const simplifiedProducts = products.map(({ name, model, category }) => ({
+      name,
+      model,
+      category
+    }));
+
+    const data = {
+      name: name,
+      email: email,
+      phone: phone,
+      message: message,
+      product: [
+        simplifiedProducts
+      ]
+    };
+
+    alert(JSON.stringify(data));
+
+    // Example: Post formData to a server
+
+    /*fetch(api, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        // Other headers can be added here if needed
+      }
+      // Don't set Content-Type header when using FormData
+      // fetch will set it automatically
+    })
+      .then(response => {
+        if (!response.ok) {
+          // Handle non-200 responses
+          return response.json().then(err => {
+            // Throw an error with the error message or entire error object
+            throw err;
+          });
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Success:', data);
+       
+      })
+      .catch(error => {
+        console.error(error);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+*/
+
+  };
+
   let lastProductId = products.length > 0 ? [products.length] : "0";
   return (
     <>
@@ -99,23 +184,26 @@ function WishList() {
               Continue Browsing
             </p>
           </div>
-          {!isFormVisible && (
+          {products.length > 0 && !isFormVisible && (
             <div className="email-button">
               <button onClick={toggleFormVisibility}>Sent Email</button>
             </div>
           )}
         </div>
         {isFormVisible && (
-          <div className="mail-form">
-            <div className="email-phone">
-              <input placeholder="Email" />
-              <input placeholder="Phone Number(Optional)" />
+          <form onSubmit={handleSubmit}>
+            <div className="mail-form">
+              <div className="email-phone">
+                <input placeholder="Name" name="name" required onChange={handleFormInput} />
+                <input placeholder="Email" name="email" required onChange={handleFormInput} type="email" />
+                <input placeholder="Phone Number (Optional)" name="phone" onChange={handleFormInput} />
+              </div>
+              <textarea placeholder="Message" name="message" required onChange={handleFormInput} />
+              <div className="expanded-button">
+                <button>Sent Email</button>
+              </div>
             </div>
-            <textarea placeholder="Message" />
-            <div className="expanded-button">
-              <button>Sent Email</button>
-            </div>
-          </div>
+          </form>
         )}
       </div>
     </>

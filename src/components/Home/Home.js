@@ -106,7 +106,7 @@ export const Home = () => {
                   <div className="tile-img">
                     <img
                       width="100%"
-                      src={"/images/" + category.replace(/\s+/g, "") + ".webp"}
+                      src={"/images/" + category.replace(/\s+/g, "") + ".jpg"}
                     />
                   </div>
                   <div className="product-name">

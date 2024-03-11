@@ -95,7 +95,12 @@
     margin-right:40px;
     display:flex;
     align-items: center;
+    transition: font-size 0.2s;
 }
+/*
+.nav-list a:hover{
+    font-size: 18px;
+}*/
 .nav-btn{
     cursor: pointer;
     padding:5px;

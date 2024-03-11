@@ -20,6 +20,12 @@ const ProductDisplayDialogue = ({ product, baseURL, addItem, closeModal }) => {
   const { showSnackbar } = useSnackbar();
   const imageAPI = `${baseURL}/sazgt/products/${product.id}/images`;
 
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
+  const [phone, setPhone] = useState();
+  const [messageMail, setMessageMail] = useState();
+
+
   const focusEmailBox = () => {
     if (emailBox.current) {
       emailBox.current.focus();
@@ -119,15 +125,80 @@ const ProductDisplayDialogue = ({ product, baseURL, addItem, closeModal }) => {
     setCurrentImage(src);
   };
 
+  const handleFormInputChange = (event) => {
+    const { name, value } = event.target;
+    console.log(name + " "  + value);
+    switch (name) {
+      case 'name':
+        setName(value);
+        break;
+      case 'email':
+        setEmail(value);
+        break;
+      case 'phone':
+        setPhone(value);
+        break;
+      case 'message':
+        setMessageMail(value);
+        break;
+    }
+  }
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const api = baseURL + '/sazgt/sent-email';
+    const productDetail = {
+      id : product.id,
+      name : product.name,
+      model : product.model
+    }
+    const data = {
+      name : name,
+      email : email,
+      phone : phone,
+      message : messageMail,
+      product : [
+        productDetail
+      ]
+    };
 
-  const showSnackBar2 = (message, type) => {
-    setMessage(message);
-    setSnackBarOpen(true);
-    setMessagetype(type);
-    setTimeout(() => {
-      setSnackBarOpen(false);
-    }, 3000); // Close the snack bar after 3 seconds
+    alert(JSON.stringify(data));
+
+    // Example: Post formData to a server
+
+    /*fetch(api, {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        // Other headers can be added here if needed
+      }
+      // Don't set Content-Type header when using FormData
+      // fetch will set it automatically
+    })
+      .then(response => {
+        if (!response.ok) {
+          // Handle non-200 responses
+          return response.json().then(err => {
+            // Throw an error with the error message or entire error object
+            throw err;
+          });
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Success:', data);
+       
+      })
+      .catch(error => {
+        console.error(error);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+*/
+
   };
 
 
@@ -204,9 +275,11 @@ const ProductDisplayDialogue = ({ product, baseURL, addItem, closeModal }) => {
 
         {
             isReadyToTakeContactInfo &&
-            <form className='product-enuiry-form'>
-              <input className='enquiry-form-input' placeholder='email' type='email' required></input>
-              <textarea placeholder='Type your Message here Refrain from mentioning sensitive information' required className='enquiry-form-input'></textarea>
+            <form className='product-enuiry-form' onSubmit={handleSubmit}>
+              <input name="name" className='enquiry-form-input' placeholder='name' onChange={handleFormInputChange} required></input>
+              <input name="phone" className='enquiry-form-input' placeholder='phone' onChange={handleFormInputChange} required></input>
+              <input name="email" className='enquiry-form-input' placeholder='email' onChange={handleFormInputChange} type='email' required></input>
+              <textarea name="message" onChange={handleFormInputChange} placeholder='Type your Message here Refrain from mentioning sensitive information' required className='enquiry-form-input'></textarea>
               <input ref={emailBox} style={{ backgroundColor: "#007A87" }} className='enquiry-form-input-button' type='submit' value="Send Email"></input>
             </form>
           }
