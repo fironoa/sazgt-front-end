@@ -11,7 +11,7 @@ function Form() {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    console.log(name + " "  + value);
+    console.log(name + " " + value);
     switch (name) {
       case 'name':
         setName(value);
@@ -32,10 +32,10 @@ function Form() {
     event.preventDefault();
     const api = config.baseURL + '/sazgt/sent-email';
     const data = {
-      name : name,
-      email : email,
-      phone : phone,
-      message : message
+      name: name,
+      email: email,
+      phone: phone,
+      message: message
     };
 
     alert(JSON.stringify(data));
@@ -79,26 +79,24 @@ function Form() {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <div className="form-component">
-          <div className="name-phone">
-            <input className="form-input" name="name" placeholder="Name" required onChange={handleChange}></input>
-            <input className="form-input" name="phone" placeholder="Phone" required onChange={handleChange}></input>
-          </div>
-          <div>
-            <input className="form-input" name="email" type="email" placeholder="Email" required onChange={handleChange}></input>
-          </div>
-          <div>
-            <textarea required onChange={handleChange} name="message"
-              className={`form-input form-textarea`}
-              placeholder="Message"
-            ></textarea>
-          </div>
-          <div className="message-button">
-            <button>
-              <a>Send Message</a>
-            </button>
-          </div>
+      <form onSubmit={handleSubmit} className="form-component">
+        <div className="name-phone">
+          <input className="form-input" name="name" placeholder="Name" required onChange={handleChange}></input>
+          <input className="form-input" name="phone" placeholder="Phone" required onChange={handleChange}></input>
+        </div>
+        <div>
+          <input className="form-input" name="email" type="email" placeholder="Email" required onChange={handleChange}></input>
+        </div>
+        <div>
+          <textarea required onChange={handleChange} name="message"
+            className={`form-input form-textarea`}
+            placeholder="Message"
+          ></textarea>
+        </div>
+        <div className="message-button">
+          <button>
+            <a>Send Message</a>
+          </button>
         </div>
       </form>
     </>
