@@ -3,8 +3,6 @@ import './Snackbar.css'; // Assuming you have some basic CSS for styling
 
 const SnackBar = ({ isOpen, message, type }) => {
 
-
-  console.log(type);
   const className = `snack-bar${isOpen ? ' show' : ''}`;
   const [bgColor, setBgColor] = useState("#28a745");
 

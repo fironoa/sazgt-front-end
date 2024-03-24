@@ -4,6 +4,7 @@ import ImageUpload from './ImageUpload';
 import LinearLoading from '../../../LinearLoading/LinearLoading';
 import SnackBar from '../../../Snackbar/Snackbar';
 import config from '../../../configuration/ApiConfig';
+import { subCategoriesFromConfig } from '../../../configuration/ApiConfig';
 import { MdAddBox } from "react-icons/md";
 import { FaMinus } from "react-icons/fa";
 import { useLocation } from 'react-router-dom';
@@ -20,6 +21,7 @@ function EditProduct({ product }) {
 
     const [name, setName] = useState('');
     const [category, setCategory] = useState('');
+    const [subCategory, setSubCategory] = useState('');
     const [tags, setTags] = useState('');
     const [model, setModel] = useState('');
     const [description, setDescription] = useState('');
@@ -31,6 +33,8 @@ function EditProduct({ product }) {
     const [isLoading, setIsLoading] = useState(false);
 
     const [categories] = useState(categoriesFromConfig); // For storing categories
+    const [subCategories, setSubCategories] = useState([]);
+  
     const [newCategory, setNewCategory] = useState(''); // For storing a new category name
 
     const [snackBarOpen, setSnackBarOpen] = useState(false);
@@ -71,6 +75,16 @@ function EditProduct({ product }) {
         }, 3000); // Close the snack bar after 3 seconds
     };
 
+    useEffect(() => {
+        if (subCategoriesFromConfig[category]) {
+          setSubCategories(subCategoriesFromConfig[category]);
+        } else {
+          setSubCategories([]);
+        }
+      }, [category]);
+    
+
+      
     const handleRemoveImage = (indexToRemove) => {
 
         const token = localStorage.getItem('accessToken');
@@ -100,7 +114,7 @@ function EditProduct({ product }) {
         if (isConfirmed) {
             deleteImage();
         }
-        
+
     };
 
     useEffect(() => {
@@ -110,7 +124,7 @@ function EditProduct({ product }) {
             const data = await response.json();
             setRecentlyAddedProduct(data);
             getImages(data.id);
-
+            setSubCategory(data.sub_category);
             setName(data.name);
             setCategory(data.category);
             setTags(data.tags);
@@ -199,6 +213,9 @@ function EditProduct({ product }) {
                     setCategory(value);
                 }
                 break;
+            case 'sub-category':
+                setSubCategory(value);
+                break;
         }
     };
 
@@ -214,6 +231,7 @@ function EditProduct({ product }) {
         const data = {
             name: name,
             category: finalCategory,
+            sub_category: subCategory,
             tags: tags,
             model: model,
             specifications: specificationsStr,
@@ -259,7 +277,7 @@ function EditProduct({ product }) {
                 console.error(error);
                 if (error.errors) {
                     showSnackBar(JSON.stringify(error.errors), "error");
-                } else if(error.message){
+                } else if (error.message) {
                     showSnackBar(error.message, "error");
                 }
                 // Handle errors here (e.g., show error message)
@@ -286,17 +304,15 @@ function EditProduct({ product }) {
                         {categories.map((category, index) => (
                             <option key={index} value={category}>{category}</option>
                         ))}
-                        <option value="other">Other...</option>
+
                     </select>
-                    {category === 'other' && (
-                        <input
-                            type="text"
-                            placeholder="Enter new category"
-                            value={newCategory}
-                            onChange={(e) => setNewCategory(e.target.value)}
-                            required
-                        />
-                    )}
+                    <select name="sub-category" value={subCategory} onChange={handleChange} id='sub-category' required>
+                        <option value="">Select a Sub Category</option>
+                        {subCategories.map((category, index) => (
+                            <option key={index} value={category}>{category}</option>
+                        ))}
+
+                    </select>
                     <input type="text" value={tags} onChange={handleChange} placeholder='tags' id='tags' name='tags'></input>
 
                     <input type="text" value={model} onChange={handleChange} placeholder='model' id='model' name='model' required></input>

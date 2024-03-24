@@ -61,6 +61,7 @@ function ProductList({ baseURL }) {
                             <th>Specifications</th>
                             <th>Tags</th>
                             <th>Category</th>
+                            <th>Sub Category</th>
                             <th colSpan="3">Actions</th>
                         </tr>
                     </thead>

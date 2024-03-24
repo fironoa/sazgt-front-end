@@ -74,6 +74,7 @@ const ProductRow = ({ product, baseURL, onEdit, removeProductById }) => {
                 <td>{product.specifications}</td>
                 <td>{product.tags}</td>
                 <td>{product.category}</td>
+                <td>{product.sub_category}</td>
                 <td>
                     <button className="table-action-buttons" onClick={toggleExpand}><BiShowAlt /> Images</button>
                 </td>
