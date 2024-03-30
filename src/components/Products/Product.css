@@ -93,6 +93,7 @@
     font-weight:400;
     font-size: 16px;
     display: flex;
+    width: 100%;
     align-items: center;
     justify-content: space-between;
     color: black;
@@ -127,6 +128,43 @@
     display: flex;
     gap: 20px;
 }
+
+
+
+.sub_cat_wrapper_l{
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f8f8;
+    height: 0px;
+    overflow: hidden;
+    transition: height 0.3s;
+    
+}
+
+.sub_cat_wrapper_l_active{
+    height: auto;
+}
+
+.sub_cat_wrapper_l .sub_anchor_style{
+    font-size: 0.9rem;
+    color: #494949;
+    padding: 10px;
+    padding-left: 20px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.sub_cat_wrapper_l .sub_anchor_style:hover{
+    background-color: #eaeaec;
+}
+
+.sub_cat_wrapper_l .sub_anchor_style.active{
+    font-weight: bold;
+    background-color: #eaeaec;
+}
+
+
+
 .product-tiles-wrapper{
     width: 100%;
     display: grid;

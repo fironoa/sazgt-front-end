@@ -11,7 +11,7 @@ import config from "../configuration/ApiConfig";
 import CategorySlider from "../CategorySlider/CategorySlider";
 import { categoriesFromConfig } from "../configuration/ApiConfig";
 import noCartImage from "../../images/emptyCart.png";
-
+import { subCategoriesFromConfig } from '../configuration/ApiConfig';
 
 export const Products = () => {
   const baseURL = config.baseURL;
@@ -23,6 +23,7 @@ export const Products = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const selectedCategory = searchParams.get("category");
+  const selectedSubCategory = searchParams.get("sub_category");
 
   const [perPage, setPerPage] = useState(30);
 
@@ -47,11 +48,9 @@ export const Products = () => {
     setIsLoading(true);
     setProducts([]);
     const productAPI = baseURL + "/sazgt/products?" + searchParams;
-    console.log(productAPI);
     const response = await fetch(productAPI);
     const responseData = await response.json();
     setProducts(responseData.data);
-    console.log(responseData.links);
     setPaginationLinks(responseData.links);
     setSecondLastPage(responseData.last_page - 2);
     setIsLoading(false);
@@ -70,6 +69,10 @@ export const Products = () => {
     setSearchParams({ category: name, per_page: perPage.toString() });
   };
 
+  const handleNavigateSubCat = (cat, sub_cat) => {
+    setSearchParams({ category: cat, sub_category: sub_cat, per_page: perPage.toString() });
+    
+  }
   const handlePageChange = (url) => {
     if (!url) return; // If the URL is null (e.g., for the active page or unavailable navigation), do nothing
 
@@ -100,6 +103,20 @@ export const Products = () => {
     handleRotate();
     toggleDropdown();
   };
+
+  useEffect(() => {
+    document.querySelectorAll('.sub_cat_wrapper_l').forEach(subWrapperElement => {
+        
+        if (subWrapperElement.id === selectedCategory) {
+            
+            subWrapperElement.style.height = `${subWrapperElement.scrollHeight}px`;
+           
+        } else {
+            subWrapperElement.style.height = '0';
+        }
+
+    });
+}, [selectedCategory]);
 
   const handlePerPage = (event) => {
 
@@ -145,16 +162,31 @@ export const Products = () => {
           <p>Categories</p>
           {categories !== null &&
             categories.map((cat) => (
-              <button
-                key={cat} // Assuming 'cat' is unique for each category
-                onClick={handleNavigate}
-                id={cat}
-                name={cat}
-                className={`${selectedCategory === cat ? "active" : ""}`}
-              >
-                {cat}
-                {selectedCategory === cat && <IoIosArrowForward />}
-              </button>
+              <div>
+                <button
+                  key={cat} // Assuming 'cat' is unique for each category
+                  onClick={handleNavigate}
+                  id={cat}
+                  name={cat}
+                  className={`${selectedCategory === cat ? "active" : ""}`}
+                >
+                  {cat}
+                  {selectedCategory === cat && <IoIosArrowForward />}
+                </button>
+                <div  id={cat} className={`sub_cat_wrapper_l ${selectedCategory === cat ? "sub_cat_wrapper_l_active" : ""}`}>
+                  {subCategoriesFromConfig[cat] && subCategoriesFromConfig[cat].map((sub_category, index) => (
+                    <div
+                      key={index}
+                      id={sub_category}
+                      onClick={() => handleNavigateSubCat(cat, sub_category)}
+                      name={sub_category}
+                      className={`sub_anchor_style ${selectedSubCategory === sub_category ? "active" : ""}`}
+                    >
+                      {sub_category}
+                    </div>
+                  ))}
+                </div>
+              </div>
             ))}
         </div>
         <div style={{ width: "100%" }}>
@@ -169,12 +201,10 @@ export const Products = () => {
           </div>
           <div className="pagination">
             {products.length > 0 && paginationLinks && paginationLinks.map((link, index) => {
-              console.log("out : " + index);
-              if(index > 4 && index < secondLastPage) {
-                console.log("in : " + index);
+              if (index > 4 && index < secondLastPage) {
                 return null;
               }
-              if(index == 4){
+              if (index == 4) {
                 link.active = false;
                 link.label = "...";
                 link.url = null;

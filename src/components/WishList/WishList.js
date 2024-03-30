@@ -54,9 +54,7 @@ function WishList() {
 
   const getProducts = async (data) => {
     setIsLoading(true);
-    console.log(data);
     const productAPI = config.baseURL + "/sazgt/products/by-id";
-    console.log(productAPI);
     const response = await fetch(productAPI, {
       body: JSON.stringify(data),
       method: "POST",
@@ -66,7 +64,6 @@ function WishList() {
       },
     });
     const responseData = await response.json();
-    console.log(responseData);
     setProducts(responseData);
     setIsLoading(false);
   };

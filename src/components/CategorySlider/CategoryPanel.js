@@ -43,7 +43,6 @@ const CategoryPanel = () => {
 
 
     useEffect(() => {
-        console.log(selectedCategory);
         document.querySelectorAll('.sub-cat-wrapper').forEach(subWrapperElement => {
             
             if (subWrapperElement.id === selectedCategory) {
@@ -53,7 +52,6 @@ const CategoryPanel = () => {
             } else {
                 subWrapperElement.style.height = '0';
             }
-            console.log(subWrapperElement);
 
         });
     }, [selectedCategory]);

@@ -16,7 +16,6 @@ function Footer() {
   const location = useLocation();
 
   useEffect(() => {
-    console.log(location.hash);
     if (location.pathname == "/") {
       setMapToBeShown(true);
       if(location.hash === "#contact-us-section"){
