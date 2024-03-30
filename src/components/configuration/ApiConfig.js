@@ -13,7 +13,7 @@ export const categoriesFromConfig = [
 
 export const subCategoriesFromConfig = {
   "Camp Furniture" : [
-    "Bubkeds",
+    "Bunk beds",
     "Lockers",
     "Shoeracks",
     "Mattress",
@@ -27,10 +27,30 @@ export const subCategoriesFromConfig = {
     "Storage"
   ],
   "School Furniture" : [
-
+    "Bunk beds",
+    "Lockers",
+    "Shoeracks",
+    "Mattress",
+    "Bed linens and pillows",
+    "Towels"
   ],
   "Restaurant and Pantry Furniture" : [
     "Tables ",
     "Chairs"
+  ],
+  "Electronic Appliances" : [
+    "Bunk beds",
+    "Lockers",
+    "Shoeracks",
+    "Mattress",
+    "Bed linens and pillows",
+    "Towels"
+  ],
+  "Safety Products" : [
+    "Tables ",
+    "Chairs",
+    "Lockers",
+    "Shoeracks",
+    "Mattress"
   ]
 }

@@ -7,7 +7,6 @@ import EditProduct from './EditProduct';
 
 function ProductList({ baseURL }) {
 
-    const navigate = useNavigate();
     const [products, setProducts] = useState([]);
 
     const [currentProduct, setCurrentProduct] = useState(null);
@@ -33,10 +32,7 @@ function ProductList({ baseURL }) {
     const productsAPI = baseURL + '/sazgt/products/get-all';
     
     useEffect(() => {
-        // Replace 'your-api-endpoint' with your actual product API endpoint
-        //http://localhost:8000/api/sazgt/products?per_page=3
-
-
+     
         fetch(productsAPI)
             .then(response => response.json())
             .then(data => {
