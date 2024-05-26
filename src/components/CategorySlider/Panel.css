@@ -58,8 +58,9 @@
     display: flex;
     flex-direction:column;
     gap: 10px;
+    max-height: 300px;
     align-items:end;
-    overflow: hidden;
+    overflow-x: scroll;
     transition: height 0.5s;
 }
 

@@ -136,7 +136,8 @@
     flex-direction: column;
     background-color: #f8f8f8;
     height: 0px;
-    overflow: hidden;
+    max-height: 400px;
+    overflow-x: scroll;
     transition: height 0.3s;
     
 }

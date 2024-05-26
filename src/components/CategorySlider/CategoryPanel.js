@@ -82,14 +82,14 @@ const CategoryPanel = () => {
             }} onClick={togglePanel} />
             <nav style={{
                 marginRight: '30px',
+                marginTop : '6vh',
                 display: 'flex',
                 flexDirection: 'column',
-                justifyContent: 'center',
                 alignItems: 'end',
-                height: '100%',
+                height: '90vh',
+                overflowX: "scroll"
 
             }}>
-                {/*This i where tyou atart */}
                 {categoriesFromConfig.map((cat, index) => (
                     <div style={{ display: "flex", flexDirection: "column" }}><a className={`anchor-style ${selectedCategory === cat ? "active" : ""}`} onClick={() => handleCatClick(cat)}>{cat}</a>
                         <div id = {cat} className={`sub-cat-wrapper ${selectedCategory === cat ? "sub_wrapper_active" : ""}`}>
