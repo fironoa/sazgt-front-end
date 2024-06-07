@@ -38,7 +38,7 @@ export const Products = () => {
   const topElemenrRef = useRef(null);
 
   const noProductsImage = (
-    <div style={{ display: 'flex', flexDirection: "column", justifyContent: 'center', alignItems: 'center', height: '100%' }}>
+    <div style={{ display: 'flex', flexDirection: "column", justifyContent: 'center', alignItems: 'center', height: '40vh', minWidth: '400px' }}>
       <img src={noCartImage} alt="No products found" style={{ maxWidth: '50%', maxHeight: '50%', width: 'auto', height: 'auto' }} />
       <h5><span style={{ color: "#ddd" }}>No Products Found</span></h5>
     </div>
@@ -189,7 +189,7 @@ export const Products = () => {
               </div>
             ))}
         </div>
-        <div style={{ width: "100%" }}>
+        <div style={{ width: "100%"}}>
           <div className={`product-tiles-wrapper${products.length > 0 ? "" : "-no-product"}`}>
             {isLoading ? (
               <LinearLoading />

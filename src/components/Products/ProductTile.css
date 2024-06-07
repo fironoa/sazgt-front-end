@@ -48,7 +48,7 @@
     align-items: top;
 }
 
-.product-details:hover{
+.product-details:hover, .product-tile:hover{
     background-color: #000;
     color:#fff;
     

@@ -7,6 +7,7 @@ import "./Home.css";
 import { useNavigate } from "react-router-dom";
 import IncrementCounter from "../IncrementCounter/IncrementCounter";
 import { categoriesFromConfig } from "../configuration/ApiConfig";
+import Carousel from "../Carousel/Carousel";
 
 export const Home = () => {
   const [perPage] = useState(localStorage.getItem("perPage") || "30");
@@ -48,6 +49,7 @@ export const Home = () => {
 
   return (
     <div>
+      <Carousel></Carousel>
       <div className="home-container">
         <CategorySlider></CategorySlider>
         <div className={`banner`}>
