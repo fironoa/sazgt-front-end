@@ -15,52 +15,28 @@ export const categoriesFromConfig = [
 export const subCategoriesFromConfig = {
   "Camp Furniture": [
     "Bunk beds",
-    "Folding Bed",
-    "Family Bunk Bed",
-    "Locker Cabinets",
-    "Storage Cabinets",
-    "File Cabinets",
-    "Metal Side Table",
-    "Shoe rack",
-    "Chairs",
-    "Steel Tables",
-    "Steel Shelving Units",
-    "Dining Tables and Chairs",
-    "Common Area Furniture",
-    "Storage Solutions",
-    "Wooden Furniture for Staff"
-
+    "Single Bed",
+    "Steel lockers",
+    "⁠Shoe rack",
+    "⁠Dining table and chairs"
   ],
   "Bedding Amenities": [
     "Mattresses",
-    "Mattress toppers",
-    "Bed linen",
-    "Blanket",
-    "Bedsheet",
-    "Pillows",
-    "Pillow protector",
-    "Comforter",
-    "Cushions & cushion covers",
-    "Duvets",
-    "Mattress protectors",
-    "Dining Hall Decor"
+    "Blankets and Comforters",
+    "Bed linen and towels",
+    "⁠Pillows"
   ],
   "Office Furniture": [
-    "Office Desks",
     "Office Chairs",
-    "Conference Tables",
-    "Reception Furniture",
-    "Office Storage",
-    "Office Sofar",
-    "Filing Cabinet",
-    "School Furniture",
-    "Training Furniture",
-    "Home Furniture",
-    "Medical Furniture",
-    "Bar Chair",
-    "Coffee Table",
-    "Canteen Desk and Chair",
-    "Rugs and mat"
+    "Managers Desks",
+    "⁠Work Stations",
+    "⁠Cabinets",
+    "⁠Meeting Tables",
+    "⁠Receptions"
+  ],
+  "School Furniture": [
+    "Class Room furniture",
+    "Canteen furniture"
   ],
   "Home Appliances": [
     "Refrigerators",
@@ -68,51 +44,7 @@ export const subCategoriesFromConfig = {
     "Kettles",
     "Microwave Oven ",
     "Tvs",
-    'Led Televisions',
-    "Garment Steamers",
-    "Heaters",
-    "Hot Plates",
-    "Irons",
-    "Kettle",
-    "Microwave Ovens",
-    "Mixers",
-    "Stove",
-    "Vacuum Cleaners",
-    "Washing Machines",
-    "Chillers",
-    "Coffee Makers",
-    "Cooking Range",
-    "Dish Washer",
-    "Dryer",
-    "Electric Oven",
-    "Fryers",
-    "Refrigerators",
-    "Washing Machines",
-    "Water Dispensers"
-  ],
-  "Safety Products": [
-    "Safety Helmets",
-    "Safety Shoes",
-    "Safety Gloves",
-    "Safety Vest",
-    "Protective Eyewear",
-    "First Aid Kits",
-    "Fire Extinguishers",
-    "Personal Protection Equipment",
-    "Cold Room Wear",
-    "Coveralls",
-    "Road Safety",
-  ],
-  "Outdoor furniture": [
-    "Swimming Pool Furniture",
-    "Pool Tables and Umbrella",
-    "Sun Loungers and Cushions"
-    
-  ],
-  "Other Camp Amenitites": [
-    "Stove",
-    "Water cooler", 
-    "Water bottle",
-    "other"
+    'Led Televisions'
   ]
+
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Carousel.css';
 
 const images = [
@@ -20,10 +20,18 @@ const Carousel = () => {
         setCurrentIndex(newIndex);
     };
 
-
     const handleDotClick = (index) => {
         setCurrentIndex(index);
     };
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            handleNext();
+        }, 3000); // Change slide every 3 seconds
+
+        return () => clearInterval(interval); // Clear interval on component unmount
+    }, [currentIndex]);
+
     return (
         <div className="carousel">
             <div className="carousel-images" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
