@@ -6,10 +6,8 @@ export const categoriesFromConfig = [
   "Camp Furniture",
   "Bedding Amenities",
   "Office Furniture",
-  "Home Appliances",
-  "Safety Products",
-  "Outdoor furniture",
-  "Other Camp Amenitites"
+  "School Furniture",
+  "Home Appliances"
 ];
 
 export const subCategoriesFromConfig = {
