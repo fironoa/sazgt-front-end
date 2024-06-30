@@ -68,3 +68,54 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+about us
+Sahil-Al-Zuhoor General Trading L.L.C
+
+Established in the year 2007 with its corporate base at Dubai, SAZ General Trading is one of the leading and eminent business enterprises in the field of providing complete range of staff accommodation and office comfort solutions. With rich industry experience we have established ourselves as one of the most trusted names in the region. Our wide range of products is known for its high performance, robust design and low maintenance ensuring a hassle free experience.
+
+Why Choose Us
+We offer a wide range of products for staff accommodation & office comfort solutions for small, medium and large organizations. Our in-depth know-how of the industry has not only been the key to successfully serve our customers but also to overcome challenges and invest in opportunities for product innovation. With and expanding logistics network, we promise to deliver your products in a timely manner and tour covenience. Last but not the least, we have a dedicated team of young, experienced & enthusiastic professionals to serve you better at any point in time while doing business with us.
+
+Our Core Values
+As a leader in an industry that is constantly growing, we ensure our full commitment towards quality, trust and integrity which has also helped us achieve a preferred supplier status in the hearts of customers in a very short time. With our ethical business practices and customer-centric approach we are able to establish an esteemed presence in the market.
+
+Our sourcing support is designed to truly empower all sizes of clients with their desired results. Our engagement model is highly flexible and collaborative. We provide on-demand support or manage complete catrgories. Our source-to-contract services reside on a solid analytical capability, real-time market intelligence, category expertise and state-of-the-art procurements.
+
+SAZGT Highlights
+Highlights
+End-to-end services in the sourcing cycle
+Spend analysis and opportunity identification
+Contract implementation
+Highly flexible engagement models
+Gain accurate and deep visibility
+Providing actionable insights in to savings opportunities
+Benchmarking key categories and supplier base
+Manage complete categories
+On-demand support
+
+
+
+
+MISSION
+
+    Our mission is to be the most customer centric company in the GCC by supplying quality staff accommodation to organizations that help them cater to staff accommodation requirements in the region.
+
+
+VISION
+
+    Our vision is to be a recognized leader in the GCC through our performance, people and commitment to company's core values. With a growing footprint in the past decade, we continuously strive to statisfy our customers with innovative solutions while maintaining the same philosophy of quality, trust and integrity.
