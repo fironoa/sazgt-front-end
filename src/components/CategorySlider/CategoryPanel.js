@@ -63,6 +63,7 @@ const CategoryPanel = () => {
                 position: 'fixed',
                 left: isPanelOpen ? '0' : '-100%', // Slide effect
                 top: 0,
+                paddingTop:'30px',
                 width: '100%',
                 height: '100%',
                 backgroundColor: 'rgb(240, 240, 240, 0.7)',

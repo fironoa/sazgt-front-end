@@ -59,7 +59,7 @@ function Header() {
               <div className="icon">
                 <FaPhoneAlt size={12} />
               </div>
-              <div className="cont-content"><p>+97150&#45;8362620</p></div>
+              <div className="cont-content"><p>+971508362620</p></div>
             </div>
             <div className="contact">
               <div className="icon">

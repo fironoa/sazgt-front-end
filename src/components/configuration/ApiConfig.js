@@ -6,26 +6,19 @@ export const categoriesFromConfig = [
   "Camp Furniture",
   "Bedding Amenities",
   "Office Furniture",
-  "Home Appliances",
-  "Safety Products",
-  "Outdoor furniture",
-  "Other Camp Amenitites"
+  "School Furniture",
+  "Home Appliances"
 ];
 
 export const subCategoriesFromConfig = {
   "Camp Furniture": [
     "Bunk beds",
-    "Single Bed",
+    "Single Beds",
     "Steel lockers",
-    "⁠Shoe rack",
+    "⁠Shoe racks",
     "⁠Dining table and chairs"
   ],
-  "Bedding Amenities": [
-    "Mattresses",
-    "Blankets and Comforters",
-    "Bed linen and towels",
-    "⁠Pillows"
-  ],
+  "Bedding Amenities": [],
   "Office Furniture": [
     "Office Chairs",
     "Managers Desks",
@@ -35,16 +28,19 @@ export const subCategoriesFromConfig = {
     "⁠Receptions"
   ],
   "School Furniture": [
-    "Class Room furniture",
-    "Canteen furniture"
+    "Class Room furnitures",
+    "Canteen furnitures"
   ],
   "Home Appliances": [
+    "washing Machines",
+    "⁠coin operated washing machines",
     "Refrigerators",
+    "TVs",
     "Air Conditioners",
     "Kettles",
-    "Microwave Oven ",
-    "Tvs",
-    'Led Televisions'
+    "Microwave Ovens",
+    "Gas Stoves",
+    "⁠Electric Stoves"
   ]
 
 }
