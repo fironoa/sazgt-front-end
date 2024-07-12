@@ -46,9 +46,8 @@
     margin-bottom: 5px;
 }
 .main-image-container{
-    
-    height: 70%;
-    width: 60%;
+    height: 23rem;
+    width: 23rem;
 }
 
 .main-image-container img{
@@ -155,9 +154,8 @@
     }
 
     .main-image-container{
-        height: 60%;
-        width: 80%;
-        max-width: 300px;
+        height: 20rem;
+        width: 20rem;
     }
 
     .extra-product-image img{

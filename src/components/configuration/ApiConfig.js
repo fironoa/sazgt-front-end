@@ -18,12 +18,7 @@ export const subCategoriesFromConfig = {
     "⁠Shoe racks",
     "⁠Dining table and chairs"
   ],
-  "Bedding Amenities": [
-    "Mattresses",
-    "Blankets and Comforters",
-    "Bed linen and towels",
-    "⁠Pillows"
-  ],
+  "Bedding Amenities": [],
   "Office Furniture": [
     "Office Chairs",
     "Managers Desks",

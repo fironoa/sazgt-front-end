@@ -306,7 +306,7 @@ function EditProduct({ product }) {
                         ))}
 
                     </select>
-                    <select name="sub-category" value={subCategory} onChange={handleChange} id='sub-category' required>
+                    <select name="sub-category" value={subCategory} onChange={handleChange} id='sub-category'>
                         <option value="">Select a Sub Category</option>
                         {subCategories.map((category, index) => (
                             <option key={index} value={category}>{category}</option>
