@@ -1,13 +1,18 @@
 import React, { useState } from "react";
 import "./Form.css";
+import { useSnackbar } from '../../Contexts/SnackbarContext';
 import config from '../../configuration/ApiConfig';
+import { sendMail } from '../../api/email';
+import { AiOutlineLoading } from "react-icons/ai";
 
 function Form() {
 
   const [name, setName] = useState();
+  const { showSnackbar } = useSnackbar();
   const [email, setEmail] = useState();
   const [phone, setPhone] = useState();
   const [message, setMessage] = useState();
+  const [isLoading, setIsLoading] = useState();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -38,42 +43,16 @@ function Form() {
       message: message
     };
 
-    alert(JSON.stringify(data));
-
-    // Example: Post formData to a server
-
-    /*fetch(api, {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        // Other headers can be added here if needed
-      }
-      // Don't set Content-Type header when using FormData
-      // fetch will set it automatically
+    
+    setIsLoading(true)
+    sendMail(data)
+    .then(data => {
+      setIsLoading(false)
+      showSnackbar(data.message);
+    }).catch(error => {
+      showSnackbar("Error while Sending mail", "error");
+      setIsLoading(false)
     })
-      .then(response => {
-        if (!response.ok) {
-          // Handle non-200 responses
-          return response.json().then(err => {
-            // Throw an error with the error message or entire error object
-            throw err;
-          });
-        }
-        return response.json();
-      })
-      .then(data => {
-        console.log('Success:', data);
-       
-      })
-      .catch(error => {
-        console.error(error);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-*/
 
   };
 
@@ -96,9 +75,29 @@ function Form() {
         <div className="message-button">
           <button>
             <a>Send Message</a>
+            {isLoading && (
+              <AiOutlineLoading className="loading-icon"/>
+            )}
           </button>
         </div>
       </form>
+      <style jsx>{`
+        .loading-icon {
+          margin-left: 8px;
+          width: 20px;
+          height: 20px;
+          animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+          0% {
+            transform: rotate(0deg);
+          }
+          100% {
+            transform: rotate(360deg);
+          }
+        }
+      `}</style>
     </>
   );
 }

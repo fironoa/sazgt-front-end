@@ -2,8 +2,9 @@ import React, { useEffect, useState, useRef } from 'react';
 import './ProductDisplayDialogue.css'
 import SnackBar from '../Snackbar/Snackbar';
 import { useSnackbar } from '../Contexts/SnackbarContext';
+import { sendMail } from '../api/email';
 
-const ProductDisplayDialogue = ({ product, baseURL, addItem, closeModal }) => {
+const ProductDisplayDialogue = ({ product, baseURL, addItem, closeModal, setIsLoading }) => {
 
   const [specifications, setSpecifications] = useState([]);
   const [currentImage, setCurrentImage] = useState('');
@@ -146,7 +147,6 @@ const ProductDisplayDialogue = ({ product, baseURL, addItem, closeModal }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const api = baseURL + '/sazgt/sent-email';
     const productDetail = {
       id : product.id,
       name : product.name,
@@ -162,42 +162,15 @@ const ProductDisplayDialogue = ({ product, baseURL, addItem, closeModal }) => {
       ]
     };
 
-    alert(JSON.stringify(data));
-
-    // Example: Post formData to a server
-
-    /*fetch(api, {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        // Other headers can be added here if needed
-      }
-      // Don't set Content-Type header when using FormData
-      // fetch will set it automatically
+    setIsLoading(true)
+    sendMail(data)
+    .then(data => {
+      setIsLoading(false)
+      showSnackbar(data.message, "info");
+    }).catch(error => {
+      showSnackbar("Error while Sending mail", "error");
+      setIsLoading(false)
     })
-      .then(response => {
-        if (!response.ok) {
-          // Handle non-200 responses
-          return response.json().then(err => {
-            // Throw an error with the error message or entire error object
-            throw err;
-          });
-        }
-        return response.json();
-      })
-      .then(data => {
-        console.log('Success:', data);
-       
-      })
-      .catch(error => {
-        console.error(error);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-*/
 
   };
 

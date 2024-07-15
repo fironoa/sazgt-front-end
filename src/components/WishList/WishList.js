@@ -8,6 +8,8 @@ import CategorySlider from '../CategorySlider/CategorySlider';
 import config from "../configuration/ApiConfig";
 import WishlistProductTile from "./WishlistProductTile";
 import noCartImage from "../../images/emptyCart.png";
+import { sendMail } from '../api/email';
+import { useSnackbar } from '../Contexts/SnackbarContext';
 
 function WishList() {
 
@@ -16,7 +18,7 @@ function WishList() {
   const [phone, setPhone] = useState();
   const [message, setMessage] = useState();
 
-
+  const { showSnackbar } = useSnackbar();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [isFormVisible, setFormVisible] = useState(false);
@@ -108,42 +110,16 @@ function WishList() {
       ]
     };
 
-    alert(JSON.stringify(data));
-
-    // Example: Post formData to a server
-
-    /*fetch(api, {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
-        // Other headers can be added here if needed
-      }
-      // Don't set Content-Type header when using FormData
-      // fetch will set it automatically
+    setIsLoading(true)
+    sendMail(data)
+    .then(data => {
+      setIsLoading(false)
+      showSnackbar(data.message, "info");
+    }).catch(error => {
+      console.log(error);
+      setIsLoading(false)
+      showSnackbar("Error while Sending mail", "error");
     })
-      .then(response => {
-        if (!response.ok) {
-          // Handle non-200 responses
-          return response.json().then(err => {
-            // Throw an error with the error message or entire error object
-            throw err;
-          });
-        }
-        return response.json();
-      })
-      .then(data => {
-        console.log('Success:', data);
-       
-      })
-      .catch(error => {
-        console.error(error);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
-*/
 
   };
 

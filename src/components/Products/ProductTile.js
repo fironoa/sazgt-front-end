@@ -7,7 +7,7 @@ import defaultImage from "../../images/defaultImage.png";
 import ProductModal from "../ProductModal/ProductModal";
 import ProductDisplayDialogue from "../ProductDisplayDialogue/ProductDisplayDialogue";
 
-export const ProductTile = ({ product }) => {
+export const ProductTile = ({ product , setIsLoading}) => {
   const baseURL = config.baseURL;
 
 
@@ -106,7 +106,7 @@ export const ProductTile = ({ product }) => {
         </div>
       </div>
       <ProductModal isOpen={isModalOpen} onClose={closeModal}>
-        <ProductDisplayDialogue product={product} baseURL={baseURL} addItem={addItem} closeModal = {closeModal} />
+        <ProductDisplayDialogue product={product} baseURL={baseURL} addItem={addItem} closeModal = {closeModal} setIsLoading={setIsLoading} />
       </ProductModal>
     </>
   );

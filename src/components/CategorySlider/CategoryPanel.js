@@ -29,6 +29,9 @@ const CategoryPanel = () => {
 
     const handleCatClick = (cat) => {
         navigate('/products?category=' + cat + '&per_page=' + perPage);
+        if (subCategoriesFromConfig[cat].length === 0) {
+            togglePanel();
+        }
     }
 
     const handleContactClick = () => {

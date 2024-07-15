@@ -40,7 +40,8 @@ export const subCategoriesFromConfig = {
     "Kettles",
     "Microwave Ovens",
     "Gas Stoves",
-    "⁠Electric Stoves"
+    "⁠Electric Stoves",
+    "Others"
   ]
 
 }

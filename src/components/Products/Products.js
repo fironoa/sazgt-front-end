@@ -190,17 +190,17 @@ export const Products = () => {
             ))}
         </div>
         <div style={{ width: "100%"}}>
-          <div className={`product-tiles-wrapper${products.length > 0 ? "" : "-no-product"}`}>
+          <div className={`product-tiles-wrapper${(products?.length || 0) > 0 ? "" : "-no-product"}`}>
             {isLoading ? (
               <LinearLoading />
-            ) : products.length > 0 ? (
-              products.map((product, index) => <ProductTile product={product} key={index} />)
+            ) : (products?.length || 0) > 0 ? (
+              products.map((product, index) => <ProductTile product={product} setIsLoading={setIsLoading} key={index} />)
             ) : (
               noProductsImage
             )}
           </div>
           <div className="pagination">
-            {products.length > 0 && paginationLinks && paginationLinks.map((link, index) => {
+            {(products?.length || 0) > 0 && paginationLinks && paginationLinks.map((link, index) => {
               if (index > 4 && index < secondLastPage) {
                 return null;
               }
