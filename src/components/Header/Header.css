@@ -70,6 +70,14 @@
    font-size: 13px;
    text-align: center;
 }
+
+.cont-content a{
+    color: #000;
+    font-size: 0.9rem;
+    
+ }
+
+
 .line{
     border-bottom: 0.3px solid #ccc;
     

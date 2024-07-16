@@ -59,13 +59,17 @@ function Header() {
               <div className="icon">
                 <FaPhoneAlt size={12} />
               </div>
-              <div className="cont-content"><p>+971508362620</p></div>
+              <div className="cont-content">
+                <a href="tel:+971508362620">+971508362620</a>
+              </div>
             </div>
             <div className="contact">
               <div className="icon">
                 <IoIosMail size={20} />
               </div>
-              <div className="cont-content"><p>info@sazgt.com</p></div>
+              <div className="cont-content">
+                <a href="tel:+971508362620">info@sazgt.com</a>
+              </div>
             </div>
             {!isScreenSmall && (
               <div className="contact">
