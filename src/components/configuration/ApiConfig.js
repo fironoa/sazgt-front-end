@@ -31,17 +31,6 @@ export const subCategoriesFromConfig = {
     "Class Room furnitures",
     "Canteen furnitures"
   ],
-  "Home Appliances": [
-    "washing Machines",
-    "⁠coin operated washing machines",
-    "Refrigerators",
-    "TVs",
-    "Air Conditioners",
-    "Kettles",
-    "Microwave Ovens",
-    "Gas Stoves",
-    "⁠Electric Stoves",
-    "Others"
-  ]
+  "Home Appliances": []
 
 }
