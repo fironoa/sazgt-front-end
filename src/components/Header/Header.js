@@ -68,7 +68,7 @@ function Header() {
                 <IoIosMail size={20} />
               </div>
               <div className="cont-content">
-                <a href="mailto:+971508362620">info@sazgt.com</a>
+                <a href="mailto:info@sazgt.com">info@sazgt.com</a>
               </div>
             </div>
             {!isScreenSmall && (
