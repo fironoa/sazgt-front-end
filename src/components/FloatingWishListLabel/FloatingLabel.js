@@ -40,7 +40,9 @@ const FloatingLabel = () => {
 
     useEffect(() => {
         const handleIsOnWishList = () => {
-            if(location.pathname == '/wish-list'){
+            if(location.pathname == '/wish-list' ||
+                location.pathname == '/admin-dashboard' 
+            ){
                 setIsOnWishList(true);
             } else {
                 setIsOnWishList(false);

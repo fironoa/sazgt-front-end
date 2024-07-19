@@ -208,11 +208,11 @@ const ProductDisplayDialogue = ({ product, baseURL, addItem, closeModal, setIsLo
         <div className='product-display-details'>
           <h5>{product.name}</h5>
           <p>{product.model}</p>
-          <ul style={{ marginTop: '10px' }}><b>Specifications</b>
+          {/*<ul style={{ marginTop: '10px' }}><b>Specifications</b>
             {specifications.map(spec => {
               return <li style={{ fontSize: '0.8rem' }}>{spec}</li>
             })}
-          </ul>
+          </ul>*/}
 
           {
             isReadyToContinue &&
@@ -253,7 +253,7 @@ const ProductDisplayDialogue = ({ product, baseURL, addItem, closeModal, setIsLo
               <input name="phone" className='enquiry-form-input' placeholder='phone' onChange={handleFormInputChange} required></input>
               <input name="email" className='enquiry-form-input' placeholder='email' onChange={handleFormInputChange} type='email' required></input>
               <textarea name="message" onChange={handleFormInputChange} placeholder='Type your Message here Refrain from mentioning sensitive information' required className='enquiry-form-input'></textarea>
-              <input ref={emailBox} style={{ backgroundColor: "#007A87" }} className='enquiry-form-input-button' type='submit' value="Send Email"></input>
+              <input ref={emailBox} style={{ backgroundColor: "#007A87" }} className='enquiry-form-input-button' type='submit' value="Send Enquiry"></input>
             </form>
           }
           {!isReadyToContinue && <button className='product-button-submit' onClick={() => handleEnquiryClick(product)}>Enquire</button>}

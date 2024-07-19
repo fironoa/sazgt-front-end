@@ -73,7 +73,6 @@ function WishList() {
 
   const handleFormInput = (event) => {
     const { name, value } = event.target;
-    console.log(name + " " + value);
     switch (name) {
       case 'name':
         setName(value);
@@ -109,7 +108,7 @@ function WishList() {
         simplifiedProducts
       ]
     };
-
+    console.log(data);
     setIsLoading(true)
     sendMail(data)
     .then(data => {
@@ -159,7 +158,7 @@ function WishList() {
           </div>
           {products.length > 0 && !isFormVisible && (
             <div className="email-button">
-              <button onClick={toggleFormVisibility}>Sent Email</button>
+              <button onClick={toggleFormVisibility}>Send Enquiry</button>
             </div>
           )}
         </div>
@@ -173,7 +172,7 @@ function WishList() {
               </div>
               <textarea placeholder="Message" name="message" required onChange={handleFormInput} />
               <div className="expanded-button">
-                <button>Sent Email</button>
+                <button>Send Enquiry</button>
               </div>
             </div>
           </form>

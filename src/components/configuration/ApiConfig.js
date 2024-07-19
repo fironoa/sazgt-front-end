@@ -21,15 +21,15 @@ export const subCategoriesFromConfig = {
   "Bedding Amenities": [],
   "Office Furniture": [
     "Office Chairs",
-    "Managers Desks",
+    "Office Desks",
     "⁠Work Stations",
     "⁠Cabinets",
     "⁠Meeting Tables",
-    "⁠Receptions"
+    "Reception Tables"
   ],
   "School Furniture": [
-    "Class Room furnitures",
-    "Canteen furnitures"
+    "Classroom Furniture",
+    "Canteen Furnitures"
   ],
   "Home Appliances": []
 

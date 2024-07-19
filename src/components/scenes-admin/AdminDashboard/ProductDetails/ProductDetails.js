@@ -347,7 +347,7 @@ function ProductDetails({ providedPId }) {
 
           {isProductAdded && <input type="submit" value="Update Product"></input>}
 
-          <button type="button" className='form-button' onClick={handleResetForm}>Reset Form</button>
+          <button type="button" className='form-button' onClick={handleResetForm}>Clear</button>
 
         </form>
         <div className='file-controls'>

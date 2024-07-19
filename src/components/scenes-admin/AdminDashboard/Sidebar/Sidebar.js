@@ -40,7 +40,7 @@ function Sidebar() {
     <div class="sidebar">
           <p>Admin Dashboard</p>
           <button onClick={handleNavigate} id="add-product" name="add-product" className={`icon-alignment ${operation === 'add-product' ? 'active' : ''}`}><MdAddBox className='icon-properties'/>Add Product</button>
-          <button onClick={handleNavigate} id="list-product" name="list-product" className={`icon-alignment ${operation === 'list-product' ? 'active' : ''}`}><FaListUl className='icon-properties'/>List Product</button>
+          <button onClick={handleNavigate} id="list-product" name="list-product" className={`icon-alignment ${operation === 'list-product' ? 'active' : ''}`}><FaListUl className='icon-properties'/>Product List</button>
           <button className="icon-alignment" onClick={handleLogout}><TbLogout2 className='icon-properties'/>Logout</button>
         </div>
   )

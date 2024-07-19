@@ -159,7 +159,7 @@ export const Products = () => {
       </div>
       <div className="sidebar-tiles-wrapper">
         <div className="product-sidebar">
-          <p>Categories</p>
+          <p>CATEGORIES</p>
           {categories !== null &&
             categories.map((cat) => (
               <div>

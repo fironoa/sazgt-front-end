@@ -4,18 +4,29 @@ import logodraft1 from "../../images/logodraft1.png";
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
-import { useNavigate } from "react-router-dom";
-import { FaTimes } from "react-icons/fa";
+import { useNavigate, useLocation } from "react-router-dom";
 import "./Header.css";
-import { categoriesFromConfig } from "../configuration/ApiConfig";
+import Navbar from "./Navbar";
 
 function Header() {
   const navigate = useNavigate();
+  const [showNav, setShowNav] = useState(true);
   const [perPage, setPerPage] = useState(localStorage.getItem("perPage") || "10");
   const [isScreenSmall, setIsScreenSmall] = useState(window.innerWidth <= 900);
-
+  const location = useLocation();
   const navRef = useRef();
 
+
+  useEffect(() => {
+    const handleShowNav = () => {
+      if (location.pathname == '/admin-dashboard') {
+        setShowNav(false);
+      } else {
+        setShowNav(true);
+      }
+    }
+    handleShowNav();
+  }, [location])
 
   useEffect(() => {
     const handleResize = () => {
@@ -48,54 +59,43 @@ function Header() {
           <div className="box" style={{ cursor: 'pointer' }} onClick={() => navigate('/')}>
             <img src={logodraft1} alt="Logo" width="270px" />
           </div>
-          <div className="box">
-            <div className="search">
-              <CiSearch />
-              <input placeholder="Search"></input>
-            </div>
-          </div>
-          <div className="box">
-            <div className="contact">
-              <div className="icon">
-                <FaPhoneAlt size={12} />
-              </div>
-              <div className="cont-content">
-                <a href="tel:+971508362620">+971508362620</a>
+          {showNav &&
+            <div className="box">
+              <div className="search">
+                <CiSearch />
+                <input placeholder="Search"></input>
               </div>
             </div>
-            <div className="contact">
-              <div className="icon">
-                <IoIosMail size={20} />
-              </div>
-              <div className="cont-content">
-                <a href="mailto:info@sazgt.com">info@sazgt.com</a>
-              </div>
-            </div>
-            {!isScreenSmall && (
+          }
+          {showNav &&
+            <div className="box">
               <div className="contact">
-                <div className="cont-content" style={{ cursor: "pointer" }} onClick={() => navigate('/#contact-us-section')}><p>Contact&nbsp;Us</p></div>
+                <div className="icon">
+                  <FaPhoneAlt size={12} />
+                </div>
+                <div className="cont-content">
+                  <a href="tel:+971508362620">+971508362620</a>
+                </div>
               </div>
-            )}
-
-
-          </div>
+              <div className="contact">
+                <div className="icon">
+                  <IoIosMail size={20} />
+                </div>
+                <div className="cont-content">
+                  <a href="mailto:info@sazgt.com">info@sazgt.com</a>
+                </div>
+              </div>
+              {!isScreenSmall && (
+                <div className="contact">
+                  <div className="cont-content" style={{ cursor: "pointer" }} onClick={() => navigate('/#contact-us-section')}><p>Contact&nbsp;Us</p></div>
+                </div>
+              )}
+            </div>
+          }
         </div>
       </div>
       <div id="line-above-nav-bar" className="line"></div>
-      <div className={`navbar-wrapper `}>
-        <nav className={`navbar`}>
-          <div className={`nav-list`} ref={navRef}>
-            {categoriesFromConfig.map((cat, index) => {
-              return (
-                <a onClick={() => handleClick(cat)}>{cat}</a>
-              )
-            })}
-            <button className={`nav-btn nav-close-btn`}>
-              <FaTimes onClick={showNavbar} />
-            </button>
-          </div>
-        </nav>
-      </div>
+      {showNav && <Navbar handleClick={handleClick} showNavbar={showNavbar}></Navbar>}
       <div id="line-below-nav-bar" className="line"></div>
     </>
   );
