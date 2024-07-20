@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Suspense } from "react";
 import { FaChevronDown } from "react-icons/fa6";
 import { ProductTile } from "./ProductTile";
 import { IoIosArrowForward } from "react-icons/io";
@@ -191,13 +191,15 @@ export const Products = () => {
         </div>
         <div style={{ width: "100%"}}>
           <div className={`product-tiles-wrapper${(products?.length || 0) > 0 ? "" : "-no-product"}`}>
-            {isLoading ? (
-              <LinearLoading />
-            ) : (products?.length || 0) > 0 ? (
-              products.map((product, index) => <ProductTile product={product} setIsLoading={setIsLoading} key={index} />)
-            ) : (
-              noProductsImage
-            )}
+            <Suspense fallback={<div>Loading...</div>}>
+              {isLoading ? (
+                <LinearLoading />
+              ) : (products?.length || 0) > 0 ? (
+                products.map((product, index) => <ProductTile product={product} key={index} />)
+              ) : (
+                noProductsImage
+              )}
+            </Suspense>
           </div>
           <div className="pagination">
             {(products?.length || 0) > 0 && paginationLinks && paginationLinks.map((link, index) => {
