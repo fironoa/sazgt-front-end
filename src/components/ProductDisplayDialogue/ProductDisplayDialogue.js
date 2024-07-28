@@ -198,9 +198,7 @@ const ProductDisplayDialogue = ({ product, baseURL, addItem, closeModal, setIsLo
           })}
         </div>
         <div className='main-image-container'>
-          <div className='product-image'>
-            <img src={currentImage} alt={product.name} />
-          </div>
+          <img src={currentImage} alt={product.name} />
         </div>
 
       </div>
