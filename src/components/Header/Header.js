@@ -5,6 +5,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import { useNavigate, useLocation } from "react-router-dom";
+import { subCategoriesFromConfig } from '../configuration/ApiConfig';
 import "./Header.css";
 import Navbar from "./Navbar";
 
@@ -47,7 +48,16 @@ function Header() {
     navRef.current.classList.toggle("responsive_nav");
   };
   const handleClick = (cat) => {
-    const url = '/products?category=' + cat + '&per_page=' + perPage;
+    let sub_category = "";
+    if (subCategoriesFromConfig[cat] && subCategoriesFromConfig[cat][0] !== undefined) {
+      sub_category = subCategoriesFromConfig[cat][0];
+    }
+    
+    let url = '/products?category=' + cat + '&per_page=' + perPage;
+    if (sub_category) {
+      url += '&sub_category=' + sub_category;
+    }
+    
     navigate(url);
   };
 

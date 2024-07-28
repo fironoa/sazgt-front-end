@@ -1,8 +1,7 @@
 .carousel {
     position: relative;
     max-width: 1920px;
-    max-height: 720px;
-    margin: auto;
+    max-height: 800px;
     overflow: hidden;
   }
   

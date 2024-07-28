@@ -27,10 +27,7 @@ export const subCategoriesFromConfig = {
     "⁠Meeting Tables",
     "Reception Tables"
   ],
-  "School Furniture": [
-    "Classroom Furniture",
-    "Canteen Furnitures"
-  ],
+  "School Furniture": [],
   "Home Appliances": []
 
 }

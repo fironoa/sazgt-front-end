@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Rectangle77 from "../../images/Rectangle77.png";
 import Rectangle68 from "../../images/Rectangle68.png";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import CategorySlider from "../CategorySlider/CategorySlider";
@@ -49,7 +48,7 @@ export const Home = () => {
 
   return (
     <div>
-      <Carousel></Carousel>
+      <div style={{display:"flex", justifyContent:"center"}}><Carousel></Carousel></div>
       <div className="home-container">
         <CategorySlider></CategorySlider>
         <div className={`banner`}>
@@ -90,7 +89,7 @@ export const Home = () => {
           </div>
           <div className="parts">
             <div className="banner-image-wrapper">
-              <img src={Rectangle77} width="100%" />
+              <img src={"/images/TopBunkImage.jpg"} width="100%" />
             </div>
           </div>
         </div>

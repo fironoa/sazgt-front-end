@@ -28,7 +28,16 @@ const CategoryPanel = () => {
     };
 
     const handleCatClick = (cat) => {
-        navigate('/products?category=' + cat + '&per_page=' + perPage);
+        let sub_category = "";
+        if (subCategoriesFromConfig[cat] && subCategoriesFromConfig[cat][0] !== undefined) {
+            sub_category = subCategoriesFromConfig[cat][0];
+        }
+
+        let url = '/products?category=' + cat + '&per_page=' + perPage;
+        if (sub_category) {
+            url += '&sub_category=' + sub_category;
+        }
+        navigate(url);
         if (subCategoriesFromConfig[cat].length === 0) {
             togglePanel();
         }
@@ -41,17 +50,17 @@ const CategoryPanel = () => {
     useEffect(() => {
         setSelectedCategory(searchParams.get("category"));
         setSelectedSubCategory(searchParams.get("sub_category"));
-        
+
     }, [searchParams]);
 
 
     useEffect(() => {
         document.querySelectorAll('.sub-cat-wrapper').forEach(subWrapperElement => {
-            
+
             if (subWrapperElement.id === selectedCategory) {
-                
+
                 subWrapperElement.style.height = `${subWrapperElement.scrollHeight}px`;
-               
+
             } else {
                 subWrapperElement.style.height = '0';
             }
@@ -59,14 +68,14 @@ const CategoryPanel = () => {
         });
     }, [selectedCategory]);
 
-    
+
     return (
         <div
             style={{
                 position: 'fixed',
                 left: isPanelOpen ? '0' : '-100%', // Slide effect
                 top: 0,
-                paddingTop:'30px',
+                paddingTop: '30px',
                 width: '100%',
                 height: '100%',
                 backgroundColor: 'rgb(240, 240, 240, 0.7)',
@@ -86,7 +95,7 @@ const CategoryPanel = () => {
             }} onClick={togglePanel} />
             <nav style={{
                 marginRight: '30px',
-                marginTop : '6vh',
+                marginTop: '6vh',
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'end',
@@ -96,9 +105,9 @@ const CategoryPanel = () => {
             }}>
                 {categoriesFromConfig.map((cat, index) => (
                     <div style={{ display: "flex", flexDirection: "column" }}><a className={`anchor-style ${selectedCategory === cat ? "active" : ""}`} onClick={() => handleCatClick(cat)}>{cat}</a>
-                        <div id = {cat} className={`sub-cat-wrapper ${selectedCategory === cat ? "sub_wrapper_active" : ""}`}>
+                        <div id={cat} className={`sub-cat-wrapper ${selectedCategory === cat ? "sub_wrapper_active" : ""}`}>
                             {subCategoriesFromConfig[selectedCategory] && subCategoriesFromConfig[selectedCategory].map((sub_category, index) => (
-                                <a key={index}  className={`anchor-sub-style ${selectedSubCategory === sub_category ? "active" : ""}`} onClick={() => handleClick(cat, sub_category)}>{sub_category}</a>
+                                <a key={index} className={`anchor-sub-style ${selectedSubCategory === sub_category ? "active" : ""}`} onClick={() => handleClick(cat, sub_category)}>{sub_category}</a>
                             ))}
                         </div>
                     </div>

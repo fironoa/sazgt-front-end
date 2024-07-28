@@ -104,9 +104,7 @@ function WishList() {
       email: email,
       phone: phone,
       message: message,
-      product: [
-        simplifiedProducts
-      ]
+      products: simplifiedProducts
     };
     console.log(data);
     setIsLoading(true)

@@ -1,7 +1,7 @@
-import React from "react";
+import React, { lazy } from "react";
 import { useState, useEffect, useRef, Suspense } from "react";
 import { FaChevronDown } from "react-icons/fa6";
-import { ProductTile } from "./ProductTile";
+//import { ProductTile } from "./ProductTile";
 import { IoIosArrowForward } from "react-icons/io";
 import { useSearchParams } from "react-router-dom";
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
@@ -12,6 +12,7 @@ import CategorySlider from "../CategorySlider/CategorySlider";
 import { categoriesFromConfig } from "../configuration/ApiConfig";
 import noCartImage from "../../images/emptyCart.png";
 import { subCategoriesFromConfig } from '../configuration/ApiConfig';
+const ProductTile = lazy(() => import("./ProductTile"));
 
 export const Products = () => {
   const baseURL = config.baseURL;
@@ -66,12 +67,22 @@ export const Products = () => {
 
   const handleNavigate = (event) => {
     const { name } = event.target;
-    setSearchParams({ category: name, per_page: perPage.toString() });
+    // Assuming subCategoriesFromConfig is an object and perPage is a defined variable
+    const queryParams = {
+      category: name,
+      per_page: perPage.toString()
+    };
+
+    // Check if subCategoriesFromConfig[name] exists and has a defined first element
+    if (subCategoriesFromConfig[name] && subCategoriesFromConfig[name][0] !== undefined) {
+      queryParams.sub_category = subCategoriesFromConfig[name][0];
+    }
+    setSearchParams(queryParams);
   };
 
   const handleNavigateSubCat = (cat, sub_cat) => {
     setSearchParams({ category: cat, sub_category: sub_cat, per_page: perPage.toString() });
-    
+
   }
   const handlePageChange = (url) => {
     if (!url) return; // If the URL is null (e.g., for the active page or unavailable navigation), do nothing
@@ -106,17 +117,17 @@ export const Products = () => {
 
   useEffect(() => {
     document.querySelectorAll('.sub_cat_wrapper_l').forEach(subWrapperElement => {
-        
-        if (subWrapperElement.id === selectedCategory) {
-            
-            subWrapperElement.style.height = `${subWrapperElement.scrollHeight}px`;
-           
-        } else {
-            subWrapperElement.style.height = '0';
-        }
+
+      if (subWrapperElement.id === selectedCategory) {
+
+        subWrapperElement.style.height = `${subWrapperElement.scrollHeight}px`;
+
+      } else {
+        subWrapperElement.style.height = '0';
+      }
 
     });
-}, [selectedCategory]);
+  }, [selectedCategory]);
 
   const handlePerPage = (event) => {
 
@@ -173,7 +184,7 @@ export const Products = () => {
                   {cat}
                   {selectedCategory === cat && <IoIosArrowForward />}
                 </button>
-                <div  id={cat} className={`sub_cat_wrapper_l ${selectedCategory === cat ? "sub_cat_wrapper_l_active" : ""}`}>
+                <div id={cat} className={`sub_cat_wrapper_l ${selectedCategory === cat ? "sub_cat_wrapper_l_active" : ""}`}>
                   {subCategoriesFromConfig[cat] && subCategoriesFromConfig[cat].map((sub_category, index) => (
                     <div
                       key={index}
@@ -189,17 +200,21 @@ export const Products = () => {
               </div>
             ))}
         </div>
-        <div style={{ width: "100%"}}>
+        <div style={{ width: "100%" }}>
           <div className={`product-tiles-wrapper${(products?.length || 0) > 0 ? "" : "-no-product"}`}>
-            <Suspense fallback={<div>Loading...</div>}>
-              {isLoading ? (
-                <LinearLoading />
-              ) : (products?.length || 0) > 0 ? (
-                products.map((product, index) => <ProductTile product={product} key={index} />)
-              ) : (
-                noProductsImage
-              )}
-            </Suspense>
+
+            {isLoading ? (
+              <LinearLoading />
+            ) : (products?.length || 0) > 0 ? (
+              <Suspense fallback={<div>Loading...</div>}>
+                {products.map((product, index) => (
+                  <ProductTile product={product} key={index} />
+                ))}
+              </Suspense>
+            ) : (
+              noProductsImage
+            )}
+
           </div>
           <div className="pagination">
             {(products?.length || 0) > 0 && paginationLinks && paginationLinks.map((link, index) => {
