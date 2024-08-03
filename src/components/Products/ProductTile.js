@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 import config from "../configuration/ApiConfig";
+import {imageBase} from "../configuration/ApiConfig"
 import defaultImage from "../../images/defaultImage.png";
 import ProductModal from "../ProductModal/ProductModal";
 import ProductDisplayDialogue from "../ProductDisplayDialogue/ProductDisplayDialogue";
@@ -29,7 +30,7 @@ const ProductTile = ({ product, setIsLoading }) => {
     if (product.primaryImageUrl == null) {
       setImageAvailable(false);
     } else {
-      setCurrentProductsPrimaryImage(`${baseURL}/sazgt/images/${product.primaryImageUrl}`);
+      setCurrentProductsPrimaryImage(`${imageBase}/${product.images}/thumbnail.jpg`);
     }
   }, [baseURL, product.primaryImageUrl]);
 

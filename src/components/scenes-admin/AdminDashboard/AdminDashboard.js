@@ -8,6 +8,7 @@ import ProductList from './ProductDetails/ProductList';
 import LinearLoading from '../../LinearLoading/LinearLoading';
 import SnackBar from '../../Snackbar/Snackbar';
 import EditProduct from './ProductDetails/EditProduct';
+import ThumbnailFetcher from '../../Thumbnailcreator/ThumbnailCreator';
 
 function AdminDashboard() {
 
@@ -90,6 +91,7 @@ function AdminDashboard() {
           {operation === 'add-product' && <ProductDetails />}
           {operation === 'list-product' && <ProductList baseURL={baseURL} />}
           {!operation && <ProductDetails />}
+          <ThumbnailFetcher></ThumbnailFetcher>
         </div>
       }
       <SnackBar isOpen={snackBarOpen} message={message} type={messagetype} />

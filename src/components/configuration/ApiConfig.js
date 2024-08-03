@@ -2,6 +2,8 @@ export default {
   baseURL: "https://gobartsdev.com/api",
 };
 
+export const imageBase ="https://gobartsdev.com/storage/images";
+
 export const categoriesFromConfig = [
   "Camp Furniture",
   "Bedding Amenities",

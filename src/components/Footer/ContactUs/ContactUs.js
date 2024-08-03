@@ -15,9 +15,11 @@ const ContactUs = ({mapToBeShown, toContactRef}) => {
             </div>}
             <div className="company-contact-details" ref={toContactRef}>
                 <p align='center'>
-                    Telephone: +97142808392 | FAX: +97142821973 | Mobile: +97150-8362620
+                    Telephone: <a href="tel:+97142968177">+97142968177</a> 
+                    &nbsp; | FAX: <a href="tel:+97142821973">+97142821973</a> 
+                    &nbsp; | Mobile: <a href="tel:+971508362620">+971508362620</a>
                 </p>
-                <p>E-mail : info@sazgt.com</p>
+                <p>E-mail : <a href="mailto:info@sazgt.com">info@sazgt.com</a></p>
             </div>
         </>
     )
