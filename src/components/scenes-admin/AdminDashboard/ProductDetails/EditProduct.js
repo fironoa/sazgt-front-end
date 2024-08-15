@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import ImageUpload from './ImageUpload';
 import LinearLoading from '../../../LinearLoading/LinearLoading';
 import SnackBar from '../../../Snackbar/Snackbar';
+import { useSnackbar } from '../../../Contexts/SnackbarContext';
 import config from '../../../configuration/ApiConfig';
 import { subCategoriesFromConfig } from '../../../configuration/ApiConfig';
 import { MdAddBox } from "react-icons/md";
@@ -18,7 +19,7 @@ function EditProduct({ product }) {
     const queryParams = new URLSearchParams(location.search);
 
     const baseURL = config.baseURL;
-
+    const { showSnackbar } = useSnackbar();
     const [name, setName] = useState('');
     const [category, setCategory] = useState('');
     const [subCategory, setSubCategory] = useState('');
@@ -219,6 +220,23 @@ function EditProduct({ product }) {
         }
     };
 
+    const handleCreateThumbnail = async () => {
+        const data = {
+            productIds : [productId]
+        }
+        const url = baseURL + "/sazgt/public/images/thumbnail/create";
+        const response = await fetch(url, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            }
+            
+        });
+        const responseData = await response.json();
+        showSnackbar( JSON.stringify(responseData))
+    }
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -381,6 +399,9 @@ function EditProduct({ product }) {
                                 })}
                             </tbody>
                         </table>
+                        <div>
+                            <button onClick={handleCreateThumbnail}>Create Thumbnail</button>
+                        </div>
                         <br></br>
                         <h5>Images of this product</h5>
                         {!hasImagesLoaded && <div>Loading images ...</div>}
