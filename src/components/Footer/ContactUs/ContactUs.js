@@ -19,7 +19,10 @@ const ContactUs = ({mapToBeShown, toContactRef}) => {
                     &nbsp; | FAX: <a href="tel:+97142821973">+97142821973</a> 
                     &nbsp; | Mobile: <a href="tel:+971508362620">+971508362620</a>
                 </p>
-                <p>E-mail : <a href="mailto:info@sazgt.com">info@sazgt.com</a></p>
+                <address style={{fontStyle:"normal", display:"flex", flexDirection:"column", alignItems:"center", gap:"16px"}}>
+                    <p>E-mail : <a href="mailto:info@sazgt.com">info@sazgt.com</a></p>
+                    Address : Umm Ramool - Dubai - United Arab Emirates
+                </address>
             </div>
         </>
     )
