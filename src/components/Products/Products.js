@@ -14,7 +14,7 @@ import noCartImage from "../../images/emptyCart.png";
 import { subCategoriesFromConfig } from '../configuration/ApiConfig';
 const ProductTile = lazy(() => import("./ProductTile"));
 
-export const Products = () => {
+export const Products = ({categoryFromRoute}) => {
   const baseURL = config.baseURL;
   const [isOpen, setIsOpen] = useState(false);
   const [rotate, setRotate] = useState(false);
@@ -60,6 +60,10 @@ export const Products = () => {
   useEffect(() => {
     getProducts(searchParams);
   }, [searchParams]);
+
+  useEffect(() => {
+    setSearchParams({ category: categoryFromRoute, per_page: perPage.toString() });
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("perPage", perPage);

@@ -7,6 +7,7 @@ import Login from "./components/scenes-admin/Login/Login";
 import { PanelProvider } from "./components/Contexts/PanelContext";
 import CategoryPanel from "./components/CategorySlider/CategoryPanel";
 import AdminDashboard from "./components/scenes-admin/AdminDashboard/AdminDashboard";
+import { categoriesFromConfig } from "./components/configuration/ApiConfig";
 import "./App.css";
 import { LogoAnimationProvider } from "./components/Contexts/LogoAnimationContext";
 import VideoOverlay from "./components/LogoAnimation/VideoOverlay";
@@ -14,6 +15,7 @@ import VideoOverlay from "./components/LogoAnimation/VideoOverlay";
 import WishList from "./components/WishList/WishList";
 import FloatingLabel from "./components/FloatingWishListLabel/FloatingLabel";
 import SnackbarProvider from "./components/Contexts/SnackbarContext";
+import AboutUs from "./components/AboutUs/AboutUs";
 
 function App() {
   const fontLinkHref =
@@ -40,11 +42,15 @@ function App() {
             <CategoryPanel />
             <Header />
             <Routes>
-              <Route path="/products" element={<Products />}></Route>
+              <Route path="/products" element={<Products categoryFromRoute={categoriesFromConfig[0]}/>}></Route>
+              <Route path="/camp-furnitures" element={<Products categoryFromRoute={categoriesFromConfig[0]}/>}></Route>
+              <Route path="/office-furnitures" element={<Products categoryFromRoute={categoriesFromConfig[2]}/>}></Route>
               <Route path="/" element={<Home />}></Route>
               <Route path="/auth/admin-login" element={<Login />}></Route>
               <Route path="/admin-dashboard" element={<AdminDashboard />}></Route>
               <Route path="/wish-list" element={<WishList />}></Route>
+              <Route path="/about" element={<AboutUs />}></Route>
+              <Route path="/contact" element={<AboutUs />}></Route>
             </Routes>
             <FloatingLabel />
             <Footer />
