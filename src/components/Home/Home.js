@@ -71,7 +71,7 @@ export const Home = () => {
             <div className="count-box">
               <div className="count">
                 <div className="number">
-                  <IncrementCounter target={467}></IncrementCounter>
+                  <IncrementCounter target={867}></IncrementCounter>
                 </div>
                 <div className="number-label">
                   <h5>Clients</h5>
@@ -79,7 +79,7 @@ export const Home = () => {
               </div>
               <div className="count">
                 <div className="number">
-                  <IncrementCounter target={10578}></IncrementCounter>
+                  <IncrementCounter target={160578}></IncrementCounter>
                 </div>
                 <div className="number-label">
                   <h5>Product Sold</h5>
@@ -89,7 +89,7 @@ export const Home = () => {
           </div>
           <div className="parts">
             <div className="banner-image-wrapper">
-              <img src={"/images/TopBunkImage.jpg"} width="100%" />
+              <img src={"/images/TopBunkImage.jpg"} width="100%" alt="Bunk beds" />
             </div>
           </div>
         </div>
@@ -108,6 +108,7 @@ export const Home = () => {
                     <img
                       width="100%"
                       src={"/images/" + category.replace(/\s+/g, "") + ".jpg"}
+                      alt={category}
                     />
                   </div>
                   <div className="product-name">

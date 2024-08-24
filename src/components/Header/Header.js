@@ -67,7 +67,7 @@ function Header() {
       <div className="container">
         <div className="header">
           <div className="box" style={{ cursor: 'pointer' }} onClick={() => navigate('/')}>
-            <img src={logodraft1} alt="Logo" width="270px" />
+            <img src={logodraft1} alt="Sahil Al Zuhoor" width="270px" />
           </div>
           {showNav &&
             <div className="box">

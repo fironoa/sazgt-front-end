@@ -12,6 +12,7 @@ import CategorySlider from "../CategorySlider/CategorySlider";
 import { categoriesFromConfig } from "../configuration/ApiConfig";
 import noCartImage from "../../images/emptyCart.png";
 import { subCategoriesFromConfig } from '../configuration/ApiConfig';
+import { Helmet } from "react-helmet";
 const ProductTile = lazy(() => import("./ProductTile"));
 
 export const Products = ({categoryFromRoute}) => {
@@ -151,6 +152,9 @@ export const Products = ({categoryFromRoute}) => {
   }
   return (
     <div className="product-container">
+      <Helmet>
+        <title>{selectedCategory} | Sahil Al Zuhoor`</title>
+      </Helmet>
       {isLoading && <LinearLoading></LinearLoading>}
       <div className="product-path-sort">
         <CategorySlider></CategorySlider>

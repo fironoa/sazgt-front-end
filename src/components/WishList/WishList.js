@@ -10,6 +10,7 @@ import WishlistProductTile from "./WishlistProductTile";
 import noCartImage from "../../images/emptyCart.png";
 import { sendMail } from '../api/email';
 import { useSnackbar } from '../Contexts/SnackbarContext';
+import { Helmet } from "react-helmet";
 
 function WishList() {
 
@@ -123,6 +124,9 @@ function WishList() {
   let lastProductId = products.length > 0 ? [products.length] : "0";
   return (
     <>
+      <Helmet>
+        <title>Wishlist | Sahil Al Zuhoor`</title>
+      </Helmet>
       <div className="wishlist-container">
         <CategorySlider></CategorySlider>
         <div className="wislist-heading">
