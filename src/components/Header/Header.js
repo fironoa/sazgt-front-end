@@ -10,9 +10,11 @@ import "./Header.css";
 import Navbar from "./Navbar";
 import config from "../configuration/ApiConfig";
 import LinearLoading from "../LinearLoading/LinearLoading";
+import { useSnackbar } from '../Contexts/SnackbarContext';
 
 function Header() {
   const navigate = useNavigate();
+  const { showSnackbar } = useSnackbar();
   const [showNav, setShowNav] = useState(true);
   const [perPage, setPerPage] = useState(localStorage.getItem("perPage") || "30");
   const [isScreenSmall, setIsScreenSmall] = useState(window.innerWidth <= 900);
@@ -28,7 +30,6 @@ function Header() {
     if (event.key === 'Enter') {
       try {
         // Trigger your search request here
-        console.log(config.baseURL + "/sazgt/products/search/" + searchQuery);
         setIsLoading(true);
         const response = await fetch(config.baseURL + "/sazgt/products/search/" + searchQuery);
 
@@ -54,7 +55,9 @@ function Header() {
           }
         });
 
-
+        if(uniqueItems.length == 0){
+          showSnackbar("No products Found", "info");
+        }
         setDropdownItems(uniqueItems.map(item => {
           return {
             searchQuery: item?.name,
@@ -124,7 +127,6 @@ function Header() {
 
 
   const handleDropDownListSelection = (item) => {
-    console.log(item);
     const subCategory = item.sub_category;
     let url = `/products?category=${item.category}&per_page=${perPage}`;
 

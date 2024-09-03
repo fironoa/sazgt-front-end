@@ -39,6 +39,9 @@ export const Products = ({categoryFromRoute, subCategoryFromRoute}) => {
 
   const topElemenrRef = useRef(null);
 
+  // Check if there are no search parameters
+  const hasSearchParams = searchParams.toString() !== "";
+
   const noProductsImage = (
     <div style={{ display: 'flex', flexDirection: "column", justifyContent: 'center', alignItems: 'center', height: '40vh', minWidth: '400px' }}>
       <img src={noCartImage} alt="No products found" style={{ maxWidth: '50%', maxHeight: '50%', width: 'auto', height: 'auto' }} />
@@ -63,7 +66,10 @@ export const Products = ({categoryFromRoute, subCategoryFromRoute}) => {
   }, [searchParams]);
 
   useEffect(() => {
-    setSearchParams({ category: categoryFromRoute, sub_category: subCategoryFromRoute, per_page: perPage.toString() });
+    if (!hasSearchParams) {
+      setSearchParams({ category: categoryFromRoute, sub_category: subCategoryFromRoute, per_page: perPage.toString() });
+    }
+    
   }, []);
 
   useEffect(() => {
@@ -150,10 +156,16 @@ export const Products = ({categoryFromRoute, subCategoryFromRoute}) => {
     toggleDropdown();
 
   }
+
+  const title = selectedCategory && selectedCategory !== "rexsrt"
+  ? `${selectedCategory} | Sahil Al Zuhoor`
+  : `Camp Furniture | Sahil Al Zuhoor`;
+
+
   return (
     <div className="product-container">
       <Helmet>
-        <title>{selectedCategory} | Sahil Al Zuhoor`</title>
+        <title>{title}</title>
       </Helmet>
       {isLoading && <LinearLoading></LinearLoading>}
       <div className="product-path-sort">

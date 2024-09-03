@@ -26,11 +26,9 @@ const SnackbarProvider = ({ children }) => {
     // Start fading out after 2 seconds
     setTimeout(() => {
       setSnackbar((prev) => ({ ...prev, opacity: 0 }));
-      console.log("Fading out the snackbar: " + message);
     }, 2000);
     // Completely hide after 3 seconds
     setTimeout(() => {
-      console.log("Closing the snackbar: " + message);
       setSnackbar({ visible: false, message: "", opacity: 1 });
     }, 3000);
   };
