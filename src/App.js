@@ -8,6 +8,7 @@ import { PanelProvider } from "./components/Contexts/PanelContext";
 import CategoryPanel from "./components/CategorySlider/CategoryPanel";
 import AdminDashboard from "./components/scenes-admin/AdminDashboard/AdminDashboard";
 import { categoriesFromConfig } from "./components/configuration/ApiConfig";
+import { subCategoriesFromConfig } from "./components/configuration/ApiConfig";
 import "./App.css";
 import { LogoAnimationProvider } from "./components/Contexts/LogoAnimationContext";
 import VideoOverlay from "./components/LogoAnimation/VideoOverlay";
@@ -36,15 +37,25 @@ function App() {
   return (
     <>
       <LogoAnimationProvider>
-        <VideoOverlay/>
+        <VideoOverlay />
         <PanelProvider>
           <SnackbarProvider>
             <CategoryPanel />
             <Header />
             <Routes>
-              <Route path="/products" element={<Products categoryFromRoute={categoriesFromConfig[0]}/>}></Route>
-              <Route path="/camp-furnitures" element={<Products categoryFromRoute={categoriesFromConfig[0]}/>}></Route>
-              <Route path="/office-furnitures" element={<Products categoryFromRoute={categoriesFromConfig[2]}/>}></Route>
+              <Route path="/products" element={<Products
+                categoryFromRoute={categoriesFromConfig[0]}
+                subCategoryFromRoute={subCategoriesFromConfig[categoriesFromConfig[0]][0]}
+              />}
+              ></Route>
+              <Route path="/camp-furnitures" element={<Products 
+              categoryFromRoute={categoriesFromConfig[0]} 
+              subCategoryFromRoute={subCategoriesFromConfig[categoriesFromConfig[0]][0]}
+              />}></Route>
+              <Route path="/office-furnitures" element={<Products
+              categoryFromRoute={categoriesFromConfig[2]}
+              subCategoryFromRoute={subCategoriesFromConfig[categoriesFromConfig[2]][0]} 
+              />}></Route>
               <Route path="/" element={<Home />}></Route>
               <Route path="/auth/admin-login" element={<Login />}></Route>
               <Route path="/admin-dashboard" element={<AdminDashboard />}></Route>

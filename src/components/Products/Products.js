@@ -15,7 +15,7 @@ import { subCategoriesFromConfig } from '../configuration/ApiConfig';
 import { Helmet } from "react-helmet";
 const ProductTile = lazy(() => import("./ProductTile"));
 
-export const Products = ({categoryFromRoute}) => {
+export const Products = ({categoryFromRoute, subCategoryFromRoute}) => {
   const baseURL = config.baseURL;
   const [isOpen, setIsOpen] = useState(false);
   const [rotate, setRotate] = useState(false);
@@ -63,7 +63,7 @@ export const Products = ({categoryFromRoute}) => {
   }, [searchParams]);
 
   useEffect(() => {
-    setSearchParams({ category: categoryFromRoute, per_page: perPage.toString() });
+    setSearchParams({ category: categoryFromRoute, sub_category: subCategoryFromRoute, per_page: perPage.toString() });
   }, []);
 
   useEffect(() => {
