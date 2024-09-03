@@ -34,20 +34,23 @@
 
 }
 .search{
+    display: flex;
     justify-content: left;
     position:relative;
     width: 100%;
+    gap:10px;
     min-width: 300px;
 }
-.search input{
+.search input[type="text"]{
     padding: 10px;
     padding-left: 30px;
     border: 1px solid #ccc;
     border-radius: 32px;
-    min-width:20vw;
+    min-width:19vw;
     width:100%;
     outline: none;
   }
+
 .search svg {
     position: absolute;
     top:50%;
@@ -76,8 +79,30 @@
     font-size: 0.9rem;
     
  }
+ .dropdown-list {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    border: 1px solid #ccc;
+    list-style: none;
+    margin: 0;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-height: 400px;
+    overflow-y: auto;
+    z-index: 1000;
+  }
 
+  .dropdown-list li{
+    padding: 10px;
+    cursor: pointer;
+  }
 
+  .dropdown-list li:hover{
+    background-color: #eee;
+  }
+  
 .line{
     border-bottom: 0.3px solid #ccc;
     

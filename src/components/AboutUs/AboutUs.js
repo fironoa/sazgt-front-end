@@ -8,7 +8,7 @@ function aboutUs() {
     gap: "35px"
   }
 
-  
+
   return (
     <>
       <div className="home-container">
@@ -18,10 +18,30 @@ function aboutUs() {
         </div>
         <div className="description" style={aboutUsStyle}>
           <div>
-            <h3>Sahil-Al-Zuhoor General Trading L.L.C</h3><br />
+            <h3>Welcome to Sahil-Al-Zuhoor -Best and  Trusted Furniture Supplier</h3><br />
             <p align="justify">
-              Established in the year 2007 with its corporate base at Dubai, SAZ General Trading is one of the leading and eminent business enterprises in the field of providing complete range of staff accommodation and office comfort solutions. With rich industry experience we have established ourselves as one of the most trusted names in the region. Our wide range of products is known for its high performance, robust design and low maintenance ensuring a hassle free experience.
+              At Sahil-Al-Zuhoor, we specialize in providing high-quality, durable furniture solutions for a variety of environments. Whether you need reliable and comfortable furniture for labor camps, modern and functional office furniture, sturdy school furniture, or robust metal bunk beds and lockers, we’ve got you covered. With years of experience in the industry, we are committed to delivering exceptional products that meet the needs of our diverse clientele.
+            </p><br></br>
+            <p align="justify">
+              Explore our wide range of products and discover why Sahil-Al-Zuhoor is the preferred choice for businesses and institutions worldwide.
             </p>
+          </div>
+          <div>
+            <h4>Key Products</h4><br />
+            <p>Labor Camp Furniture</p>
+            <p>Office Furniture</p>
+            <p>School Furniture</p>
+            <p>Steel Bunk Bed</p>
+            <p>Steel Bed</p>
+            <p>Steel Shoe rack</p>
+            <p>Steel Locker</p>
+            <p>Steel Cupboard</p>
+            <p>Steel Locker Cabinet</p>
+            <p>Chairs</p>
+            <p>Tables</p>
+            <p>File Cabinets</p>
+            <p>Medical Mattress</p>
+
           </div>
           <div>
             <h4>Why Choose Us?</h4><br />
@@ -52,10 +72,10 @@ function aboutUs() {
             </p>
           </div>
         </div>
-        <br/><br/><br/>
+        <br /><br /><br />
         <div class="imgWrapper">
-          <img  className="aboutImage" src={"/images/about-image.jpg"}/>
-        </div><br/><br/>
+          <img className="aboutImage" src={"/images/about-image.jpg"} />
+        </div><br /><br />
       </div>
     </>
   )
