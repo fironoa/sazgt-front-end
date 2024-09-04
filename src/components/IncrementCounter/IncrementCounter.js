@@ -7,7 +7,7 @@ const IncrementCounter = ({ target }) => {
         // Only start the interval if the current count is less than the target
         if (count < target) {
             const intervalId = setInterval(() => {
-                setCount((prevCount) => prevCount + 15);
+                setCount((prevCount) => prevCount + 16);
             }, 1000 / target); // Adjust the speed as needed
 
             // Clear the interval when the component unmounts or count reaches the target
