@@ -27,7 +27,7 @@ const ContactUs = ({ mapToBeShown, toContactRef }) => {
                 </p>
                 <address style={{ fontStyle: "normal", display: "flex", flexDirection: "column", alignItems: "center", gap: "16px" }}>
                     <p>E-mail : <a href="mailto:info@sazgt.com">info@sazgt.com</a></p>
-                    Address : Umm Ramool - Dubai - United Arab Emirates
+                    <p align='center'>Address : Umm Ramool - Dubai - United Arab Emirates</p>
                 </address>
             </div>
         </>

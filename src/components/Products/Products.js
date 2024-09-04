@@ -10,12 +10,14 @@ import LinearLoading from "../LinearLoading/LinearLoading";
 import config from "../configuration/ApiConfig";
 import CategorySlider from "../CategorySlider/CategorySlider";
 import { categoriesFromConfig } from "../configuration/ApiConfig";
+
+import { productPageDescription } from "../configuration/ApiConfig"
 import noCartImage from "../../images/emptyCart.png";
 import { subCategoriesFromConfig } from '../configuration/ApiConfig';
 import { Helmet } from "react-helmet";
 const ProductTile = lazy(() => import("./ProductTile"));
 
-export const Products = ({categoryFromRoute, subCategoryFromRoute}) => {
+export const Products = ({ categoryFromRoute, subCategoryFromRoute }) => {
   const baseURL = config.baseURL;
   const [isOpen, setIsOpen] = useState(false);
   const [rotate, setRotate] = useState(false);
@@ -69,7 +71,7 @@ export const Products = ({categoryFromRoute, subCategoryFromRoute}) => {
     if (!hasSearchParams) {
       setSearchParams({ category: categoryFromRoute, sub_category: subCategoryFromRoute, per_page: perPage.toString() });
     }
-    
+
   }, []);
 
   useEffect(() => {
@@ -158,9 +160,17 @@ export const Products = ({categoryFromRoute, subCategoryFromRoute}) => {
   }
 
   const title = selectedCategory && selectedCategory !== "rexsrt"
-  ? `${selectedCategory} | Sahil Al Zuhoor`
-  : `Camp Furniture | Sahil Al Zuhoor`;
+    ? `${selectedCategory} | Sahil Al Zuhoor`
+    : `Camp Furniture | Sahil Al Zuhoor`;
 
+  const description = {
+    title: selectedCategory && selectedCategory !== "rexsrt"
+      ? `${selectedCategory}`
+      : `Camp Furniture`,
+    text: productPageDescription[selectedCategory && selectedCategory !== "rexsrt"
+      ? `${selectedCategory}`
+      : `Camp Furniture`]
+  }
 
   return (
     <div className="product-container">
@@ -221,6 +231,15 @@ export const Products = ({categoryFromRoute, subCategoryFromRoute}) => {
             ))}
         </div>
         <div style={{ width: "100%" }}>
+          <div style={{
+              display:"flex",
+              flexDirection:"column",
+              marginBottom:"20px",
+              gap:"10px"
+            }}>
+            <h1 style={{ fontSize: "1.3rem" }}>{description.title}</h1>
+            <p>{description.text}</p>
+          </div>
           <div className={`product-tiles-wrapper${(products?.length || 0) > 0 ? "" : "-no-product"}`}>
 
             {isLoading ? (

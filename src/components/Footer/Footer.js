@@ -42,8 +42,7 @@ function Footer() {
         <ContactUs mapToBeShown={mapToBeShown} toContactRef={toContactRef}></ContactUs>}
         <div className="copyright">
           <p align='center'>
-            Copyright © 2023 Sahil Al Zuhoor. All Rights Reserved | Privacy
-            Policy | Designed by gobartsdev.com
+          Sahil-Al-Zuhoor - Your Reliable Furniture Supplier © 2024 Sahil-Al-Zuhoor General Trading LLC. All Rights Reserved. | Privacy Policy | Terms and Conditions
           </p>
         </div>
       </div>
