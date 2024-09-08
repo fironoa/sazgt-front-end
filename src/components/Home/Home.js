@@ -5,7 +5,7 @@ import CategorySlider from "../CategorySlider/CategorySlider";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
 import IncrementCounter from "../IncrementCounter/IncrementCounter";
-import { categoriesFromConfig } from "../configuration/ApiConfig";
+import { categoriesFromConfig, productPageDescription } from "../configuration/ApiConfig";
 import Carousel from "../Carousel/Carousel";
 
 export const Home = () => {
@@ -115,7 +115,8 @@ export const Home = () => {
                     />
                   </div>
                   <div className="product-name">
-                    <p>{category}</p>
+                    <h2 style={{fontSize:"1.2rem"}}>{category}</h2>
+                    <p align="justify">{productPageDescription[category]}</p>
                   </div>
                 </div>
               ))}
