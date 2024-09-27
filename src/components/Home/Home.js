@@ -5,7 +5,7 @@ import CategorySlider from "../CategorySlider/CategorySlider";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
 import IncrementCounter from "../IncrementCounter/IncrementCounter";
-import { categoriesFromConfig, productPageDescription } from "../configuration/ApiConfig";
+import { categoriesFromConfig, productPageDescription, getSub, toKebabCase, getHomeUrl } from "../configuration/ApiConfig";
 import Carousel from "../Carousel/Carousel";
 
 export const Home = () => {
@@ -48,27 +48,27 @@ export const Home = () => {
 
   return (
     <div>
-      <div style={{display:"flex", justifyContent:"center"}}><Carousel></Carousel></div>
+      <div style={{ display: "flex", justifyContent: "center" }}><Carousel></Carousel></div>
       <div className="home-container">
         <CategorySlider></CategorySlider>
         <div className={`banner`}>
           <div className="parts">
             <div>
               <h1>Durable Bunk Beds, Lockers, Camp Furniture and Office Furniture
-              <span style={styleText}>&nbsp;Solutions!</span>
+                <span style={styleText}>&nbsp;Solutions!</span>
               </h1>
-              
+
             </div>
             <div className="description">
               <p align="justify">
-              At Sahil - Al-Zuhoor General Trading L.L.C, founded in 2007 in Dubai, we offer a wide range of office and 
-              industry comfort solutions, specializing in furniture and comprehensive staff accommodation furnishings. 
-              Our extensive product line includes labor camp furniture such as steel bunk beds, steel single beds, 
-              steel locker cabinets, and medical or medicated mattresses. We also provide steel cupboards, 2-door lockers, 
-              file cabinets, steel shoeracks, and steel lockers for secure storage solutions. Additionally, 
-              our offerings extend to pantry furniture, including durable pantry tables and chairs, training chairs and tables, 
-              water coolers, cast iron stoves, and coin-operated washing machines. Our products are known for their 
-              robust design, durability, and versatility, catering to both residential and industrial needs.
+                At Sahil - Al-Zuhoor General Trading L.L.C, founded in 2007 in Dubai, we offer a wide range of office and
+                industry comfort solutions, specializing in furniture and comprehensive staff accommodation furnishings.
+                Our extensive product line includes labor camp furniture such as steel bunk beds, steel single beds,
+                steel locker cabinets, and medical or medicated mattresses. We also provide steel cupboards, 2-door lockers,
+                file cabinets, steel shoeracks, and steel lockers for secure storage solutions. Additionally,
+                our offerings extend to pantry furniture, including durable pantry tables and chairs, training chairs and tables,
+                water coolers, cast iron stoves, and coin-operated washing machines. Our products are known for their
+                robust design, durability, and versatility, catering to both residential and industrial needs.
               </p>
             </div>
             <div className="count-box">
@@ -106,19 +106,22 @@ export const Home = () => {
             </div>
             <div className="tiles-wrapper">
               {categoriesFromConfig.map((category) => (
-                <div className="tile" onClick={() => handleClick(category)}>
-                  <div className="tile-img">
-                    <img
-                      width="100%"
-                      src={"/images/" + category.replace(/\s+/g, "") + ".jpg"}
-                      alt={category}
-                    />
+                <a href={`${getHomeUrl()}/productsv2/${toKebabCase(category)}/${toKebabCase(getSub(category))}`}>
+                  <div className="tile">
+                    <div className="tile-img">
+                      <img
+                        width="100%"
+                        src={"/images/" + category.replace(/\s+/g, "") + ".jpg"}
+                        alt={category}
+                      />
+                    </div>
+                    <div className="product-name">
+                      <h2 style={{ fontSize: "1.2rem" }}>{category}</h2>
+                      <p align="justify">{productPageDescription[category]}</p>
+                    </div>
                   </div>
-                  <div className="product-name">
-                    <h2 style={{fontSize:"1.2rem"}}>{category}</h2>
-                    <p align="justify">{productPageDescription[category]}</p>
-                  </div>
-                </div>
+                </a>
+
               ))}
             </div>
           </div>

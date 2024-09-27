@@ -82,6 +82,7 @@
     cursor: pointer;
     max-width: 300px;
     height: 425px;
+    color: #000;
     background-color: #ffffff;
     -webkit-box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.22);
     -moz-box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.22);
