@@ -92,3 +92,7 @@ export const getSub = (cat) => {
       return 'items';
   }
 }
+
+export const getAllSub = (cat) => {
+  return subCategoriesFromConfig[cat];
+}

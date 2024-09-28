@@ -233,7 +233,7 @@ export const ProductsV2 = ({ categoryFromRoute, subCategoryFromRoute }) => {
               <div>
                 {
                   !subCategoriesFromConfig[cat][0] ? <a
-                    href={`/productsv2/${toKebabCase(cat)}/items`}
+                    href={`/products/${toKebabCase(cat)}/items`}
                   >
                     <button
                       key={cat} // Assuming 'cat' is unique for each category
@@ -245,7 +245,7 @@ export const ProductsV2 = ({ categoryFromRoute, subCategoryFromRoute }) => {
                       {selectedCategory === cat && <IoIosArrowForward />}
                     </button>
                   </a> :
-                    <a href={`${getHomeUrl()}/productsv2/${toKebabCase(cat)}/${toKebabCase(subCategoriesFromConfig[cat][0])}`}>
+                    <a href={`${getHomeUrl()}/products/${toKebabCase(cat)}/${toKebabCase(subCategoriesFromConfig[cat][0])}`}>
                       <button
                         key={cat} // Assuming 'cat' is unique for each category
                         id={cat}
@@ -261,7 +261,7 @@ export const ProductsV2 = ({ categoryFromRoute, subCategoryFromRoute }) => {
 
                 <div id={cat} className={`sub_cat_wrapper_l ${selectedCategory === cat ? "sub_cat_wrapper_l_active" : ""}`}>
                   {subCategoriesFromConfig[cat] && subCategoriesFromConfig[cat].map((sub_category, index) => (
-                    <a href={`${getHomeUrl()}/productsv2/${toKebabCase(cat)}/${toKebabCase(sub_category)}`}>
+                    <a href={`${getHomeUrl()}/products/${toKebabCase(cat)}/${toKebabCase(sub_category)}`}>
                       <div
                         key={index}
                         id={sub_category}

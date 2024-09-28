@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import IncrementCounter from "../IncrementCounter/IncrementCounter";
 import { categoriesFromConfig, productPageDescription, getSub, toKebabCase, getHomeUrl } from "../configuration/ApiConfig";
 import Carousel from "../Carousel/Carousel";
+import { Helmet } from "react-helmet";
 
 export const Home = () => {
   const [perPage] = useState(localStorage.getItem("perPage") || "30");
@@ -48,6 +49,9 @@ export const Home = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Labour Camp & Office Furniture Dubai | Sahil Al Zuhoor</title>
+      </Helmet>
       <div style={{ display: "flex", justifyContent: "center" }}><Carousel></Carousel></div>
       <div className="home-container">
         <CategorySlider></CategorySlider>
@@ -106,7 +110,7 @@ export const Home = () => {
             </div>
             <div className="tiles-wrapper">
               {categoriesFromConfig.map((category) => (
-                <a href={`${getHomeUrl()}/productsv2/${toKebabCase(category)}/${toKebabCase(getSub(category))}`}>
+                <a href={`${getHomeUrl()}/products/${toKebabCase(category)}/${toKebabCase(getSub(category))}`}>
                   <div className="tile">
                     <div className="tile-img">
                       <img

@@ -44,8 +44,8 @@ function App() {
             <CategoryPanel />
             <Header />
             <Routes>
-              <Route path="/productsv2/:category/:subCategory" element={<ProductsV2/>}></Route>
-              <Route path="/products" element={<Products
+              <Route path="/products/:category/:subCategory" element={<ProductsV2/>}></Route>
+              <Route path="/productsv2" element={<Products
                 categoryFromRoute={categoriesFromConfig[0]}
                 subCategoryFromRoute={subCategoriesFromConfig[categoriesFromConfig[0]][0]}
               />}

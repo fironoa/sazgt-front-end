@@ -17,7 +17,7 @@ const Navbar = ({ handleClick, showNavbar }) => {
                 <div className={`nav-list`} ref={navRef}>
                     {categoriesFromConfig.map((cat, index) => {
                         return (
-                            <a href={`/productsv2/${toKebabCase(cat)}/${toKebabCase(getSub(cat))}`}>
+                            <a href={`/products/${toKebabCase(cat)}/${toKebabCase(getSub(cat))}`}>
                                 {cat}
                                 </a>
                         )
