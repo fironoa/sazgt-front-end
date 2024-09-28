@@ -50,7 +50,7 @@ export const Home = () => {
   return (
     <div>
       <Helmet>
-        <title>Labour Camp & Office Furniture Dubai | Sahil Al Zuhoor</title>
+        <title>Labour Camp Furniture Dubai | Office Furniture Dubai </title>
       </Helmet>
       <div style={{ display: "flex", justifyContent: "center" }}><Carousel></Carousel></div>
       <div className="home-container">

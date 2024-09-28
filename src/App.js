@@ -50,14 +50,6 @@ function App() {
                 subCategoryFromRoute={subCategoriesFromConfig[categoriesFromConfig[0]][0]}
               />}
               ></Route>
-              <Route path="/camp-furnitures" element={<Products 
-              categoryFromRoute={categoriesFromConfig[0]} 
-              subCategoryFromRoute={subCategoriesFromConfig[categoriesFromConfig[0]][0]}
-              />}></Route>
-              <Route path="/office-furnitures" element={<Products
-              categoryFromRoute={categoriesFromConfig[2]}
-              subCategoryFromRoute={subCategoriesFromConfig[categoriesFromConfig[2]][0]} 
-              />}></Route>
               <Route path="/" element={<Home />}></Route>
               <Route path="/auth/admin-login" element={<Login />}></Route>
               <Route path="/admin-dashboard" element={<AdminDashboard />}></Route>
