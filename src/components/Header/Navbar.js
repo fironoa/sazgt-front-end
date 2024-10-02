@@ -1,6 +1,6 @@
 import React from 'react'
 import { useRef } from "react";
-import { categoriesFromConfig, subCategoriesFromConfig, toKebabCase } from "../configuration/ApiConfig";
+import { categoriesFromConfig, getHomeUrl, subCategoriesFromConfig, toKebabCase } from "../configuration/ApiConfig";
 import { FaTimes } from "react-icons/fa";
 const Navbar = ({ handleClick, showNavbar }) => {
     const navRef = useRef();
@@ -17,7 +17,7 @@ const Navbar = ({ handleClick, showNavbar }) => {
                 <div className={`nav-list`} ref={navRef}>
                     {categoriesFromConfig.map((cat, index) => {
                         return (
-                            <a href={`/products/${toKebabCase(cat)}/${toKebabCase(getSub(cat))}`}>
+                            <a href={`${getHomeUrl()}/products/${toKebabCase(cat)}/${toKebabCase(getSub(cat))}`}>
                                 {cat}
                                 </a>
                         )
