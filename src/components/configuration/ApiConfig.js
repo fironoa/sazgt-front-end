@@ -62,15 +62,15 @@ export const catDictionory = {
 
 
 export const productPageDescription = {
-  "Camp Furniture": "Durable and versatile labor camp furniture, including steel bunk beds, steel single beds, steel locker cabinets, and steel shoeracks, designed for temporary accommodations and staff quarters.",
+  "Camp Furniture": "Durable and versatile labour camp furniture in Dubai and the UAE, including steel bunk beds, steel single beds, steel locker cabinets, and steel shoeracks. Designed for labour camps and temporary staff accommodations, our products provide reliable solutions for labour camp furniture suppliers near you.",
 
-  "Bedding Amenities": "High-quality bedding essentials, including medicated and medical mattresses, providing comfort and support for staff accommodation and residential use.",
+  "Bedding Amenities": "High-quality bedding essentials for labour camp accommodations and residential use, including medicated and medical mattresses. Our mattresses offer superior comfort and support, perfect for staff quarters and labour camp furniture in the UAE.",
 
-  "Office Furniture": "Ergonomic and functional office solutions, such as desks, chairs, steel cupboards, file cabinets, and secure storage lockers, tailored for modern workplaces.",
+  "Office Furniture": "Ergonomic and functional office furniture in Dubai and the UAE, including desks, chairs, steel cupboards, file cabinets, and secure storage lockers. Designed for modern workplaces, our office solutions cater to businesses seeking durable and versatile office furniture in the UAE.",
 
-  "School Furniture": "Sturdy and student-friendly furniture, including training chairs and tables, designed to enhance learning environments with durable and versatile designs.",
+  "School Furniture": "Sturdy, student-friendly furniture, including training chairs and tables, perfect for enhancing learning environments. Our durable and versatile designs are ideal for schools and educational institutions in Dubai and the UAE.",
 
-  "Home Appliances": "Reliable and efficient home essentials, such as water coolers, cast iron stoves, coin-operated washing machines, and pantry furniture like pantry tables and chairs, perfect for everyday needs in staff accommodations and residential settings."
+  "Home Appliances": "Reliable and efficient home appliances for labour camps and staff accommodations, such as water coolers, cast iron stoves, coin-operated washing machines, and pantry furniture. Our pantry tables and chairs are ideal for labour camp furnishings in Dubai and the UAE."
 }
 
 

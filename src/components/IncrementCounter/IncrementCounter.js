@@ -16,9 +16,9 @@ const IncrementCounter = ({ target }) => {
     }, [count, target]); // Depend on count and target so the effect runs when they change
 
     return (
-        <h2 style={{
+        <h4 style={{
             fontSize: "2.4rem"
-        }}>{count}+</h2>
+        }}>{count}+</h4>
     );
 
 

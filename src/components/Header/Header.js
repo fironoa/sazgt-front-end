@@ -5,7 +5,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import { useNavigate, useLocation } from "react-router-dom";
-import { subCategoriesFromConfig } from '../configuration/ApiConfig';
+import { getHomeUrl, subCategoriesFromConfig } from '../configuration/ApiConfig';
 import "./Header.css";
 import Navbar from "./Navbar";
 import config from "../configuration/ApiConfig";
@@ -55,7 +55,7 @@ function Header() {
           }
         });
 
-        if(uniqueItems.length == 0){
+        if (uniqueItems.length == 0) {
           showSnackbar("No products Found", "info");
         }
         setDropdownItems(uniqueItems.map(item => {
@@ -145,8 +145,11 @@ function Header() {
       {isLoading && <LinearLoading></LinearLoading>}
       <div className="container">
         <div className="header">
-          <div className="box" style={{ cursor: 'pointer' }} onClick={() => navigate('/')}>
-            <img src={logodraft1} alt="Sahil Al Zuhoor" width="270px" />
+
+          <div className="box" style={{ cursor: 'pointer' }}>
+            <a href={getHomeUrl()}>
+              <img src={logodraft1} alt="Sahil Al Zuhoor" width="270px" />
+            </a>
           </div>
           {showNav &&
             <div className="box">

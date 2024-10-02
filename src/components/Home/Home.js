@@ -50,7 +50,7 @@ export const Home = () => {
   return (
     <div>
       <Helmet>
-        <title>Labour Camp Furniture Dubai | Office Furniture Dubai </title>
+        <title>Labour Camp Furniture Dubai, UAE | Office Furniture Dubai </title>
       </Helmet>
       <div style={{ display: "flex", justifyContent: "center" }}><Carousel></Carousel></div>
       <div className="home-container">
@@ -58,21 +58,16 @@ export const Home = () => {
         <div className={`banner`}>
           <div className="parts">
             <div>
-              <h1>Durable Bunk Beds, Lockers, Camp Furniture and Office Furniture
+              <h1>Labour Camp Furniture and Office Furniture
                 <span style={styleText}>&nbsp;Solutions!</span>
               </h1>
 
             </div>
             <div className="description">
               <p align="justify">
-                At Sahil - Al-Zuhoor General Trading L.L.C, founded in 2007 in Dubai, we offer a wide range of office and
-                industry comfort solutions, specializing in furniture and comprehensive staff accommodation furnishings.
-                Our extensive product line includes labor camp furniture such as steel bunk beds, steel single beds,
-                steel locker cabinets, and medical or medicated mattresses. We also provide steel cupboards, 2-door lockers,
-                file cabinets, steel shoeracks, and steel lockers for secure storage solutions. Additionally,
-                our offerings extend to pantry furniture, including durable pantry tables and chairs, training chairs and tables,
-                water coolers, cast iron stoves, and coin-operated washing machines. Our products are known for their
-                robust design, durability, and versatility, catering to both residential and industrial needs.
+                At Sahil - Al-Zuhoor General Trading L.L.C, founded in 2007 in Dubai, we specialize in providing high-quality labour camp furniture in Dubai and the UAE, as well as comprehensive office furniture solutions. As a leading labour camp furniture supplier in Dubai and the UAE, our product line includes robust and durable steel bunk beds, single beds, steel locker cabinets, and medical-grade mattresses, ideal for labour camp accommodations. We also offer secure steel lockers and file cabinets for offices and labour camps near you.
+
+                In addition to labour camp furniture, we supply office furniture in Dubai and the UAE, including pantry tables and chairs, training chairs and tables, and other workplace essentials like water coolers, cast iron stoves, and coin-operated washing machines. Whether you need steel lockers near you for secure storage or labour camp furnishings in Dubai, our products are designed for durability and versatility to meet both residential and industrial needs.
               </p>
             </div>
             <div className="count-box">

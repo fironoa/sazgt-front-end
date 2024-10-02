@@ -7,7 +7,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-p,a,li,input,label,textarea,button,td{
+p,a,li,input,label,textarea,button,td,address{
   font-family: 'Barlow', sans-serif;
 }
 

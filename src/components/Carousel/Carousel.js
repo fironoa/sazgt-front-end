@@ -37,7 +37,7 @@ const Carousel = () => {
         <div className="carousel">
             <div className="carousel-images" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
                 {images.map((image, index) => (
-                    <img key={index} src={image} alt={`Slide ${index + 1}`} />
+                    <img key={index} src={image} alt={`Camp Furnitures and Office Furnitures ${index + 1}`} />
                 ))}
             </div>
             <button className="carousel-button prev" onClick={handlePrevious}>&#10094;</button>
