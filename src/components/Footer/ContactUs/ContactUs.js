@@ -1,6 +1,7 @@
 import React from 'react'
 import Form from "../Form/Form";
 import Map from "../Map/Map";
+import SocialMediaLinks from './SocialMediaLinks';
 
 const ContactUs = ({ mapToBeShown, toContactRef }) => {
     return (
@@ -30,8 +31,24 @@ const ContactUs = ({ mapToBeShown, toContactRef }) => {
                     Po Box 80982, Al Qusais Industrial area 4, Dubai, UAE
                 </address>
             </div>
+            <div className="social-media-links-wrapper">
+                <SocialMediaLinks></SocialMediaLinks>
+            </div>
         </>
     )
 }
 
 export default ContactUs
+
+
+/*
+
+
+https://www.instagram.com/sazgtuae?igsh=MXdnYzNvdzNsZzdtMA==             S
+
+https://www.linkedin.com/in/sahil-al-zuhoor-general-trading-llc-230a5a256/?originalSubdomain=ae                        S
+
+https://www.facebook.com/p/Sahil-Al-Zuhoor-General-Trading-LLC-100081279017739/
+
+
+*/

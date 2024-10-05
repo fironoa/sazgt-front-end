@@ -57,7 +57,13 @@ export const catDictionory = {
   "reception-tables": "Reception Tables",
   "school-furniture": "School Furniture",
   "home-appliances": "Home Appliances",
-  "items": "items"
+  "items": "items",
+  "air-conditioners": "items",
+  "refrigerators": "items",
+  "gas-stoves": "items",
+  "microwave-ovens": "items",
+  "tvs": "items",
+  
 }
 
 

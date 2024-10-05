@@ -5,7 +5,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import { useNavigate, useLocation } from "react-router-dom";
-import { getHomeUrl, subCategoriesFromConfig } from '../configuration/ApiConfig';
+import { getHomeUrl, getTheCategoryBykebabCase, subCategoriesFromConfig, toKebabCase } from '../configuration/ApiConfig';
 import "./Header.css";
 import Navbar from "./Navbar";
 import config from "../configuration/ApiConfig";
@@ -127,14 +127,17 @@ function Header() {
 
 
   const handleDropDownListSelection = (item) => {
-    const subCategory = item.sub_category;
+    /*const subCategory = item.sub_category;
     let url = `/products?category=${item.category}&per_page=${perPage}`;
 
     if (subCategory) {
       url += `&sub_category=${subCategory}`;
-    }
+    }*/
 
-    navigate(url);
+
+    const url = `${getHomeUrl()}/products/${toKebabCase(item.category)}/${getTheCategoryBykebabCase(toKebabCase(item.sub_category))}`
+    console.log(url)
+    window.location.href = url;
     setOpenList(false);
   }
 
@@ -169,7 +172,7 @@ function Header() {
                         {item.searchQuery}
                         <div style={{ fontSize: "12px", color: "#555" }}>
                           in {item.category}
-                          {item.sub_category || item.sub_category == "" ? " > " + item.sub_category : ""}
+                          {item.sub_category || item.sub_category == "" ? " > " + item.sub_category : "items"}
                         </div>
                       </li>
                     ))}
