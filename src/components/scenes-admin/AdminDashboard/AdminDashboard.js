@@ -21,7 +21,6 @@ function AdminDashboard() {
   const operation = searchParams.get('op'); // Assuming you have a URL query parameter named 'mode'
 
   const baseURL = config.baseURL;
-  console.log(baseURL);
   const token = localStorage.getItem('accessToken');
 
   const showSnackBar = (message, type) => {
@@ -50,7 +49,6 @@ function AdminDashboard() {
           return response.json();
         })
         .then(data => {
-          console.log('Success:', data);
           showSnackBar("Authenticated Successfully", "success");
           setVerified(true);
         })

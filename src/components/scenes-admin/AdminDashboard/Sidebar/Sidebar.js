@@ -11,7 +11,6 @@ function Sidebar() {
 
   const queryParams = new URLSearchParams(location.search);
   const op = queryParams.get('op');
-  console.log(op);
   const [operation, setOperation] = useState(op === null ? 'add-product' : op);
 
   const handleLogout = (event) => {

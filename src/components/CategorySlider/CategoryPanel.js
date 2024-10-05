@@ -40,11 +40,6 @@ const CategoryPanel = () => {
     }
 
 
-    useEffect(() => {
-        console.log(selectedCategory + "  " + selectedSubCategory);
-    }, [])
-
-
 
 
     return (
@@ -82,7 +77,6 @@ const CategoryPanel = () => {
 
             }}>
                 {categoriesFromConfig.map((cat, index) => {
-                    console.log(cat);
                     return (
                         <SubCategories
                             key={index}

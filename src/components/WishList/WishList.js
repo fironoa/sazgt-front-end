@@ -107,14 +107,12 @@ function WishList() {
       message: message,
       products: simplifiedProducts
     };
-    console.log(data);
     setIsLoading(true)
     sendMail(data)
     .then(data => {
       setIsLoading(false)
       showSnackbar(data.message, "info");
     }).catch(error => {
-      console.log(error);
       setIsLoading(false)
       showSnackbar("Error while Sending mail", "error");
     })

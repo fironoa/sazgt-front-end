@@ -51,7 +51,6 @@ const ThumbnailFetcher = () => {
     const processProductIds = async () => {
         setLoading(true);
         const productIds = await fetchProductIds();
-        console.log(productIds);
         const urls = [];
         
         for (let i = 0; i < productIds.length; i += 10) {

@@ -67,7 +67,6 @@ function Login() {
         return response.json();
       })
       .then(data => {
-        console.log('Success:', data);
         showSnackBar("Authentication Successfull", "success");
         localStorage.setItem('accessToken', data.accessToken);
         // Handle success here (e.g., show success message, redirect)

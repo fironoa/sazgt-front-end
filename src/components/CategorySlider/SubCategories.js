@@ -12,9 +12,6 @@ const SubCategories = ({ category, selectedSubCategory, selectedCategory }) => {
 
     const arrowStyle = { fontSize: "24px", paddingTop: "8px", paddingLeft: "8px" }
 
-    console.log(`${category} - ${selectedCategory}`)
-    console.log(selectedCategory === category)
-
     const handleCatClick = (cat) => {
         if (cat !== selectedCategory) {
             setExpanded(!expanded);

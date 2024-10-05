@@ -136,7 +136,7 @@ function Header() {
 
 
     const url = `${getHomeUrl()}/products/${toKebabCase(item.category)}/${getTheCategoryBykebabCase(toKebabCase(item.sub_category))}`
-    console.log(url)
+  
     window.location.href = url;
     setOpenList(false);
   }

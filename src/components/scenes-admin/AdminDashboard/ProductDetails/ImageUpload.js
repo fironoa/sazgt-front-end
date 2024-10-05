@@ -82,7 +82,6 @@ function ImageUpload({ productId, onUpload }) {
                 formData.append('images[]', file);
             });
     
-            console.log(productId);
             formData.append('productId', productId);
     
             try {
@@ -101,7 +100,6 @@ function ImageUpload({ productId, onUpload }) {
     
                 // Handle success response
                 const data = await response.json();
-                console.log(data);
                 alert('Upload successful!');
                 onUpload(productId);
                 setSelectedFiles([]);

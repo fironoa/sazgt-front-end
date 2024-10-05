@@ -46,7 +46,6 @@ export const ProductsV2 = ({ categoryFromRoute, subCategoryFromRoute }) => {
   const [selectedCategory, setSelectedCategory] = useState(getTheCategoryBykebabCase(category));
   const [selectedSubCategory, setSelectedSubCategory] = useState(getTheCategoryBykebabCase(subCategory));
 
-  console.log("after every refresh : " + selectedCategory + "  " +selectedSubCategory);
 
   const noProductsImage = (
     <div style={{ display: 'flex', flexDirection: "column", justifyContent: 'center', alignItems: 'center', height: '40vh', minWidth: '400px' }}>
@@ -63,10 +62,8 @@ export const ProductsV2 = ({ categoryFromRoute, subCategoryFromRoute }) => {
     // Start building the API URL
     let productAPI = `${baseURL}/sazgt/products?category=${selectedCategory}`;
 
-    console.log(selectedSubCategory);
     // Check if selectedSubCategory is not undefined, null, or an empty string
     if (selectedSubCategory !== 'items') {
-      console.log("going inside");
       productAPI = `${productAPI}&sub_category=${selectedSubCategory}`;
     }
     setProductUrl(`${productAPI}&per_page=${perPage.toString()}&page=${page}`);
@@ -75,7 +72,6 @@ export const ProductsV2 = ({ categoryFromRoute, subCategoryFromRoute }) => {
   const getProducts = async (url) => {
     setIsLoading(true);
     setProducts([]);
-    console.log(url);
     const response = await fetch(url);
     const responseData = await response.json();
     setProducts(responseData.data);
@@ -108,7 +104,6 @@ export const ProductsV2 = ({ categoryFromRoute, subCategoryFromRoute }) => {
 
   }
   const handlePageChange = (url) => {
-    console.log(url);
     setProductUrl(url);
     topElemenrRef.current.focus();
   };
@@ -131,7 +126,6 @@ export const ProductsV2 = ({ categoryFromRoute, subCategoryFromRoute }) => {
 
   }
   useEffect(() => {
-    console.log("Manageing main menu wrappers")
     document.querySelectorAll('.sub_cat_wrapper_l').forEach(subWrapperElement => {
 
       if (subWrapperElement.id === selectedCategory) {
