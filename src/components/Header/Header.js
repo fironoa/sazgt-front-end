@@ -5,7 +5,7 @@ import { FaPhoneAlt } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import { useNavigate, useLocation } from "react-router-dom";
-import { getHomeUrl, getTheCategoryBykebabCase, subCategoriesFromConfig, toKebabCase } from '../configuration/ApiConfig';
+import { getHomeUrl, getTheCategoryBykebabCase, subCategoriesFromConfig, toKebabCase, unwantedSubCatMap } from '../configuration/ApiConfig';
 import "./Header.css";
 import Navbar from "./Navbar";
 import config from "../configuration/ApiConfig";
@@ -134,9 +134,13 @@ function Header() {
       url += `&sub_category=${subCategory}`;
     }*/
 
-
-    const url = `${getHomeUrl()}/products/${toKebabCase(item.category)}/${getTheCategoryBykebabCase(toKebabCase(item.sub_category))}`
+      console.log(unwantedSubCatMap.includes(item.sub_category));
+      
+    const url = `${getHomeUrl()}/products/${toKebabCase(item.category)}/${toKebabCase(
+      unwantedSubCatMap.includes(item.sub_category) ? "items" : item.sub_category
+    )}`
   
+    console.log(url);
     window.location.href = url;
     setOpenList(false);
   }

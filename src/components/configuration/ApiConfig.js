@@ -66,6 +66,13 @@ export const catDictionory = {
   
 }
 
+export const unwantedSubCatMap = [
+  "Air Conditioners",
+  "Refrigerators",
+  "Gas Stoves",
+  "Microwave Ovens",
+  "TVs"
+]
 
 export const productPageDescription = {
   "Camp Furniture": "Durable and versatile labour camp furniture in Dubai and the UAE, including steel bunk beds, steel single beds, steel locker cabinets, and steel shoeracks. Designed for labour camps and temporary staff accommodations, our products provide reliable solutions for labour camp furniture suppliers near you.",
