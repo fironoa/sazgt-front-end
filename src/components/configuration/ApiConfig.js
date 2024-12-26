@@ -1,5 +1,5 @@
 export default {
-  baseURL: "https://gobartsdev.com/api",
+  baseURL: "https://backend.sazgt.com/api",
 };
 
 
@@ -8,7 +8,7 @@ export const getHomeUrl = () => {
 
 }
 
-export const imageBase ="https://gobartsdev.com/storage/images";
+export const imageBase ="https://backend.sazgt.com/storage/images";
 
 export const categoriesFromConfig = [
   "Camp Furniture",
