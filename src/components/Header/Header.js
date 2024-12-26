@@ -133,8 +133,6 @@ function Header() {
     if (subCategory) {
       url += `&sub_category=${subCategory}`;
     }*/
-
-      console.log(unwantedSubCatMap.includes(item.sub_category));
       
     const url = `${getHomeUrl()}/products/${toKebabCase(item.category)}/${toKebabCase(
       unwantedSubCatMap.includes(item.sub_category) ? "items" : item.sub_category
