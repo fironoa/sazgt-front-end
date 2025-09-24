@@ -19,7 +19,7 @@ export const Home = () => {
   };
 
   const styleText = {
-    color: "#01AEEF",
+    color: "#0097ceff",
   };
 
   const headingContentCenter = {
