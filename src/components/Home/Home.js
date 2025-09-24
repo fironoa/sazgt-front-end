@@ -110,7 +110,7 @@ export const Home = () => {
                     <div className="tile-img">
                       <img
                         width="100%"
-                        src={"/images/" + category.replace(/\s+/g, "") + ".jpg"}
+                        src={"/images/" + category.replace(/\s+/g, "") + ".webp"}
                         alt={category}
                       />
                     </div>
@@ -162,7 +162,7 @@ export const Home = () => {
             </div>
             <div className="latest-arrivals-parts">
               <div className="arrivals-image-wrapper">
-                <img src={Rectangle68} />
+                <img src={Rectangle68} alt="latest-arrival-coin-operated-washing-machine"/>
               </div>
             </div>
           </div>

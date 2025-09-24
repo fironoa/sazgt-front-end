@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import SnackBar from '../../Snackbar/Snackbar';
-import logodraft1 from "../../../images/logodraft1.png";
+import logodraft1 from "../../../images/logodraft1.webp";
 import './login.css';
 import config from '../../configuration/ApiConfig'
 
