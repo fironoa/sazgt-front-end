@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Rectangle68 from "../../images/Rectangle68.png";
+import Rectangle68 from "../../images/Rectangle68.webp";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import CategorySlider from "../CategorySlider/CategorySlider";
 import "./Home.css";
@@ -46,13 +46,14 @@ export const Home = () => {
     navigate(url);
   };
 
-
   return (
     <div>
       <Helmet>
         <title>Labour Camp Furniture Dubai, UAE | Office Furniture Dubai </title>
       </Helmet>
-      <div style={{ display: "flex", justifyContent: "center" }}><Carousel></Carousel></div>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <Carousel></Carousel>
+      </div>
       <div className="home-container">
         <CategorySlider></CategorySlider>
         <div className={`banner`}>
@@ -65,9 +66,22 @@ export const Home = () => {
             </div>
             <div className="description">
               <p align="justify">
-                At Sahil - Al-Zuhoor General Trading L.L.C, founded in 2007 in Dubai, we specialize in providing high-quality labour camp furniture in Dubai and the UAE, as well as comprehensive office furniture solutions. As a leading labour camp furniture supplier in Dubai and the UAE, our product line includes robust and durable steel bunk beds, single beds, steel locker cabinets, and medical-grade mattresses, ideal for labour camp accommodations. We also offer secure steel lockers and file cabinets for offices and labour camps near you.
-
-                In addition to labour camp furniture, we supply office furniture in Dubai and the UAE, including pantry tables and chairs, training chairs and tables, and other workplace essentials like water coolers, cast iron stoves, and coin-operated washing machines. Whether you need steel lockers near you for secure storage or labour camp furnishings in Dubai, our products are designed for durability and versatility to meet both residential and industrial needs.
+                At Sahil - Al-Zuhoor General Trading L.L.C, founded in 2007 in
+                Dubai, we specialize in providing high-quality labour camp
+                furniture in Dubai and the UAE, as well as comprehensive office
+                furniture solutions. As a leading labour camp furniture supplier
+                in Dubai and the UAE, our product line includes robust and
+                durable steel bunk beds, single beds, steel locker cabinets, and
+                medical-grade mattresses, ideal for labour camp accommodations.
+                We also offer secure steel lockers and file cabinets for offices
+                and labour camps near you. In addition to labour camp furniture,
+                we supply office furniture in Dubai and the UAE, including
+                pantry tables and chairs, training chairs and tables, and other
+                workplace essentials like water coolers, cast iron stoves, and
+                coin-operated washing machines. Whether you need steel lockers
+                near you for secure storage or labour camp furnishings in Dubai,
+                our products are designed for durability and versatility to meet
+                both residential and industrial needs.
               </p>
             </div>
             <div className="count-box">
@@ -91,7 +105,11 @@ export const Home = () => {
           </div>
           <div className="parts">
             <div className="banner-image-wrapper">
-              <img src={"/images/TopBunkImage.jpg"} width="100%" alt="Bunk beds" />
+              <img
+                src={"/images/TopBunkImage.webp"}
+                width="100%"
+                alt="Bunk beds"
+              />
             </div>
           </div>
         </div>
@@ -105,12 +123,18 @@ export const Home = () => {
             </div>
             <div className="tiles-wrapper">
               {categoriesFromConfig.map((category) => (
-                <a href={`${getHomeUrl()}/products/${toKebabCase(category)}/${toKebabCase(getSub(category))}`}>
+                <a
+                  href={`${getHomeUrl()}/products/${toKebabCase(
+                    category
+                  )}/${toKebabCase(getSub(category))}`}
+                >
                   <div className="tile">
                     <div className="tile-img">
                       <img
                         width="100%"
-                        src={"/images/" + category.replace(/\s+/g, "") + ".webp"}
+                        src={
+                          "/images/" + category.replace(/\s+/g, "") + ".webp"
+                        }
                         alt={category}
                       />
                     </div>
@@ -120,7 +144,6 @@ export const Home = () => {
                     </div>
                   </div>
                 </a>
-
               ))}
             </div>
           </div>
@@ -137,8 +160,9 @@ export const Home = () => {
               <div style={subHeadingLatestArrival}>
                 <div>
                   <h3>
-                    Introducing Hassle-Free Laundry:
-                    Our New <span style={{ whiteSpace: "nowrap" }}>Coin-Operated</span> Washing Machines
+                    Introducing Hassle-Free Laundry: Our New{" "}
+                    <span style={{ whiteSpace: "nowrap" }}>Coin-Operated</span>{" "}
+                    Washing Machines
                   </h3>
                 </div>
                 <div className="heading-boarder"></div>
@@ -155,14 +179,17 @@ export const Home = () => {
                 </li>
               </ul>
               <div className="read-more-button">
-                <button>
-                  <a href="#contact-us-section" style={{ color: "white" }}>Leave a Message</a>
-                </button>
+                <a href="#contact-us-section" className="leave-message-link">
+                  Leave a Message
+                </a>
               </div>
             </div>
             <div className="latest-arrivals-parts">
               <div className="arrivals-image-wrapper">
-                <img src={Rectangle68} alt="latest-arrival-coin-operated-washing-machine"/>
+                <img
+                  src={Rectangle68}
+                  alt="latest-arrival-coin-operated-washing-machine"
+                />
               </div>
             </div>
           </div>
