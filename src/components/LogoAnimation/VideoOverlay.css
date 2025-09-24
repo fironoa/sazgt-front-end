@@ -15,12 +15,8 @@
 
 /* Apply the animation to the video */
 #myVideo {
-    /* Initial rotation */
     transform: rotate(0deg);
-    /* Animation */
     margin-bottom: 10vh;
-
-    overflow: visible;
 }
 
 .video-overlay {
