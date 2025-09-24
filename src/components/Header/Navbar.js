@@ -12,22 +12,24 @@ const Navbar = ({ handleClick, showNavbar }) => {
         }
     }
     return (
-        <div className={`navbar-wrapper `}>
-            <nav className={`navbar`}>
-                <div className={`nav-list`} ref={navRef}>
-                    {categoriesFromConfig.map((cat, index) => {
-                        return (
-                            <a href={`${getHomeUrl()}/products/${toKebabCase(cat)}/${toKebabCase(getSub(cat))}`}>
-                                {cat}
-                                </a>
-                        )
-                    })}
-                    <button className={`nav-btn nav-close-btn`}>
-                        <FaTimes onClick={showNavbar} />
-                    </button>
-                </div>
-            </nav>
-        </div>
+      <div className={`navbar-wrapper `}>
+        <nav className={`navbar`}>
+          <div className={`nav-list`} ref={navRef}>
+            {categoriesFromConfig.map((cat, index) => {
+              return (
+                <a
+                  href={`${getHomeUrl()}/products/${toKebabCase(
+                    cat
+                  )}/${toKebabCase(getSub(cat))}`}
+                >
+                  {cat}
+                </a>
+              );
+            })}
+            
+          </div>
+        </nav>
+      </div>
     )
 }
 
