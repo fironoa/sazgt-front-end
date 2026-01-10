@@ -6,7 +6,7 @@ import { IoIosArrowDown } from "react-icons/io";
 
 const SubCategories = ({ category, selectedSubCategory, selectedCategory }) => {
 
-    const subCategories = subCategoriesFromConfig[category];
+    const subCategories = subCategoriesFromConfig[category] || [];
     const [expanded, setExpanded] = useState(false);
     const subCatWrapperRef = useRef(null); 
 

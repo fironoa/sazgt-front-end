@@ -15,7 +15,8 @@ export const categoriesFromConfig = [
   "Bedding Amenities",
   "Office Furniture",
   "School Furniture",
-  "Home Appliances"
+  "Home Appliances",
+  "Outdoor Furnitures"
 ];
 
 export const subCategoriesFromConfig = {
@@ -33,10 +34,14 @@ export const subCategoriesFromConfig = {
     "Work Stations",
     "Cabinets",
     "Meeting Tables",
-    "Reception Tables"
+    "Reception Tables",
+    "Airport Benches"
   ],
   "School Furniture": [],
-  "Home Appliances": []
+  "Home Appliances": [],
+  "Outdoor Furnitures": [
+    "Sunbeds"
+  ]
 
 }
 
@@ -55,8 +60,11 @@ export const catDictionory = {
   "cabinets": "Cabinets",
   "meeting-tables": "Meeting Tables",
   "reception-tables": "Reception Tables",
+  "airport-benches": "Airport Benches",
   "school-furniture": "School Furniture",
   "home-appliances": "Home Appliances",
+  "outdoor-furnitures": "Outdoor Furnitures",
+  "sunbeds": "Sunbeds",
   "items": "items",
   "air-conditioners": "items",
   "refrigerators": "items",
@@ -83,7 +91,9 @@ export const productPageDescription = {
 
   "School Furniture": "Sturdy, student-friendly furniture, including training chairs and tables, perfect for enhancing learning environments. Our durable and versatile designs are ideal for schools and educational institutions in Dubai and the UAE.",
 
-  "Home Appliances": "Reliable and efficient home appliances for labour camps and staff accommodations, such as water coolers, cast iron stoves, coin-operated washing machines, and pantry furniture. Our pantry tables and chairs are ideal for labour camp furnishings in Dubai and the UAE."
+  "Home Appliances": "Reliable and efficient home appliances for labour camps and staff accommodations, such as water coolers, cast iron stoves, coin-operated washing machines, and pantry furniture. Our pantry tables and chairs are ideal for labour camp furnishings in Dubai and the UAE.",
+
+  "Outdoor Furnitures": "Durable and weather-resistant outdoor furniture designed for labour camps, staff accommodations, and industrial facilities. Our range includes outdoor tables, shaded seating and sunbeds, built to withstand harsh climate conditions. Ideal for open dining areas, rest zones, and recreational spaces in labour camps across Dubai and the UAE."
 }
 
 
@@ -99,13 +109,11 @@ export const toKebabCase = (str) => {
 };
 
 export const getSub = (cat) => {
-  if(subCategoriesFromConfig[cat][0]){
-      return subCategoriesFromConfig[cat][0];
-  } else {
-      return 'items';
-  }
+  const subCategories = subCategoriesFromConfig[cat] || [];
+
+  return subCategories[0] ? subCategories[0] : "items";
 }
 
 export const getAllSub = (cat) => {
-  return subCategoriesFromConfig[cat];
+  return subCategoriesFromConfig[cat] || [];
 }
