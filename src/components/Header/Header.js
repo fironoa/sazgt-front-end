@@ -191,7 +191,7 @@ function Header() {
                   <FaPhoneAlt size={12} />
                 </div>
                 <div className="cont-content">
-                  <a href="tel:+971508362620">+971508362620</a>
+                  <a href="tel:+971502737011">+971502737011</a>
                 </div>
               </div>
               <div className="contact">
