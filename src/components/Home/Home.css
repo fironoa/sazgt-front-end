@@ -82,6 +82,7 @@
     cursor: pointer;
     max-width: 300px;
     height: 425px;
+    color: #000;
     background-color: #ffffff;
     -webkit-box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.22);
     -moz-box-shadow: 0px 0px 22px 0px rgba(0, 0, 0, 0.22);
@@ -175,7 +176,9 @@
 
 }
 
-.read-more-button button {
+
+
+.read-more-button .leave-message-link {
     border: none;
     color: aliceblue;
     background-color: #007A87;
@@ -184,9 +187,22 @@
     transition: background-color 0.2s;
 }
 
-.read-more-button button:hover {
+.read-more-button .leave-message-link:hover {
     background-color: #005058;
 }
+
+/*
+.read-more-button button {
+    border: none;
+    color: aliceblue;
+    background-color: #007A87;
+    padding: 12px 25px;
+    border-radius: 2px;
+    transition: background-color 0.2s;
+}
+.read-more-button button:hover {
+    background-color: #005058;
+}*/
 
 /* Scroll animation*/
 .home-box {

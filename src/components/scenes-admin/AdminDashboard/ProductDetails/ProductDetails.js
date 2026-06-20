@@ -75,7 +75,6 @@ function ProductDetails({ providedPId }) {
 
     setIsLoading(true);
     // Remove the selected file and its preview by index
-    console.log(recentProductImages[indexToRemove]);
     const deleteImage = async () => {
       // Example fetch request; adjust according to your actual API
       const response = await fetch(recentProductImages[indexToRemove], {
@@ -89,7 +88,6 @@ function ProductDetails({ providedPId }) {
 
       const data = await response.json();
 
-      console.log(data);
       getImages(productId);
       setIsLoading(false);
 
@@ -110,7 +108,6 @@ function ProductDetails({ providedPId }) {
     fetch(imageAPI)
       .then(response => response.json())
       .then(data => {
-        console.log(data);
 
         // Define your base URL
         const imageShowAPIBase = baseURL + '/sazgt/images/';
@@ -258,7 +255,6 @@ function ProductDetails({ providedPId }) {
         return response.json();
       })
       .then(data => {
-        console.log('Success:', data);
         setRecentlyAddedProduct(data);
         setproductId(data.id);
         showSnackBar("Product added/updated Successfully", "success");

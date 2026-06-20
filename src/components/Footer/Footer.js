@@ -19,7 +19,6 @@ function Footer() {
     if (location.pathname == "/") {
       setMapToBeShown(true);
       if (location.hash === "#contact-us-section") {
-        console.log("true : " + location.hash);
         toContactRef.current.scrollIntoView({ behavior: 'smooth' });
       }
     }

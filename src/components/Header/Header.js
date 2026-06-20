@@ -1,11 +1,11 @@
 import React from "react";
 import { useState, useRef, useEffect } from "react";
-import logodraft1 from "../../images/logodraft1.png";
+import logodraft1 from "../../images/logodraft1.webp";
 import { FaPhoneAlt } from "react-icons/fa";
 import { IoIosMail } from "react-icons/io";
 import { CiSearch } from "react-icons/ci";
 import { useNavigate, useLocation } from "react-router-dom";
-import { subCategoriesFromConfig } from '../configuration/ApiConfig';
+import { getHomeUrl, getTheCategoryBykebabCase, subCategoriesFromConfig, toKebabCase, unwantedSubCatMap } from '../configuration/ApiConfig';
 import "./Header.css";
 import Navbar from "./Navbar";
 import config from "../configuration/ApiConfig";
@@ -55,7 +55,7 @@ function Header() {
           }
         });
 
-        if(uniqueItems.length == 0){
+        if (uniqueItems.length == 0) {
           showSnackbar("No products Found", "info");
         }
         setDropdownItems(uniqueItems.map(item => {
@@ -127,14 +127,19 @@ function Header() {
 
 
   const handleDropDownListSelection = (item) => {
-    const subCategory = item.sub_category;
+    /*const subCategory = item.sub_category;
     let url = `/products?category=${item.category}&per_page=${perPage}`;
 
     if (subCategory) {
       url += `&sub_category=${subCategory}`;
-    }
-
-    navigate(url);
+    }*/
+      
+    const url = `${getHomeUrl()}/products/${toKebabCase(item.category)}/${toKebabCase(
+      unwantedSubCatMap.includes(item.sub_category) ? "items" : item.sub_category
+    )}`
+  
+    console.log(url);
+    window.location.href = url;
     setOpenList(false);
   }
 
@@ -145,8 +150,11 @@ function Header() {
       {isLoading && <LinearLoading></LinearLoading>}
       <div className="container">
         <div className="header">
-          <div className="box" style={{ cursor: 'pointer' }} onClick={() => navigate('/')}>
-            <img src={logodraft1} alt="Sahil Al Zuhoor" width="270px" />
+
+          <div className="box" style={{ cursor: 'pointer' }}>
+            <a href={getHomeUrl()}>
+              <img src={logodraft1} alt="Sahil Al Zuhoor" width="270px" />
+            </a>
           </div>
           {showNav &&
             <div className="box">
@@ -166,7 +174,7 @@ function Header() {
                         {item.searchQuery}
                         <div style={{ fontSize: "12px", color: "#555" }}>
                           in {item.category}
-                          {item.sub_category || item.sub_category == "" ? " > " + item.sub_category : ""}
+                          {item.sub_category || item.sub_category == "" ? " > " + item.sub_category : "items"}
                         </div>
                       </li>
                     ))}
@@ -183,7 +191,7 @@ function Header() {
                   <FaPhoneAlt size={12} />
                 </div>
                 <div className="cont-content">
-                  <a href="tel:+971508362620">+971508362620</a>
+                  <a href="tel:+971502737011">+971502737011</a>
                 </div>
               </div>
               <div className="contact">

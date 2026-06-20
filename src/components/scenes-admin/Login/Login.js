@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import SnackBar from '../../Snackbar/Snackbar';
-import logodraft1 from "../../../images/logodraft1.png";
+import logodraft1 from "../../../images/logodraft1.webp";
 import './login.css';
 import config from '../../configuration/ApiConfig'
 
@@ -67,7 +67,6 @@ function Login() {
         return response.json();
       })
       .then(data => {
-        console.log('Success:', data);
         showSnackBar("Authentication Successfull", "success");
         localStorage.setItem('accessToken', data.accessToken);
         // Handle success here (e.g., show success message, redirect)

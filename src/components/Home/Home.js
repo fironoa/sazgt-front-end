@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
-import Rectangle68 from "../../images/Rectangle68.png";
+import Rectangle68 from "../../images/Rectangle68.webp";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import CategorySlider from "../CategorySlider/CategorySlider";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
 import IncrementCounter from "../IncrementCounter/IncrementCounter";
-import { categoriesFromConfig, productPageDescription } from "../configuration/ApiConfig";
+import { categoriesFromConfig, productPageDescription, getSub, toKebabCase, getHomeUrl } from "../configuration/ApiConfig";
 import Carousel from "../Carousel/Carousel";
+import { Helmet } from "react-helmet";
 
 export const Home = () => {
   const [perPage] = useState(localStorage.getItem("perPage") || "30");
@@ -18,7 +19,7 @@ export const Home = () => {
   };
 
   const styleText = {
-    color: "#01AEEF",
+    color: "#0097ceff",
   };
 
   const headingContentCenter = {
@@ -45,30 +46,42 @@ export const Home = () => {
     navigate(url);
   };
 
-
   return (
     <div>
-      <div style={{display:"flex", justifyContent:"center"}}><Carousel></Carousel></div>
+      <Helmet>
+        <title>Labour Camp Furniture Dubai, UAE | Office Furniture Dubai </title>
+      </Helmet>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <Carousel></Carousel>
+      </div>
       <div className="home-container">
         <CategorySlider></CategorySlider>
         <div className={`banner`}>
           <div className="parts">
             <div>
-              <h1>Durable Bunk Beds, Lockers, Camp Furniture and Office Furniture
-              <span style={styleText}>&nbsp;Solutions!</span>
+              <h1>Labour Camp Furniture and Office Furniture
+                <span style={styleText}>&nbsp;Solutions!</span>
               </h1>
-              
+
             </div>
             <div className="description">
               <p align="justify">
-              At Sahil - Al-Zuhoor General Trading L.L.C, founded in 2007 in Dubai, we offer a wide range of office and 
-              industry comfort solutions, specializing in furniture and comprehensive staff accommodation furnishings. 
-              Our extensive product line includes labor camp furniture such as steel bunk beds, steel single beds, 
-              steel locker cabinets, and medical or medicated mattresses. We also provide steel cupboards, 2-door lockers, 
-              file cabinets, steel shoeracks, and steel lockers for secure storage solutions. Additionally, 
-              our offerings extend to pantry furniture, including durable pantry tables and chairs, training chairs and tables, 
-              water coolers, cast iron stoves, and coin-operated washing machines. Our products are known for their 
-              robust design, durability, and versatility, catering to both residential and industrial needs.
+                At Sahil - Al-Zuhoor General Trading L.L.C, founded in 2007 in
+                Dubai, we specialize in providing high-quality labour camp
+                furniture in Dubai and the UAE, as well as comprehensive office
+                furniture solutions. As a leading labour camp furniture supplier
+                in Dubai and the UAE, our product line includes robust and
+                durable steel bunk beds, single beds, steel locker cabinets, and
+                medical-grade mattresses, ideal for labour camp accommodations.
+                We also offer secure steel lockers and file cabinets for offices
+                and labour camps near you. In addition to labour camp furniture,
+                we supply office furniture in Dubai and the UAE, including
+                pantry tables and chairs, training chairs and tables, and other
+                workplace essentials like water coolers, cast iron stoves, and
+                coin-operated washing machines. Whether you need steel lockers
+                near you for secure storage or labour camp furnishings in Dubai,
+                our products are designed for durability and versatility to meet
+                both residential and industrial needs.
               </p>
             </div>
             <div className="count-box">
@@ -92,7 +105,11 @@ export const Home = () => {
           </div>
           <div className="parts">
             <div className="banner-image-wrapper">
-              <img src={"/images/TopBunkImage.jpg"} width="100%" alt="Bunk beds" />
+              <img
+                src={"/images/TopBunkImage.webp"}
+                width="100%"
+                alt="Bunk beds"
+              />
             </div>
           </div>
         </div>
@@ -106,19 +123,27 @@ export const Home = () => {
             </div>
             <div className="tiles-wrapper">
               {categoriesFromConfig.map((category) => (
-                <div className="tile" onClick={() => handleClick(category)}>
-                  <div className="tile-img">
-                    <img
-                      width="100%"
-                      src={"/images/" + category.replace(/\s+/g, "") + ".jpg"}
-                      alt={category}
-                    />
+                <a
+                  href={`${getHomeUrl()}/products/${toKebabCase(
+                    category
+                  )}/${toKebabCase(getSub(category))}`}
+                >
+                  <div className="tile">
+                    <div className="tile-img">
+                      <img
+                        width="100%"
+                        src={
+                          "/images/" + category.replace(/\s+/g, "") + ".webp"
+                        }
+                        alt={category}
+                      />
+                    </div>
+                    <div className="product-name">
+                      <h2 style={{ fontSize: "1.2rem" }}>{category}</h2>
+                      <p align="justify">{productPageDescription[category]}</p>
+                    </div>
                   </div>
-                  <div className="product-name">
-                    <h2 style={{fontSize:"1.2rem"}}>{category}</h2>
-                    <p align="justify">{productPageDescription[category]}</p>
-                  </div>
-                </div>
+                </a>
               ))}
             </div>
           </div>
@@ -135,8 +160,9 @@ export const Home = () => {
               <div style={subHeadingLatestArrival}>
                 <div>
                   <h3>
-                    Introducing Hassle-Free Laundry:
-                    Our New <span style={{ whiteSpace: "nowrap" }}>Coin-Operated</span> Washing Machines
+                    Introducing Hassle-Free Laundry: Our New{" "}
+                    <span style={{ whiteSpace: "nowrap" }}>Coin-Operated</span>{" "}
+                    Washing Machines
                   </h3>
                 </div>
                 <div className="heading-boarder"></div>
@@ -153,14 +179,17 @@ export const Home = () => {
                 </li>
               </ul>
               <div className="read-more-button">
-                <button>
-                  <a href="#contact-us-section" style={{ color: "white" }}>Leave a Message</a>
-                </button>
+                <a href="#contact-us-section" className="leave-message-link">
+                  Leave a Message
+                </a>
               </div>
             </div>
             <div className="latest-arrivals-parts">
               <div className="arrivals-image-wrapper">
-                <img src={Rectangle68} />
+                <img
+                  src={Rectangle68}
+                  alt="latest-arrival-coin-operated-washing-machine"
+                />
               </div>
             </div>
           </div>

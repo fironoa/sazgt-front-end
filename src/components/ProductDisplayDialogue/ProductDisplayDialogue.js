@@ -35,7 +35,6 @@ const ProductDisplayDialogue = ({ product, baseURL, addItem, closeModal, setIsLo
 
 
   const focusRadioButton = () => {
-    console.log(radioRef.current)
     if (radioRef.current) {
       radioRef.current.focus();
     }
@@ -88,7 +87,6 @@ const ProductDisplayDialogue = ({ product, baseURL, addItem, closeModal, setIsLo
   }
 
   const handleContinueClick = () => {
-    console.log(continueWithOne);
     if (continueWithOne === 'unknown') {
       showSnackbar("Select an option", "error");
       return null;
@@ -128,7 +126,6 @@ const ProductDisplayDialogue = ({ product, baseURL, addItem, closeModal, setIsLo
 
   const handleFormInputChange = (event) => {
     const { name, value } = event.target;
-    console.log(name + " "  + value);
     switch (name) {
       case 'name':
         setName(value);

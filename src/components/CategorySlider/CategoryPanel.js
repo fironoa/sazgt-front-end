@@ -4,20 +4,25 @@ import { IoArrowForward } from "react-icons/io5";
 import { IoClose } from "react-icons/io5";
 import "./Panel.css";
 import { useSearchParams } from "react-router-dom";
-import { categoriesFromConfig } from '../configuration/ApiConfig';
-import { subCategoriesFromConfig } from '../configuration/ApiConfig';
-import { useNavigate } from "react-router-dom";
+import { categoriesFromConfig, getAllSub } from '../configuration/ApiConfig';
+import { subCategoriesFromConfig, getTheCategoryBykebabCase, toKebabCase, getHomeUrl } from '../configuration/ApiConfig';
+import { useNavigate, useParams, useLocation } from "react-router-dom";
+import SubCategories from './SubCategories';
 
 const CategoryPanel = () => {
 
     const [searchParams] = useSearchParams();
     const [perPage, setPerPage] = useState(localStorage.getItem("perPage") || "10");
 
-    const [selectedCategory, setSelectedCategory] = useState(searchParams.get("category"));
+    const location = useLocation();
+    const pathSegments = location.pathname.split('/').filter(Boolean);
 
-    const [selectedSubCategory, setSelectedSubCategory] = useState(searchParams.get("sub_category"));
+    const [selectedCategory, setSelectedCategory] = useState(getTheCategoryBykebabCase(pathSegments[1]));
+    const [selectedSubCategory, setSelectedSubCategory] = useState(getTheCategoryBykebabCase(pathSegments[2]));
 
-    const [subCategories, setSubCategories] = useState([]);
+
+
+
     const { isPanelOpen, togglePanel } = usePanel();
     const navigate = useNavigate();
 
@@ -27,46 +32,14 @@ const CategoryPanel = () => {
         togglePanel();
     };
 
-    const handleCatClick = (cat) => {
-        let sub_category = "";
-        if (subCategoriesFromConfig[cat] && subCategoriesFromConfig[cat][0] !== undefined) {
-            sub_category = subCategoriesFromConfig[cat][0];
-        }
 
-        let url = '/products?category=' + cat + '&per_page=' + perPage;
-        if (sub_category) {
-            url += '&sub_category=' + sub_category;
-        }
-        navigate(url);
-        if (subCategoriesFromConfig[cat].length === 0) {
-            togglePanel();
-        }
-    }
 
     const handleContactClick = () => {
         navigate('/#contact-us-section');
         togglePanel();
     }
-    useEffect(() => {
-        setSelectedCategory(searchParams.get("category"));
-        setSelectedSubCategory(searchParams.get("sub_category"));
-
-    }, [searchParams]);
 
 
-    useEffect(() => {
-        document.querySelectorAll('.sub-cat-wrapper').forEach(subWrapperElement => {
-
-            if (subWrapperElement.id === selectedCategory) {
-
-                subWrapperElement.style.height = `${subWrapperElement.scrollHeight}px`;
-
-            } else {
-                subWrapperElement.style.height = '0';
-            }
-
-        });
-    }, [selectedCategory]);
 
 
     return (
@@ -103,15 +76,18 @@ const CategoryPanel = () => {
                 overflowX: "scroll"
 
             }}>
-                {categoriesFromConfig.map((cat, index) => (
-                    <div style={{ display: "flex", flexDirection: "column" }}><a className={`anchor-style ${selectedCategory === cat ? "active" : ""}`} onClick={() => handleCatClick(cat)}>{cat}</a>
-                        <div id={cat} className={`sub-cat-wrapper ${selectedCategory === cat ? "sub_wrapper_active" : ""}`}>
-                            {subCategoriesFromConfig[selectedCategory] && subCategoriesFromConfig[selectedCategory].map((sub_category, index) => (
-                                <a key={index} className={`anchor-sub-style ${selectedSubCategory === sub_category ? "active" : ""}`} onClick={() => handleClick(cat, sub_category)}>{sub_category}</a>
-                            ))}
-                        </div>
-                    </div>
-                ))}
+                {categoriesFromConfig.map((cat, index) => {
+                    return (
+                        <SubCategories
+                            key={index}
+                            category={cat}
+                            selectedCategory={selectedCategory}
+                            selectedSubCategory={selectedSubCategory}
+                        >
+
+                        </SubCategories>
+                    )
+                })}
 
                 <div className='contact-us-button'>
                     <a

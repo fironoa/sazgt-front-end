@@ -7,26 +7,98 @@
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://sazgt.com/products?category=Camp%20Furniture</loc>
-        <lastmod>2024-08-15</lastmod>
+        <loc>https://sazgt.com/products/camp-furniture/bunk-beds</loc>
+        <lastmod>2024-09-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://sazgt.com/products/camp-furniture/single-beds</loc>
+        <lastmod>2024-09-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://sazgt.com/products/camp-furniture/steel-lockers</loc>
+        <lastmod>2024-09-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://sazgt.com/products</loc>
-        <lastmod>2024-08-18</lastmod>
+        <loc>https://sazgt.com/products/camp-furniture/shoe-racks</loc>
+        <lastmod>2024-09-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://sazgt.com/camp-furnitures</loc>
-        <lastmod>2024-08-18</lastmod>
+        <loc>https://sazgt.com/products/camp-furniture/dining-table-and-chairs</loc>
+        <lastmod>2024-09-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://sazgt.com/office-furnitures</loc>
-        <lastmod>2024-08-18</lastmod>
+        <loc>https://sazgt.com/products/bedding-amenities/items</loc>
+        <lastmod>2024-09-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://sazgt.com/products/office-furniture/office-chairs</loc>
+        <lastmod>2024-09-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+    <url>
+        <loc>https://sazgt.com/products/office-furniture/office-desks</loc>
+        <lastmod>2024-09-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://sazgt.com/products/office-furniture/work-stations</loc>
+        <lastmod>2024-09-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://sazgt.com/products/office-furniture/cabinets</loc>
+        <lastmod>2024-09-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://sazgt.com/products/office-furniture/meeting-tables</loc>
+        <lastmod>2024-09-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://sazgt.com/products/office-furniture/reception-tables</loc>
+        <lastmod>2024-09-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+        <url>
+        <loc>https://sazgt.com/products/office-furniture/airport-benches</loc>
+        <lastmod>2024-09-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://sazgt.com/products/school-furniture/items</loc>
+        <lastmod>2024-09-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://sazgt.com/products/home-appliances/items</loc>
+        <lastmod>2024-09-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    <url>
+        <loc>https://sazgt.com/products/outdoor-furnitures/sunbeds</loc>
+        <lastmod>2024-09-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>

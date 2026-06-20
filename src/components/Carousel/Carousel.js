@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import './Carousel.css';
 
 const images = [
-    '../../images/c1.jpg',
-    '../../images/c2.jpg',
-    '../../images/c3.jpg',
-    '../../images/c4.jpg'
+    '../../images/c1.webp',
+    '../../images/c2.webp',
+    '../../images/c3.webp',
+    '../../images/c4.webp'
 ];
 
 const Carousel = () => {
@@ -37,7 +37,7 @@ const Carousel = () => {
         <div className="carousel">
             <div className="carousel-images" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
                 {images.map((image, index) => (
-                    <img key={index} src={image} alt={`Slide ${index + 1}`} />
+                    <img key={index} src={image} alt={`Camp Furnitures and Office Furnitures ${index + 1}`} />
                 ))}
             </div>
             <button className="carousel-button prev" onClick={handlePrevious}>&#10094;</button>

@@ -58,6 +58,12 @@
     margin-top: 30px;
     margin-bottom: 30px;
 }
+
+.social-media-links-wrapper{
+    margin-top: 20px;
+}
+
+
 @media (max-width:900px){
     .footer-components-wrapper{
         flex-direction: column;

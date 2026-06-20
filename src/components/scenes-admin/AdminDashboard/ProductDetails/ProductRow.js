@@ -17,7 +17,6 @@ const ProductRow = ({ product, baseURL, onEdit, removeProductById }) => {
         fetch(imageAPI)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
                 const imageShowAPIBase = `${baseURL}/sazgt/images/`;
                 const { foldername, files } = data;
                 const newImagePaths = files.map(file => `${imageShowAPIBase}${foldername}/${file}`);
@@ -56,7 +55,6 @@ const ProductRow = ({ product, baseURL, onEdit, removeProductById }) => {
             }
         });
         const data = await response.json();
-        console.log(data);
         alert(data.message);
         removeProductById(pId);
     };

@@ -17,6 +17,7 @@ import WishList from "./components/WishList/WishList";
 import FloatingLabel from "./components/FloatingWishListLabel/FloatingLabel";
 import SnackbarProvider from "./components/Contexts/SnackbarContext";
 import AboutUs from "./components/AboutUs/AboutUs";
+import { ProductsV2 } from "./components/Products/ProductsV2";
 
 function App() {
   const fontLinkHref =
@@ -43,19 +44,12 @@ function App() {
             <CategoryPanel />
             <Header />
             <Routes>
-              <Route path="/products" element={<Products
+              <Route path="/products/:category/:subCategory" element={<ProductsV2/>}></Route>
+              <Route path="/productsv2" element={<Products
                 categoryFromRoute={categoriesFromConfig[0]}
                 subCategoryFromRoute={subCategoriesFromConfig[categoriesFromConfig[0]][0]}
               />}
               ></Route>
-              <Route path="/camp-furnitures" element={<Products 
-              categoryFromRoute={categoriesFromConfig[0]} 
-              subCategoryFromRoute={subCategoriesFromConfig[categoriesFromConfig[0]][0]}
-              />}></Route>
-              <Route path="/office-furnitures" element={<Products
-              categoryFromRoute={categoriesFromConfig[2]}
-              subCategoryFromRoute={subCategoriesFromConfig[categoriesFromConfig[2]][0]} 
-              />}></Route>
               <Route path="/" element={<Home />}></Route>
               <Route path="/auth/admin-login" element={<Login />}></Route>
               <Route path="/admin-dashboard" element={<AdminDashboard />}></Route>
