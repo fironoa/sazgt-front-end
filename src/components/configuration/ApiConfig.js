@@ -16,7 +16,8 @@ export const categoriesFromConfig = [
   "Office Furniture",
   "School Furniture",
   "Home Appliances",
-  "Outdoor Furnitures"
+  "Outdoor Furnitures",
+  "Swimming Pool Furniture"
 ];
 
 export const subCategoriesFromConfig = {
@@ -41,6 +42,11 @@ export const subCategoriesFromConfig = {
   "Home Appliances": [],
   "Outdoor Furnitures": [
     "Sunbeds"
+  ],
+  "Swimming Pool Furniture": [
+    "Sunbeds",
+    "Sun Umbrella",
+    "Other Products"
   ]
 
 }
@@ -64,7 +70,10 @@ export const catDictionory = {
   "school-furniture": "School Furniture",
   "home-appliances": "Home Appliances",
   "outdoor-furnitures": "Outdoor Furnitures",
+  "swimming-pool-furniture": "Swimming Pool Furniture",
   "sunbeds": "Sunbeds",
+  "sun-umbrella": "Sun Umbrella",
+  "other-products":"Other Products",
   "items": "items",
   "air-conditioners": "items",
   "refrigerators": "items",
@@ -93,7 +102,9 @@ export const productPageDescription = {
 
   "Home Appliances": "Reliable and efficient home appliances for labour camps and staff accommodations, such as water coolers, cast iron stoves, coin-operated washing machines, and pantry furniture. Our pantry tables and chairs are ideal for labour camp furnishings in Dubai and the UAE.",
 
-  "Outdoor Furnitures": "Durable and weather-resistant outdoor furniture designed for labour camps, staff accommodations, and industrial facilities. Our range includes outdoor tables, shaded seating and sunbeds, built to withstand harsh climate conditions. Ideal for open dining areas, rest zones, and recreational spaces in labour camps across Dubai and the UAE."
+  "Outdoor Furnitures": "Durable and weather-resistant outdoor furniture designed for labour camps, staff accommodations, and industrial facilities. Our range includes outdoor tables, shaded seating and sunbeds, built to withstand harsh climate conditions. Ideal for open dining areas, rest zones, and recreational spaces in labour camps across Dubai and the UAE.",
+
+  "Swimming Pool Furniture": "Premium swimming pool furniture designed for hotels, resorts, villas, labour camps, and recreational facilities across Dubai and the UAE. Our collection includes sun loungers, poolside chairs, outdoor tables, umbrellas, and relaxation seating, crafted from durable, weather-resistant materials to withstand the UAE climate. Ideal for pool decks, leisure areas, and outdoor recreation spaces, providing comfort, style, and long-lasting performance."
 }
 
 
