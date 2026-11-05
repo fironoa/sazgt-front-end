@@ -204,7 +204,7 @@ function Header() {
               </div>
               {!isScreenSmall && (
                 <div className="contact">
-                  <div className="cont-content" style={{ cursor: "pointer" }} onClick={() => navigate('/#contact-us-section')}><p>Contact&nbsp;Us</p></div>
+                <div className="cont-content" style={{ cursor: "pointer" }} onClick={() => navigate('/contact')}><p>Contact&nbsp;Us</p></div>
                 </div>
               )}
             </div>

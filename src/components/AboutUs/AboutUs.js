@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from "react-helmet";
 import "./aboutUs.css";
 
 function aboutUs() {
@@ -11,9 +12,21 @@ function aboutUs() {
 
   return (
     <>
+      <Helmet>
+        <title>About Sahil Al Zuhoor | Furniture Supplier in Dubai</title>
+        <meta name="description" content="Learn about Sahil Al Zuhoor General Trading LLC, a Dubai supplier of labour camp, office and school furniture for businesses across the UAE." />
+        <link rel="canonical" href="https://sazgt.com/about" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Sahil Al Zuhoor" />
+        <meta property="og:title" content="About Sahil Al Zuhoor | Furniture Supplier in Dubai" />
+        <meta property="og:description" content="Learn about our furniture and staff accommodation supply business in Dubai." />
+        <meta property="og:url" content="https://sazgt.com/about" />
+        <meta property="og:image" content="https://sazgt.com/images/about-image.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
       <div className="home-container">
         <div className="footer-heading">
-          <h2 id="contact-us-section">About Us</h2>
+          <h1>About Us</h1>
           <div className="heading-boarder"></div>
         </div>
         <div className="description" style={aboutUsStyle}>
@@ -73,8 +86,8 @@ function aboutUs() {
           </div>
         </div>
         <br /><br /><br />
-        <div class="imgWrapper">
-          <img className="aboutImage" src={"/images/about-image.jpg"} />
+          <div className="imgWrapper">
+          <img className="aboutImage" src={"/images/about-image.jpg"} alt="Sahil Al Zuhoor furniture and supply business" />
         </div><br /><br />
       </div>
     </>

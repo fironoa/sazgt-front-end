@@ -18,6 +18,7 @@ import FloatingLabel from "./components/FloatingWishListLabel/FloatingLabel";
 import SnackbarProvider from "./components/Contexts/SnackbarContext";
 import AboutUs from "./components/AboutUs/AboutUs";
 import { ProductsV2 } from "./components/Products/ProductsV2";
+import Contact from "./components/Contact/Contact";
 
 function App() {
   const fontLinkHref =
@@ -55,7 +56,7 @@ function App() {
               <Route path="/admin-dashboard" element={<AdminDashboard />}></Route>
               <Route path="/wish-list" element={<WishList />}></Route>
               <Route path="/about" element={<AboutUs />}></Route>
-              <Route path="/contact" element={<AboutUs />}></Route>
+              <Route path="/contact" element={<Contact />}></Route>
             </Routes>
             <FloatingLabel />
             <Footer />

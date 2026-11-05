@@ -3,11 +3,12 @@ import Form from "../Form/Form";
 import Map from "../Map/Map";
 import SocialMediaLinks from './SocialMediaLinks';
 
-const ContactUs = ({ mapToBeShown, toContactRef }) => {
+const ContactUs = ({ mapToBeShown, toContactRef, headingId = "contact-us-section", headingLevel = "h2" }) => {
+    const Heading = headingLevel;
     return (
         <>
             <div className="footer-heading">
-                <h2 id="contact-us-section">Contact Us</h2>
+                <Heading id={headingId}>Contact Us</Heading>
                 <div className="heading-boarder"></div>
             </div>
             <div style={{gap:"10px", marginBottom:"4vh", display:"flex", flexDirection:"column", alignItems:"center"}}>

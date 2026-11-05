@@ -3,6 +3,7 @@ import "./Footer.css";
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import ContactUs from "./ContactUs/ContactUs";
+import { Link } from "react-router-dom";
 
 
 function Footer() {
@@ -39,6 +40,12 @@ function Footer() {
       <div className="footer-container">
         {showContact &&
         <ContactUs mapToBeShown={mapToBeShown} toContactRef={toContactRef}></ContactUs>}
+        {showContact && (
+          <nav aria-label="Company pages" style={{ display: "flex", justifyContent: "center", gap: "24px", marginTop: "24px" }}>
+            <Link to="/about">About Us</Link>
+            <Link to="/contact">Contact Us</Link>
+          </nav>
+        )}
         <div className="copyright">
           <p align='center'>
           Sahil-Al-Zuhoor - Your Reliable Furniture Supplier © 2024 Sahil-Al-Zuhoor General Trading LLC. All Rights Reserved. | Privacy Policy | Terms and Conditions

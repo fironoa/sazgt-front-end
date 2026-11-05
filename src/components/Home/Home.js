@@ -49,7 +49,16 @@ export const Home = () => {
   return (
     <div>
       <Helmet>
-        <title>Labour Camp Furniture Dubai, UAE | Office Furniture Dubai </title>
+        <title>Labour Camp Furniture Dubai, UAE | Office Furniture | Sahil Al Zuhoor</title>
+        <meta name="description" content="Sahil Al Zuhoor supplies labour camp furniture, steel bunk beds, steel lockers, mattresses and office furniture in Dubai and across the UAE. Contact us to request a quote." />
+        <link rel="canonical" href="https://sazgt.com/" />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Sahil Al Zuhoor" />
+        <meta property="og:title" content="Labour Camp Furniture Dubai, UAE | Sahil Al Zuhoor" />
+        <meta property="og:description" content="Steel bunk beds, lockers, mattresses and office furniture for camps, offices and schools across the UAE." />
+        <meta property="og:url" content="https://sazgt.com/" />
+        <meta property="og:image" content="https://sazgt.com/images/TopBunkImage.webp" />
+        <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
       <div style={{ display: "flex", justifyContent: "center" }}>
         <Carousel></Carousel>

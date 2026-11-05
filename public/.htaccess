@@ -1,6 +1,14 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
     RewriteBase /
+
+    # Collapse the legacy duplicate homepage URL to the preferred homepage.
+    RewriteRule ^index\.php$ https://sazgt.com/ [R=301,L]
+
+    # Keep the non-www hostname consistent with canonical URLs and the sitemap.
+    RewriteCond %{HTTP_HOST} ^www\.sazgt\.com$ [NC]
+    RewriteRule ^ https://sazgt.com%{REQUEST_URI} [R=301,L]
+
     RewriteRule ^index\.html$ - [L]
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
